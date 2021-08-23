@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"scarboroughcoral.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="404 not found。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="协议系列：HTTP常见请求方式和状态码总结">
+<meta property="og:url" content="https://scarboroughcoral.github.io/http-status-code/index.html">
+<meta property="og:site_name" content="李明岳的网络日志">
+<meta property="og:description" content="404 not found。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://pic1.win4000.com/wallpaper/2018-11-06/5be155d25c184.jpg">
+<meta property="article:published_time" content="2019-11-20T15:37:45.000Z">
+<meta property="article:modified_time" content="2021-08-23T15:42:17.066Z">
+<meta property="article:author" content="李明岳">
+<meta property="article:tag" content="Protocol">
+<meta property="article:tag" content="HTTP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://pic1.win4000.com/wallpaper/2018-11-06/5be155d25c184.jpg">
+
+
+<link rel="canonical" href="https://scarboroughcoral.github.io/http-status-code/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://scarboroughcoral.github.io/http-status-code/","path":"http-status-code/","title":"协议系列：HTTP常见请求方式和状态码总结"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>协议系列：HTTP常见请求方式和状态码总结 | 李明岳的网络日志</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">李明岳的网络日志</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81HTTP%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">常见HTTP请求方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81HTTP%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">常见HTTP状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1xx-informational-response%EF%BC%8C%E4%BF%A1%E6%81%AF%E5%93%8D%E5%BA%94"><span class="nav-number">3.1.</span> <span class="nav-text">1xx informational response，信息响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2xx-success%EF%BC%8C%E6%88%90%E5%8A%9F"><span class="nav-number">3.2.</span> <span class="nav-text">2xx success，成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3xx-redirection%EF%BC%8C%E9%87%8D%E5%AE%9A%E4%BD%8D"><span class="nav-number">3.3.</span> <span class="nav-text">3xx redirection，重定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4xx-client-errors%EF%BC%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%94%99%E8%AF%AF"><span class="nav-number">3.4.</span> <span class="nav-text">4xx client errors，客户端错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5xx-server-errors%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%94%99%E8%AF%AF"><span class="nav-number">3.5.</span> <span class="nav-text">5xx server errors，服务器错误</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李明岳</p>
+  <div class="site-description" itemprop="description">一个假的全栈工程师</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="http://pic1.win4000.com/wallpaper/2018-11-06/5be155d25c184.jpg" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://scarboroughcoral.github.io/http-status-code/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李明岳">
+      <meta itemprop="description" content="一个假的全栈工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李明岳的网络日志">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          协议系列：HTTP常见请求方式和状态码总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-20 15:37:45" itemprop="dateCreated datePublished" datetime="2019-11-20T15:37:45+00:00">2019-11-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-23 15:42:17" itemprop="dateModified" datetime="2021-08-23T15:42:17+00:00">2021-08-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Protocol/" itemprop="url" rel="index"><span itemprop="name">Protocol</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Protocol/HTTP/" itemprop="url" rel="index"><span itemprop="name">HTTP</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note primary"><p>404 not found。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在看<a href="secure-same-origin-policy.html">同源策略和跨域问题</a>时，看到CORS的解决方案是需要prefight，跨域时先向目标源发送一个OPTIONS请求，就发现这部分知识没有系统的了解过。今天就来总结一下常见的HTTP请求方式和HTTP状态码。</p>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F">常见HTTP请求方式</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81http%E7%8A%B6%E6%80%81%E7%A0%81">常见HTTP状态码</a><ul>
+<li><a href="#1xx-informational-response%E4%BF%A1%E6%81%AF%E5%93%8D%E5%BA%94">1xx informational response，信息响应</a></li>
+<li><a href="#2xx-success%E6%88%90%E5%8A%9F">2xx success，成功</a></li>
+<li><a href="#3xx-redirection%E9%87%8D%E5%AE%9A%E4%BD%8D">3xx redirection，重定位</a></li>
+<li><a href="#4xx-client-errors%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%94%99%E8%AF%AF">4xx client errors，客户端错误</a></li>
+<li><a href="#5xx-server-errors%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%94%99%E8%AF%AF">5xx server errors，服务器错误</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul>
+<h2 id="常见HTTP请求方式"><a href="#常见HTTP请求方式" class="headerlink" title="常见HTTP请求方式"></a>常见HTTP请求方式</h2><p>这些请求方式是case-sensitive的，但是一些请求工具或请求框架可能已经做了toUpperCase处理。</p>
+<ul>
+<li>GET（HTTP1.0）。这个是最常见的请求方式了，只读资源而不产生副作用。</li>
+<li>POST（HTTP1.0）。请求数据通常来自于表单。</li>
+<li>OPTIONS（HTTP1.1）。请求返回服务器对特定资源支持哪些请求方式。</li>
+<li>HEAD（HTTP1.0）。和Get类似之只读资源并不产生副作用。区别是响应无响应体，只想获取一些响应头中的元信息。</li>
+<li>PUT（HTTP1.1）。指定URI，如果对应资源存在则修改（替代）；如果不存在则创建。不带验证机制。</li>
+<li>DELETE（HTTP1.1）。删除指定资源。不带验证机制。</li>
+<li>TRACE（HTTP1.1）。使用 SSL（Secure Sockets Layer，安全套接层）和 TLS（Transport Layer Security，传输层安全）协议把通信内容加密后经网络隧道传输。</li>
+<li>CONNECT（HTTP1.1）。服务器会将通信路径返回给客户端。</li>
+<li>PATCH。对资源进行部分修改，区别于PUT。不带验证机制。</li>
+</ul>
+<h2 id="常见HTTP状态码"><a href="#常见HTTP状态码" class="headerlink" title="常见HTTP状态码"></a>常见HTTP状态码</h2><ul>
+<li>1xx informational response，信息响应。接收的请求正在处理。</li>
+<li>2xx success，成功。请求正常处理完毕。</li>
+<li>3xx redirection，重定位。需要进行附加操作以完成请求。</li>
+<li>4xx client errors，客户端错误</li>
+<li>5xx server errors，服务器错误</li>
+</ul>
+<h3 id="1xx-informational-response，信息响应"><a href="#1xx-informational-response，信息响应" class="headerlink" title="1xx informational response，信息响应"></a>1xx informational response，信息响应</h3><h3 id="2xx-success，成功"><a href="#2xx-success，成功" class="headerlink" title="2xx success，成功"></a>2xx success，成功</h3><h3 id="3xx-redirection，重定位"><a href="#3xx-redirection，重定位" class="headerlink" title="3xx redirection，重定位"></a>3xx redirection，重定位</h3><ul>
+<li>304 Not modified。请求方通过<code>If-Modified-Since</code>或者<code>If-None-Match</code>请求头知道请求的资源并未改变，服务器无需重传，客户端使用缓存的版本即可。</li>
+</ul>
+<h3 id="4xx-client-errors，客户端错误"><a href="#4xx-client-errors，客户端错误" class="headerlink" title="4xx client errors，客户端错误"></a>4xx client errors，客户端错误</h3><ul>
+<li>400 Bad Request。客户端错误导致服务器无法处理，比如请求格式错误、数据太大等。</li>
+<li>401 Unauthorized。类似403。</li>
+<li>403 Forbidden。客户端请求时包含非法数据，服务器理解请求但是拒绝处理。可能是因为用户无权限，或者请求了一个禁止的行为（比如创建重复记录）。</li>
+<li>404 Not Found。资源未找到。</li>
+<li>405 Method Not Allowed。请求方法不允许。比如使用PUT方法访问只读资源，应该使用POST而使用GET。</li>
+<li>415 Unsupported Media Type。媒体文件格式不支持。比如客户端上传图片使用<code>images/svg+xml</code>，而服务器需要另外的图片格式。</li>
+</ul>
+<h3 id="5xx-server-errors，服务器错误"><a href="#5xx-server-errors，服务器错误" class="headerlink" title="5xx server errors，服务器错误"></a>5xx server errors，服务器错误</h3><ul>
+<li>500 Internal Server Error。服务器内部错误，需要查看服务器报错日志。</li>
+<li>502 Bad Gateway。请求的服务器是作为一个网关或者代理运行的。上流服务器返回的响应是非法的。</li>
+<li>503 Service Unavailable ：服务器暂时处于超负载或正在进行停机维护，现在无法处理请求。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这部分内容只是简单地总结。一些状态码和方法并没有实际的用过，因此用于回查。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">List of HTTP status codes</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">Hypertext Transfer Protocol</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/CyC2018/CS-Notes/blob/master/notes/HTTP.md">CyC2018 HTTP</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Protocol/" rel="tag"># Protocol</a>
+              <a href="/tags/HTTP/" rel="tag"># HTTP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/secure-same-origin-policy/" rel="prev" title="Web安全系列：同源策略和跨域请求">
+                  <i class="fa fa-chevron-left"></i> Web安全系列：同源策略和跨域请求
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/http-change-history/" rel="next" title="协议系列：HTTP历史版本特性更改关键点总结">
+                  协议系列：HTTP历史版本特性更改关键点总结 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李明岳</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>

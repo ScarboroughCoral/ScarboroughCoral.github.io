@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"scarboroughcoral.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Reflow and Repaint">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS系列：回流和重绘">
+<meta property="og:url" content="https://scarboroughcoral.github.io/css-reflow-repaint/index.html">
+<meta property="og:site_name" content="李明岳的网络日志">
+<meta property="og:description" content="Reflow and Repaint">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://inews.gtimg.com/newsapp_match/0/10894881922/0.jpg">
+<meta property="article:published_time" content="2019-12-03T18:53:38.000Z">
+<meta property="article:modified_time" content="2021-08-23T15:42:17.006Z">
+<meta property="article:author" content="李明岳">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://inews.gtimg.com/newsapp_match/0/10894881922/0.jpg">
+
+
+<link rel="canonical" href="https://scarboroughcoral.github.io/css-reflow-repaint/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://scarboroughcoral.github.io/css-reflow-repaint/","path":"css-reflow-repaint/","title":"CSS系列：回流和重绘"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CSS系列：回流和重绘 | 李明岳的网络日志</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">李明岳的网络日志</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">浏览器渲染机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6%E4%BE%8B%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">渲染机制例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%B5%81%E5%92%8C%E9%87%8D%E7%BB%98%EF%BC%88reflow-amp-repaint%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">回流和重绘（reflow&amp;repaint）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%9E%E6%B5%81%E5%92%8C%E9%87%8D%E7%BB%98"><span class="nav-number">4.1.</span> <span class="nav-text">什么是回流和重绘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E4%BC%9A%E8%A7%A6%E5%8F%91%E5%9B%9E%E6%B5%81%E5%92%8C%E9%87%8D%E7%BB%98"><span class="nav-number">4.2.</span> <span class="nav-text">什么会触发回流和重绘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E5%9B%9E%E6%B5%81%E5%92%8C%E9%87%8D%E7%BB%98"><span class="nav-number">4.3.</span> <span class="nav-text">如何减少回流和重绘</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BC%98%E5%8C%96"><span class="nav-number">4.3.1.</span> <span class="nav-text">浏览器的自动优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E9%81%BF%E5%85%8D%E7%AD%96%E7%95%A5"><span class="nav-number">4.3.2.</span> <span class="nav-text">常用避免策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李明岳</p>
+  <div class="site-description" itemprop="description">一个假的全栈工程师</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="http://inews.gtimg.com/newsapp_match/0/10894881922/0.jpg" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://scarboroughcoral.github.io/css-reflow-repaint/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李明岳">
+      <meta itemprop="description" content="一个假的全栈工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李明岳的网络日志">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS系列：回流和重绘
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-12-03 18:53:38" itemprop="dateCreated datePublished" datetime="2019-12-03T18:53:38+00:00">2019-12-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-23 15:42:17" itemprop="dateModified" datetime="2021-08-23T15:42:17+00:00">2021-08-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Front-End-Development/" itemprop="url" rel="index"><span itemprop="name">Front-End Development</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Front-End-Development/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note primary"><p>Reflow and Repaint</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>头条面试题，这方面没有深入了解，今天总结一下。</p>
+<h2 id="浏览器渲染机制"><a href="#浏览器渲染机制" class="headerlink" title="浏览器渲染机制"></a>浏览器渲染机制</h2><p><img src="http://www.phpied.com/files/reflow/render.png"></p>
+<ul>
+<li>浏览器将下载好的HTML源码解析成DOM树，根节点是<code>&lt;html&gt;</code>（<code>documentElement</code>）</li>
+<li>浏览器解析CSS，忽略掉无法识别的CSS代码，CSS代码包括浏览器默认样式、开发者的CSS文件还有嵌入HTML的style属性里的样式。</li>
+<li>构造渲染树（<code>render tree</code>）。渲染树不同于DOM树，它能够获取到节点样式，仅包含需要渲染的节点，任何不可见的元素（<code>display:none</code>，<code>&lt;head&gt;</code>）都不会出现在渲染树中。另外如果一个<code>&lt;p&gt;</code>标签内有多行元素，在渲染树中每行都会看做是一个节点。</li>
+<li>渲染树构造完成后浏览器就可以在屏幕上绘制界面了。</li>
+</ul>
+<h2 id="渲染机制例子"><a href="#渲染机制例子" class="headerlink" title="渲染机制例子"></a>渲染机制例子</h2><ul>
+<li>HTML源码<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Beautiful page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">      Once upon a time there was </span><br><span class="line">      a looong paragraph...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;display: none&quot;</span>&gt;</span></span><br><span class="line">      Secret message</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;...&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>DOM树<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">documentElement (html)</span><br><span class="line">  head</span><br><span class="line">      title</span><br><span class="line">  body</span><br><span class="line">      p</span><br><span class="line">          [text node]</span><br><span class="line"></span><br><span class="line">      div </span><br><span class="line">          [text node]</span><br><span class="line"></span><br><span class="line">      div</span><br><span class="line">          img</span><br><span class="line"></span><br><span class="line">      ...</span><br></pre></td></tr></table></figure></li>
+<li>渲染树<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> root (RenderView)</span><br><span class="line">   body</span><br><span class="line">       p</span><br><span class="line">           line 1</span><br><span class="line">           line 2</span><br><span class="line">           line 3</span><br><span class="line">           ...</span><br><span class="line">           </span><br><span class="line">       div</span><br><span class="line">           img</span><br><span class="line">    </span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="回流和重绘（reflow-amp-repaint）"><a href="#回流和重绘（reflow-amp-repaint）" class="headerlink" title="回流和重绘（reflow&amp;repaint）"></a>回流和重绘（<code>reflow&amp;repaint</code>）</h2><p>首先可以确定的是网页肯定至少有一次布局和绘制，除非是一个空白页面。</p>
+<h3 id="什么是回流和重绘"><a href="#什么是回流和重绘" class="headerlink" title="什么是回流和重绘"></a>什么是回流和重绘</h3><ul>
+<li>部分或全部渲染树需要重新验证，节点大小需要重新计算，这称之为<strong>回流</strong>（reflow,relayout）。至少有一次回流发生，即页面的初始布局。</li>
+<li>页面部分因为样式的改变而需要更新修改结果，比如说背景颜色、字体颜色、可见性（<code>visibility:hidden</code>），页面可见的更新称之为<strong>重绘</strong>。</li>
+</ul>
+<h3 id="什么会触发回流和重绘"><a href="#什么会触发回流和重绘" class="headerlink" title="什么会触发回流和重绘"></a>什么会触发回流和重绘</h3><ul>
+<li>增加、删除、修改节点</li>
+<li>隐藏DOM节点：使用<code>display:none</code>（回流并重绘）；使用<code>visibility:hidden</code>（仅重绘，因为没有布局大小上的改变）</li>
+<li>移动等动画作用于DOM节点</li>
+<li>添加样式表，并修改样式</li>
+<li>用户操作比如放缩窗口大小、修改字体大小、滑动滚动条。</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bstyle = <span class="built_in">document</span>.body.style; <span class="comment">// cache</span></span><br><span class="line"> </span><br><span class="line">bstyle.padding = <span class="string">&quot;20px&quot;</span>; <span class="comment">// reflow, repaint</span></span><br><span class="line">bstyle.border = <span class="string">&quot;10px solid red&quot;</span>; <span class="comment">// another reflow and a repaint</span></span><br><span class="line"> </span><br><span class="line">bstyle.color = <span class="string">&quot;blue&quot;</span>; <span class="comment">// repaint only, no dimensions changed</span></span><br><span class="line">bstyle.backgroundColor = <span class="string">&quot;#fad&quot;</span>; <span class="comment">// repaint</span></span><br><span class="line"> </span><br><span class="line">bstyle.fontSize = <span class="string">&quot;2em&quot;</span>; <span class="comment">// reflow, repaint</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// new DOM element - reflow, repaint</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">&#x27;dude!&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="如何减少回流和重绘"><a href="#如何减少回流和重绘" class="headerlink" title="如何减少回流和重绘"></a>如何减少回流和重绘</h3><p>因为除了一些必要的回流和重绘，其他的回流和重绘是不必要甚至是非常浪费资源的，因此我们要尽量避免这种回流和重绘，那么如何避免呢？</p>
+<h4 id="浏览器的自动优化"><a href="#浏览器的自动优化" class="headerlink" title="浏览器的自动优化"></a>浏览器的自动优化</h4><p>浏览器为回流和重绘设置一个队列，队列里面保存需要修改的内容，浏览器可以批量处理。时间达到限制或者改变数目达到限制，多次引起回流的改变可以绑定成一个，这样只有一次回流。</p>
+<p>但有一些改变或请求可以<strong>强制浏览器清空队列并执行重绘</strong>，如下：</p>
+<ul>
+<li><code>offsetTop</code>,<code>offsetLeft</code>,<code>offsetWidth</code>,<code>offsetHeight</code>（只读，当前元素和最近relative祖先元素的left距离，当前元素的可见高度）</li>
+<li><code>scrollTop</code>,<code>scrollLeft</code>,<code>scrollWidth</code>,<code>scrollHeight</code></li>
+<li><code>clientTop</code>,<code>clientLeft</code>,<code>clienWidth</code>,<code>clientHeight</code></li>
+<li><code>getComputedStyle()</code>,或者<code>currentStyle</code> in IE</li>
+</ul>
+<p>因为浏览器必须返回给你这些变量的<strong>最新的值</strong>，因此浏览器必须清空修改队列，并执行相应的更新操作。</p>
+<h4 id="常用避免策略"><a href="#常用避免策略" class="headerlink" title="常用避免策略"></a>常用避免策略</h4><ul>
+<li>不要独立地单独修改样式，修改<code>class</code>或者修改<code>cssText</code>属性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> left = <span class="number">10</span>,</span><br><span class="line">    top = <span class="number">10</span>;</span><br><span class="line">el.style.left = left + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">el.style.top  = top  + <span class="string">&quot;px&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// better </span></span><br><span class="line">el.className += <span class="string">&quot; theclassname&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// or when top and left are calculated dynamically...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// better</span></span><br><span class="line">el.style.cssText += <span class="string">&quot;; left: &quot;</span> + left + <span class="string">&quot;px; top: &quot;</span> + top + <span class="string">&quot;px;&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+<li>不要在动态的DOM树上批量修改<ul>
+<li>用一个临时进行修改，最终将修改的变量加入到DOM树中。</li>
+<li>克隆准备修改的节点，在克隆节点上修改，然后替换原来的节点</li>
+<li>隐藏原来的节点（<code>display:none</code>，1次回流，1次重绘），在这个节点上进行批量修改，重新显示这个节点（1次回流，1次重绘）。</li>
+</ul>
+</li>
+<li>不要频繁计算样式，不要让浏览器的队列频繁刷新执行修改，比如不要在循环中使用上面提到的那些变量。<strong>应该使用一个缓存变量暂时存储。</strong><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// no-no!</span></span><br><span class="line"><span class="keyword">for</span>(big; loop; here) &#123;</span><br><span class="line">    el.style.left = el.offsetLeft + <span class="number">10</span> + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">    el.style.top  = el.offsetTop  + <span class="number">10</span> + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// better</span></span><br><span class="line"><span class="keyword">var</span> left = el.offsetLeft,</span><br><span class="line">    top  = el.offsetTop</span><br><span class="line">    esty = el.style;</span><br><span class="line"><span class="keyword">for</span>(big; loop; here) &#123;</span><br><span class="line">    left += <span class="number">10</span>;</span><br><span class="line">    top  += <span class="number">10</span>;</span><br><span class="line">    esty.left = left + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">    esty.top  = top  + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>通常来说，可以考虑当前的修改会让渲染树进行多少计算，然后针对性的进行优化。<blockquote>
+<p>比如说将一个准备进行动画的节点设为<code>postion:absolute</code>使之成为<code>&lt;body&gt;</code>的子节点，这就不会影响大量的其他节点</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>渲染树是DOM树的可见部分</li>
+<li>渲染树的重新计算叫做回流</li>
+<li>重新计算后将修改绘制在屏幕上叫做重绘</li>
+<li>回流一定重绘</li>
+<li>重绘不一定回流</li>
+<li>需要批量修改样式时使用临时变量，或使目标节点暂时脱离渲染树，或使目标节点减少在渲染树上和其他节点的关系，这样可以一定程度减少回流和重绘</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">Rendering: repaint, reflow/relayout, restyle</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/css-selectors/" rel="prev" title="CSS系列：CSS选择器总结【WIP】">
+                  <i class="fa fa-chevron-left"></i> CSS系列：CSS选择器总结【WIP】
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/js-dont-know-property-hidden/" rel="next" title="恶心心JavaScript系列：原型链属性隐藏规则">
+                  恶心心JavaScript系列：原型链属性隐藏规则 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李明岳</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>

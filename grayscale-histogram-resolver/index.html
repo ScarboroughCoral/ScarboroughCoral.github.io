@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"scarboroughcoral.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="就像望远镜之于天文学，计算机科学不仅仅是计算机。—— Edsger Dijkstra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="直方图处理">
+<meta property="og:url" content="https://scarboroughcoral.github.io/grayscale-histogram-resolver/index.html">
+<meta property="og:site_name" content="李明岳的网络日志">
+<meta property="og:description" content="就像望远镜之于天文学，计算机科学不仅仅是计算机。—— Edsger Dijkstra">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552540121111&di=12ac9abf96c0875a514b00c25a757c0c&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1551036658%2C3122506625%26fm%3D214%26gp%3D0.jpg">
+<meta property="article:published_time" content="2019-03-13T14:44:35.000Z">
+<meta property="article:modified_time" content="2021-08-23T15:42:17.054Z">
+<meta property="article:author" content="李明岳">
+<meta property="article:tag" content="Computer Graphics">
+<meta property="article:tag" content="DIP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552540121111&di=12ac9abf96c0875a514b00c25a757c0c&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1551036658%2C3122506625%26fm%3D214%26gp%3D0.jpg">
+
+
+<link rel="canonical" href="https://scarboroughcoral.github.io/grayscale-histogram-resolver/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://scarboroughcoral.github.io/grayscale-histogram-resolver/","path":"grayscale-histogram-resolver/","title":"直方图处理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>直方图处理 | 李明岳的网络日志</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">李明岳的网络日志</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%BB%9F%E8%AE%A1"><span class="nav-number">2.</span> <span class="nav-text">直方图统计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%81%B0%E5%BA%A6%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">2.1.</span> <span class="nav-text">什么是灰度直方图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">直方图的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">2.3.</span> <span class="nav-text">如何获得直方图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">直方图均衡化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96"><span class="nav-number">3.1.</span> <span class="nav-text">什么是直方图均衡化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%9D%87%E8%A1%A1%E5%8C%96"><span class="nav-number">3.2.</span> <span class="nav-text">为什么要均衡化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%9D%87%E8%A1%A1%E5%8C%96"><span class="nav-number">3.3.</span> <span class="nav-text">如何均衡化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#24%E4%BD%8D%E7%9C%9F%E5%BD%A9%E8%89%B2%EF%BC%88%E5%8E%9F%E5%9B%BE%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">24位真彩色（原图）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8%E4%BD%8D%E7%81%B0%E5%BA%A6%E5%9B%BE%EF%BC%88%E8%BD%AC%E5%8C%96%E5%90%8E%E7%9A%848%E4%BD%8D%E7%81%B0%E5%BA%A6%E5%9B%BE%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">8位灰度图（转化后的8位灰度图）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%87%E8%A1%A1%E5%8C%968%E4%BD%8D%E7%81%B0%E5%BA%A6%E5%9B%BE%EF%BC%88%E6%A0%B9%E6%8D%AE8%E4%BD%8D%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%90%8E%E7%9A%84%E7%81%B0%E5%BA%A6%E5%9B%BE%EF%BC%89"><span class="nav-number">4.3.</span> <span class="nav-text">均衡化8位灰度图（根据8位灰度图均衡化后的灰度图）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AA%E5%9D%87%E8%A1%A1%E5%8C%968%E4%BD%8D%E7%81%B0%E5%BA%A6%E5%9B%BE%E7%9A%84%E7%BB%9F%E8%AE%A1%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">4.4.</span> <span class="nav-text">未均衡化8位灰度图的统计直方图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%87%E8%A1%A1%E5%8C%968%E4%BD%8D%E7%81%B0%E5%BA%A6%E5%9B%BE%E7%9A%84%E7%BB%9F%E8%AE%A1%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">4.5.</span> <span class="nav-text">均衡化8位灰度图的统计直方图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84"><span class="nav-number">5.</span> <span class="nav-text">不足之处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">代码</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李明岳</p>
+  <div class="site-description" itemprop="description">一个假的全栈工程师</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552540121111&di=12ac9abf96c0875a514b00c25a757c0c&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1551036658%2C3122506625%26fm%3D214%26gp%3D0.jpg" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://scarboroughcoral.github.io/grayscale-histogram-resolver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李明岳">
+      <meta itemprop="description" content="一个假的全栈工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李明岳的网络日志">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          直方图处理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-13 14:44:35" itemprop="dateCreated datePublished" datetime="2019-03-13T14:44:35+00:00">2019-03-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-23 15:42:17" itemprop="dateModified" datetime="2021-08-23T15:42:17+00:00">2021-08-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/Computer-Graphics/" itemprop="url" rel="index"><span itemprop="name">Computer Graphics</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note default"><p>就像望远镜之于天文学，计算机科学不仅仅是计算机。—— Edsger Dijkstra</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>了解了BMP文件的格式，下面就开始真正的进行图像处理了，首先是图像增强，本文主要写灰度直方图和根据灰度直方图均衡化8位灰度图</p>
+<h2 id="直方图统计"><a href="#直方图统计" class="headerlink" title="直方图统计"></a>直方图统计</h2><h3 id="什么是灰度直方图"><a href="#什么是灰度直方图" class="headerlink" title="什么是灰度直方图"></a>什么是灰度直方图</h3><p>灰度直方图用于显示图片各像素灰度的分布情况，即各个灰度级有多少个像素点。</p>
+<h3 id="直方图的作用"><a href="#直方图的作用" class="headerlink" title="直方图的作用"></a>直方图的作用</h3><p>能够看到直方图的灰度分布，以观测图像的各类属性，比如图像偏亮还是偏暗，图像灰度是否集中等。</p>
+<p><img src="grayscale-histogram-resolver/1552526052073.png" alt="1552526052073"></p>
+<h3 id="如何获得直方图"><a href="#如何获得直方图" class="headerlink" title="如何获得直方图"></a>如何获得直方图</h3><blockquote>
+<p>用C语言手撸BMP图片真是shxt。。</p>
+</blockquote>
+<ol>
+<li>24位真彩色需要计算得到8位灰度图</li>
+<li>统计各灰度级像素个数</li>
+<li>计算各灰度级概率密度</li>
+<li>获得直方图</li>
+</ol>
+<h2 id="直方图均衡化"><a href="#直方图均衡化" class="headerlink" title="直方图均衡化"></a>直方图均衡化</h2><h3 id="什么是直方图均衡化"><a href="#什么是直方图均衡化" class="headerlink" title="什么是直方图均衡化"></a>什么是直方图均衡化</h3><p><strong>直方图均衡化</strong>是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86">图像处理</a>领域中利用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9B%BE%E5%83%8F">图像</a><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%9B%B4%E6%96%B9%E5%9B%BE">直方图</a>对<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B0%8D%E6%AF%94%E5%BA%A6">对比度</a>进行调整的方法。</p>
+<h3 id="为什么要均衡化"><a href="#为什么要均衡化" class="headerlink" title="为什么要均衡化"></a>为什么要均衡化</h3><blockquote>
+<p>摘自<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96">维基百科</a></p>
+</blockquote>
+<p>这种方法通常用来增加许多图像的全局对比度，尤其是当图像的有用数据的对比度相当接近的时候。通过这种方法，亮度可以更好地在直方图上分布。这样就可以用于增强局部的对比度而不影响整体的对比度，直方图均衡化通过有效地扩展常用的亮度来实现这种功能。</p>
+<p>这种方法对于背景和前景都太亮或者太暗的图像非常有用，这种方法尤其是可以带来X光图像中更好的骨骼结构显示以及曝光过度或者曝光不足照片中更好的细节。这种方法的一个主要优势是它是一个相当直观的技术并且是可逆操作，如果已知均衡化函数，那么就可以恢复原始的直方图，并且计算量也不大。这种方法的一个缺点是它对处理的数据不加选择，它可能会增加背景噪声的对比度并且降低有用信号的对比度。</p>
+<h3 id="如何均衡化"><a href="#如何均衡化" class="headerlink" title="如何均衡化"></a>如何均衡化</h3><div class="note primary"><p><strong>本例使用灰度<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%B4%AF%E7%A7%AF%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0">累积分布函数</a>均衡化</strong></p>
+</div>
+
+<ol>
+<li>得到原图灰度级概率分布函数$P_r$（离散的）</li>
+<li>计算原图灰度级累计分布函数（Cumulative distribution function，CDF）S</li>
+<li>通过CDF和原图灰度级取近似得到新的灰度级</li>
+</ol>
+<p><img src="grayscale-histogram-resolver/1552461156688.png" alt="1552461156688"></p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><blockquote>
+<p>版权问题请联系，侵删！</p>
+</blockquote>
+<h3 id="24位真彩色（原图）"><a href="#24位真彩色（原图）" class="headerlink" title="24位真彩色（原图）"></a>24位真彩色（原图）</h3><p><img src="grayscale-histogram-resolver/1.png"></p>
+<h3 id="8位灰度图（转化后的8位灰度图）"><a href="#8位灰度图（转化后的8位灰度图）" class="headerlink" title="8位灰度图（转化后的8位灰度图）"></a>8位灰度图（转化后的8位灰度图）</h3><p><img src="grayscale-histogram-resolver/2.png"></p>
+<h3 id="均衡化8位灰度图（根据8位灰度图均衡化后的灰度图）"><a href="#均衡化8位灰度图（根据8位灰度图均衡化后的灰度图）" class="headerlink" title="均衡化8位灰度图（根据8位灰度图均衡化后的灰度图）"></a>均衡化8位灰度图（根据8位灰度图均衡化后的灰度图）</h3><p><img src="grayscale-histogram-resolver/3.png"></p>
+<h3 id="未均衡化8位灰度图的统计直方图"><a href="#未均衡化8位灰度图的统计直方图" class="headerlink" title="未均衡化8位灰度图的统计直方图"></a>未均衡化8位灰度图的统计直方图</h3><p><img src="grayscale-histogram-resolver/4.png"></p>
+<h3 id="均衡化8位灰度图的统计直方图"><a href="#均衡化8位灰度图的统计直方图" class="headerlink" title="均衡化8位灰度图的统计直方图"></a>均衡化8位灰度图的统计直方图</h3><p><img src="grayscale-histogram-resolver/5.png"></p>
+<h2 id="不足之处"><a href="#不足之处" class="headerlink" title="不足之处"></a>不足之处</h2><p>未考虑24位真彩色的均衡化处理。</p>
+<blockquote>
+<p>实际上，对彩色分量rgb分别做均衡化，会产生奇异的点，图像不和谐。一般采用的是用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HSL%E5%92%8CHSV%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4">HSL和HSV色彩空间</a>进行亮度的均衡即可。（摘自<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96">维基百科</a>）</p>
+</blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="note primary"><p><strong>全部代码请查看<a target="_blank" rel="noopener" href="https://github.com/ScarboroughCoral/DIPModule">GitHub</a></strong></p>
+</div>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;BMPHelper.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HistogramStatic</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span> L = <span class="number">256</span>;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 24位真彩色转8位灰度</span></span><br><span class="line"></span><br><span class="line">	BMP24To8Gray(<span class="string">&quot;1.bmp&quot;</span>, <span class="string">&quot;2.bmp&quot;</span>);</span><br><span class="line"></span><br><span class="line">	BMFILEHEADER header;</span><br><span class="line">	INFOHEADER info;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> ** data = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(RGBITEM*));</span><br><span class="line">	RGBQUAD ** palette = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(RGBQUAD*));</span><br><span class="line"></span><br><span class="line">	<span class="keyword">unsigned</span> pixelCounts = BMPReader8(<span class="string">&quot;2.bmp&quot;</span>, &amp;header, &amp;info, palette, data);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> histogram[<span class="number">256</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">double</span> grayscaleDistribution[<span class="number">256</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">double</span> cumulativeDistribution[<span class="number">256</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//8位灰度统计</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; pixelCounts; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		</span><br><span class="line">		histogram[*(*data+i)]++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; <span class="number">256</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		grayscaleDistribution[i] = histogram[i] * <span class="number">1.0</span> / pixelCounts;</span><br><span class="line">		<span class="comment">//求cdf</span></span><br><span class="line">		<span class="keyword">if</span> (i==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			cumulativeDistribution[i] = grayscaleDistribution[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			cumulativeDistribution[i] = cumulativeDistribution[i - <span class="number">1</span>] + grayscaleDistribution[i];</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="comment">/*	if (grayscaleDistribution[i] * 100.0 &lt;0.01)</span></span><br><span class="line"><span class="comment">		&#123;</span></span><br><span class="line"><span class="comment">			continue;</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		printf(&quot;灰度级【%3d】统计像素概率：%4.2f%%\n&quot;, i, grayscaleDistribution[i]*100);*/</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; pixelCounts; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> newGray = (<span class="keyword">int</span>)(cumulativeDistribution[*(*data + i)] * (L<span class="number">-1</span>) + <span class="number">0.5</span>);</span><br><span class="line">		*(*data + i) = newGray;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> histogramLatest[<span class="number">256</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">double</span> grayscaleDistributionLatest[<span class="number">256</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; pixelCounts; i++)</span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		histogramLatest[*(*data + i)]++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; <span class="number">256</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		grayscaleDistributionLatest[i] = histogramLatest[i] * <span class="number">1.0</span> / pixelCounts;</span><br><span class="line">	&#125;</span><br><span class="line">	BMPWriter8(<span class="string">&quot;3.bmp&quot;</span>, &amp;header, &amp;info, palette, data);</span><br><span class="line">	outputGrayscaleHistogram(<span class="string">&quot;4.bmp&quot;</span>, grayscaleDistribution, &amp;info);</span><br><span class="line">	outputGrayscaleHistogram(<span class="string">&quot;5.bmp&quot;</span>, grayscaleDistributionLatest, &amp;info);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%f\n&quot;</span>, cumulativeDistribution[L - <span class="number">1</span>]);</span><br><span class="line">	<span class="comment">//BMPWriter(&quot;histogramout.bmp&quot;, &amp;header, &amp;info, palette, data);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Graphics/" rel="tag"># Computer Graphics</a>
+              <a href="/tags/DIP/" rel="tag"># DIP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/5g-technology-advent/" rel="prev" title="5G会带来哪些技术发展">
+                  <i class="fa fa-chevron-left"></i> 5G会带来哪些技术发展
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/digital-image-kernel-collection/" rel="next" title="DIP中常见的核">
+                  DIP中常见的核 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李明岳</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>
