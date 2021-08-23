@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="计算机的浮点数只能近似表示一些非常精确的数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有关计算机浮点数的思考。">
+<meta property="og:url" content="http://example.com/2019/03/03/float-think/index.html">
+<meta property="og:site_name" content="李明岳的网络日志">
+<meta property="og:description" content="计算机的浮点数只能近似表示一些非常精确的数。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562342320901&di=0cdea09a53f922c5d30cdffc4506e9ac&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F05%2F20180705103913_VeX8i.jpeg">
+<meta property="article:published_time" content="2019-03-03T19:40:40.000Z">
+<meta property="article:modified_time" content="2021-08-23T15:24:19.992Z">
+<meta property="article:author" content="李明岳">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="CSAPP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562342320901&di=0cdea09a53f922c5d30cdffc4506e9ac&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F05%2F20180705103913_VeX8i.jpeg">
+
+
+<link rel="canonical" href="http://example.com/2019/03/03/float-think/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2019/03/03/float-think/","path":"2019/03/03/float-think/","title":"有关计算机浮点数的思考。"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>有关计算机浮点数的思考。 | 李明岳的网络日志</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">李明岳的网络日志</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B1%E4%B8%80%E4%B8%AA%E9%A2%98%E7%9B%AE%E8%AF%B4%E8%B5%B7"><span class="nav-number">2.</span> <span class="nav-text">由一个题目说起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D"><span class="nav-number">3.</span> <span class="nav-text">一句话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#int%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">int的存储格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">float的存储格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">科学计数法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9C%E4%BA%8C%E8%BF%9B%E5%88%B6%E2%80%9D%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="nav-number">5.2.</span> <span class="nav-text">“二进制”科学计数法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E7%B2%BE%E5%BA%A6%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.3.</span> <span class="nav-text">单精度浮点数的存储格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E7%B2%BE%E5%BA%A6%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.4.</span> <span class="nav-text">双精度浮点数的存储格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%E9%A2%98%E8%A7%A3"><span class="nav-number">6.</span> <span class="nav-text">例题题解</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李明岳</p>
+  <div class="site-description" itemprop="description">一个假的全栈工程师</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562342320901&di=0cdea09a53f922c5d30cdffc4506e9ac&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F05%2F20180705103913_VeX8i.jpeg" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/03/float-think/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李明岳">
+      <meta itemprop="description" content="一个假的全栈工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李明岳的网络日志">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          有关计算机浮点数的思考。
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-03-03 19:40:40" itemprop="dateCreated datePublished" datetime="2019-03-03T19:40:40+00:00">2019-03-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-23 15:24:19" itemprop="dateModified" datetime="2021-08-23T15:24:19+00:00">2021-08-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note warning"><p>计算机的浮点数只能近似表示一些非常精确的数。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<p>本篇文章是对<mark class="label primary">阮一峰</mark>的<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2010/06/ieee_floating-point_representation.html">《浮点数的二进制表示》</a>的思考过程。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本来是想对CSAPP的的信息表示的浮点数表示做一下总结的，不过写了几百字后放弃了，主要是对浮点数还不够了解。不过看过阮一峰大神的文章之后，不禁大叹一声。这篇文章就想总结一下自己对浮点数的理解。</p>
+<h2 id="由一个题目说起"><a href="#由一个题目说起" class="headerlink" title="由一个题目说起"></a>由一个题目说起</h2><p>有一道C语言的练习题，是这样的</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">int</span> num=<span class="number">9</span>; <span class="comment">/* num是整型变量，设为9 */</span></span><br><span class="line"></span><br><span class="line">　　<span class="keyword">float</span>* pFloat=&amp;num; <span class="comment">/* pFloat表示num的内存地址，但是设为浮点数 */</span></span><br><span class="line"></span><br><span class="line">　　<span class="built_in">printf</span>(<span class="string">&quot;num的值为：%d\n&quot;</span>,num); <span class="comment">/* 显示num的整型值 */</span></span><br><span class="line"></span><br><span class="line">　　<span class="built_in">printf</span>(<span class="string">&quot;*pFloat的值为：%f\n&quot;</span>,*pFloat); <span class="comment">/* 显示num的浮点值 */</span></span><br><span class="line"></span><br><span class="line">　　*pFloat=<span class="number">9.0</span>; <span class="comment">/* 将num的值改为浮点数 */</span></span><br><span class="line"></span><br><span class="line">　　<span class="built_in">printf</span>(<span class="string">&quot;num的值为：%d\n&quot;</span>,num); <span class="comment">/* 显示num的整型值 */</span></span><br><span class="line"></span><br><span class="line">　　<span class="built_in">printf</span>(<span class="string">&quot;*pFloat的值为：%f\n&quot;</span>,*pFloat); <span class="comment">/* 显示num的浮点值 */</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">coral@xx:~/workspace/csapp$ ./<span class="built_in">float</span></span><br><span class="line">num的值为：9</span><br><span class="line">*pFloat的值为：0.000000</span><br><span class="line">num的值为：1091567616</span><br><span class="line">*pFloat的值为：9.000000</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第一行，直接输出num的值，这个毫无疑问是对的。</li>
+<li>第二行，输出为什么为0？<blockquote>
+<p>float和int类型的变量存储空间都是4个字节。令一个float类型的指针指向num的地址，然后通过<code>*float</code> 的方式访问，会将num地址内存储的内容以4字节浮点数解析。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>第三行，输出为什么是一个类似乱码的数值？</p>
+<blockquote>
+<p>将原来num变量的内容通过float类型的指针采取<code>*float</code>的方式赋值为9.0，然而输出的时候按照int的方式输出，所以解析错误，出现乱码。</p>
+</blockquote>
+</li>
+<li><p>第四行，这个就没有疑问了</p>
+<blockquote>
+<p>通过float类型指针，然后通过float类型指针访问，所以解析方式是相同的，所以答案正如所料。</p>
+</blockquote>
+</li>
+</ul>
+<p>总之，这个题就是需要考虑int类型和float类型的存储格式。如果按照不同的方式解析肯定会出现错误。</p>
+<h2 id="一句话"><a href="#一句话" class="headerlink" title="一句话"></a>一句话</h2><p>内存只是一个字节数组而已，不管是float、int还是其他类型的变量，不过是内存中需要的大小或者是存储格式不同而已，无其他区别。</p>
+<h2 id="int的存储格式"><a href="#int的存储格式" class="headerlink" title="int的存储格式"></a>int的存储格式</h2><p>int是4字节类型，也就是32位。int的存储格式就是32位补码。这个不必多言，很好理解。这篇文章重点写浮点数的存储格式。 </p>
+<h2 id="float的存储格式"><a href="#float的存储格式" class="headerlink" title="float的存储格式"></a>float的存储格式</h2><p>float的存储格式正如下图，在这里我们只考虑简单的单精度浮点数和双精度浮点数：</p>
+<p><img src="float-think/float.png"></p>
+<h3 id="科学计数法"><a href="#科学计数法" class="headerlink" title="科学计数法"></a>科学计数法</h3><p>因为浮点数的需求是要表示小数、特大数和非常接近零的数。当然由于浮点数精度总是有限的，所以有一些数值只能近似表示，而不能完全相等。</p>
+<p>下面再来回想一下科学计数法，当然这我们很早之前就学过，比如下面这个数:</p>
+<p>$$<br>    5.21\times10^{1314}<br>$$</p>
+<p>如果我们不使用科学计数法的话就需要用1313位数字来表示，这样就太麻烦了。所以就采用了科学计数法来表示，用于节省“空间”。</p>
+<h3 id="“二进制”科学计数法"><a href="#“二进制”科学计数法" class="headerlink" title="“二进制”科学计数法"></a>“二进制”科学计数法</h3><p>与此目的相同，计算机为了表示一些数，就采用了“二进制”版本的科学计数法，比如数值7.0，就可以用以下“二进制”科学计数法表示：</p>
+<p>$$<br>    1.11\times2^2<br>$$</p>
+<p>它是怎么来的呢？因为7.0的二进制表示为111，将小数点左移两位，相应的就需要乘上$2^2$来使其相等。</p>
+<p>浮点数的存储格式的想法就来自于此，因为这样能够大大减少存储空间，另外一个好处就是能够在误差允许的范围内表示非常大的数（$\pm\infty$）或者非常接近于0的数($f\to0$)。</p>
+<p>浮点数一般用如下方式表示：</p>
+<p>$$<br>(-1)^S\times M\times2^E<br>$$</p>
+<ul>
+<li>S用于表示浮点数的符号</li>
+<li>M用于表示有效数字，$1\leq M&lt;2$</li>
+<li>E用于表示指数</li>
+</ul>
+<p>所以计算机只需要存储这三部分即可。</p>
+<h3 id="单精度浮点数的存储格式"><a href="#单精度浮点数的存储格式" class="headerlink" title="单精度浮点数的存储格式"></a>单精度浮点数的存储格式</h3><p>与想象的方式还有点不同，除了一些优化外，还需要遵守（abicd）一些约定。</p>
+<p>下面的表格便是32位浮点数大端法表示的存储格式：</p>
+<table>
+<thead>
+<tr>
+<th align="center">sign（符号）</th>
+<th align="center">exp（指数）</th>
+<th align="center">frac（有效数字小数部分）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1位</td>
+<td align="center">8位</td>
+<td align="center">23位</td>
+</tr>
+</tbody></table>
+<ul>
+<li>32位浮点数的存储格式，大端法表示就是符号+指数+有效数字小数部分</li>
+<li>因为有效数字必须满足 $1\le frac&lt;2$，所以二进制的小数点前的一位总是1，所以省略不写</li>
+<li>因为指数不仅需要表示正数次幂，也需要能表示负数次幂，可能是字节对齐的缘故（for the sake of ），所以指数部分不能采用补码形式表示，而是采用IEEE 754规定采用找中间数的方法，中间数总是$\lfloor\frac{2^{EMax}-1}{2}\rfloor$，比如8位指数，中间数就是$\lfloor\frac{2^8-1}{2}\rfloor=127$。在表示的时候需要将真实值＋中间数。</li>
+<li>E的规定<ul>
+<li>E不全为0并且不全为1。浮点数的值就是E减去中间数127得到指数真实值，然后有效数字小数部分M前面加上1</li>
+<li>E全为0。浮点数的指数为1-中间数（32位浮点数为1-127），有效数字前不再＋1，这样就为0.xxxx的小数，而且可以表示非常接近于0的数。</li>
+<li>E全为1。如果有效数字全为0，则表示$\pm\infty$；否则就表示这不是一个数 <em><strong>NaN</strong></em>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="双精度浮点数的存储格式"><a href="#双精度浮点数的存储格式" class="headerlink" title="双精度浮点数的存储格式"></a>双精度浮点数的存储格式</h3><p>解析方法与单精度浮点数相同，存储格式类似。<br>下面的表格便是64位浮点数大端法表示的存储格式：</p>
+<table>
+<thead>
+<tr>
+<th align="center">sign（符号）</th>
+<th align="center">exp（指数）</th>
+<th align="center">frac（有效数字小数部分）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1位</td>
+<td align="center">11位</td>
+<td align="center">52位</td>
+</tr>
+</tbody></table>
+<h2 id="例题题解"><a href="#例题题解" class="headerlink" title="例题题解"></a>例题题解</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">int</span> num=<span class="number">9</span>; <span class="comment">/* num是整型变量，设为9 */</span></span><br><span class="line"></span><br><span class="line">　　<span class="keyword">float</span>* pFloat=&amp;num; <span class="comment">/* pFloat表示num的内存地址，但是设为浮点数 */</span></span><br><span class="line"></span><br><span class="line">　　<span class="built_in">printf</span>(<span class="string">&quot;num的值为：%d\n&quot;</span>,num); <span class="comment">/* 显示num的整型值 */</span></span><br><span class="line"></span><br><span class="line">　　<span class="built_in">printf</span>(<span class="string">&quot;*pFloat的值为：%f\n&quot;</span>,*pFloat); <span class="comment">/* 显示num的浮点值 */</span></span><br><span class="line"></span><br><span class="line">　　*pFloat=<span class="number">9.0</span>; <span class="comment">/* 将num的值改为浮点数 */</span></span><br><span class="line"></span><br><span class="line">　　<span class="built_in">printf</span>(<span class="string">&quot;num的值为：%d\n&quot;</span>,num); <span class="comment">/* 显示num的整型值 */</span></span><br><span class="line"></span><br><span class="line">　　<span class="built_in">printf</span>(<span class="string">&quot;*pFloat的值为：%f\n&quot;</span>,*pFloat); <span class="comment">/* 显示num的浮点值 */</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">coral@xx:~/workspace/csapp$ ./<span class="built_in">float</span></span><br><span class="line">num的值为：9</span><br><span class="line">*pFloat的值为：0.000000</span><br><span class="line">num的值为：1091567616</span><br><span class="line">*pFloat的值为：9.000000</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>第二行，为什么是0.00000？</li>
+</ol>
+<div class="note success"><p>执行<code>printf(&quot;*pFloat的值为：%f\n&quot;,*pFloat);</code>语句时，变量存储空间内是存储的int类型的9，二进制表示为0000-0000-0000-0000-0000-0000-0000-1001，但是输出使用float指针类型索引，所以按照此类型解析的话，二进制解析为0-00000000-00000000000000000001001，所以指数E为全0。浮点数真值为：</p>
+<p>$$<br>V=(-1)^0×0.00000000000000000001001×2^{-126}=1.001×2^{-146}<br>$$<br>数值几乎为0，所以答案就明了了。</p>
+</div>
+
+<ol start="2">
+<li>第三行，为什么是1091567616？</li>
+</ol>
+<div class="note success"><p>这个同理了，只不过是反向思考。</p>
+<p>首先用float指针将数值设置为9.0。9的二进制表示为1001，用”二进制“科学计数法表示为$1.001\times2^3$，所以S为0，E为3+127=130（二进制为10000010），有效数为001，所以变量存储的内容为0-10000010-00100000000000000000000，然后将这个值用int类型解析，0100-0001-0001-0000-0000-0000-0000-0000，结果为1091567616。</p>
+</div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
+              <a href="/tags/CSAPP/" rel="tag"># CSAPP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/02/12/csapp-lab-1/" rel="prev" title="CSAPP 之 Data Lab">
+                  <i class="fa fa-chevron-left"></i> CSAPP 之 Data Lab
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/03/06/bitmap-resolver/" rel="next" title="BMP文件处理（C语言实现）">
+                  BMP文件处理（C语言实现） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李明岳</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="函数作用域，块级作用域，词法作用域。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript必知33个概念系列：作用域">
+<meta property="og:url" content="http://example.com/2019/11/14/js-concept-7-scope/index.html">
+<meta property="og:site_name" content="李明岳的网络日志">
+<meta property="og:description" content="函数作用域，块级作用域，词法作用域。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://07imgmini.eastday.com/mobile/20181002/84ec6a264fd6d97d019837dd57c75021_wmk.jpeg">
+<meta property="article:published_time" content="2019-11-14T15:57:37.000Z">
+<meta property="article:modified_time" content="2021-08-23T15:24:20.008Z">
+<meta property="article:author" content="李明岳">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="33 JS Concept">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://07imgmini.eastday.com/mobile/20181002/84ec6a264fd6d97d019837dd57c75021_wmk.jpeg">
+
+
+<link rel="canonical" href="http://example.com/2019/11/14/js-concept-7-scope/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2019/11/14/js-concept-7-scope/","path":"2019/11/14/js-concept-7-scope/","title":"JavaScript必知33个概念系列：作用域"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaScript必知33个概念系列：作用域 | 李明岳的网络日志</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">李明岳的网络日志</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">2.</span> <span class="nav-text">作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#var%E3%80%81let%E3%80%81const"><span class="nav-number">2.1.</span> <span class="nav-text">var、let、const</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#var"><span class="nav-number">2.1.1.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#let%E5%92%8Cconst"><span class="nav-number">2.1.2.</span> <span class="nav-text">let和const</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88function-scope%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">函数作用域（function scope）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88block-scope%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">块级作用域（block scope）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88lexical-scope%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">词法作用域（lexical scope）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE"><span class="nav-number">2.5.</span> <span class="nav-text">作用域链</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%AF%9D%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">相关话题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%EF%BC%88%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87%EF%BC%8Cvariables-declaration-hoisted%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">变量提升（变量声明提升，variables declaration hoisted）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E2%80%9Cvar%E6%98%AF%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E2%80%9D%E5%BC%95%E8%B5%B7%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">关于“var是函数作用域的”引起的问题和解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E2%80%9C%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98%E2%80%9D%EF%BC%88%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">3.3.</span> <span class="nav-text">关于“立即执行函数的问题”（立即执行函数表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">3.3.1.</span> <span class="nav-text">一个注意事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A9%E7%94%A8prefix-operators%E8%A7%A3%E5%86%B3%E4%B8%8A%E8%BF%B0%E5%88%86%E5%8F%B7%E9%97%AE%E9%A2%98"><span class="nav-number">3.3.2.</span> <span class="nav-text">利用prefix operators解决上述分号问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E5%B7%B2%E7%BB%8F%E5%A4%84%E4%BA%8E%E4%B8%80%E4%B8%AA%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%AD%EF%BC%8C%E9%82%A3%E4%B9%88%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8"><span class="nav-number">3.3.3.</span> <span class="nav-text">如果函数定义已经处于一个表达式中，那么可以直接调用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李明岳</p>
+  <div class="site-description" itemprop="description">一个假的全栈工程师</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="http://07imgmini.eastday.com/mobile/20181002/84ec6a264fd6d97d019837dd57c75021_wmk.jpeg" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/14/js-concept-7-scope/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李明岳">
+      <meta itemprop="description" content="一个假的全栈工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李明岳的网络日志">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript必知33个概念系列：作用域
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-11-14 15:57:37" itemprop="dateCreated datePublished" datetime="2019-11-14T15:57:37+00:00">2019-11-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-23 15:24:20" itemprop="dateModified" datetime="2021-08-23T15:24:20+00:00">2021-08-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Front-End-Development/" itemprop="url" rel="index"><span itemprop="name">Front-End Development</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Front-End-Development/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note primary"><p>函数作用域，块级作用域，词法作用域。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我对于作用域一直处于一种感性的认识，有问题也是凭感觉去看。今天就打破这面镜子，看看镜子后面到底是什么。</p>
+<p>先说一下我现在的认知水平：<br>首先函数作用域我是知道的，函数体内部就是函数作用域；<br>然后块级作用域我大概知道，花括号内部？if、else、for这些？<br>最后词法作用域？没听过。。</p>
+<p>接下来我们来探索一下这些术语（terminology）的语义吧。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>作用域往往和变量挂钩，在谈作用域之前，我们先来看看声明变量的三种方法以及他们之间的区别。</p>
+<h3 id="var、let、const"><a href="#var、let、const" class="headerlink" title="var、let、const"></a>var、let、const</h3><h4 id="var"><a href="#var" class="headerlink" title="var"></a>var</h4><p><strong>用<code>var</code>声明的对象是属于函数作用域（function scope）的，如果你不在函数作用域下声明，那这个变量就是<em>更高级函数作用域</em>或者全局的（global scope）。</strong></p>
+<p>看几个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setWidth</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> width = <span class="number">100</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(width);</span><br><span class="line">&#125;</span><br><span class="line">width;</span><br><span class="line"><span class="comment">// Returns:</span></span><br><span class="line"><span class="comment">// Uncaught ReferenceError: width is not defined</span></span><br></pre></td></tr></table></figure>
+<p>因为<code>width</code>是在函数作用域（<code>setWIdth</code>函数）下用<code>var</code>声明的，所以他属于函数作用域，因此全局作用域下访问不到<code>width</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">if</span> (age &gt; <span class="number">12</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> dogYears = age * <span class="number">7</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`You are <span class="subst">$&#123;dogYears&#125;</span> dog years old!`</span>);</span><br><span class="line">&#125;</span><br><span class="line">dogYears;</span><br><span class="line"><span class="comment">// returns:</span></span><br><span class="line"><span class="number">700</span></span><br></pre></td></tr></table></figure>
+<p>因为用<code>var</code>声明的变量<code>dogYears</code>不是在函数作用域下声明的，因此在本例中会当做全局作用域。</p>
+<h4 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h4><p><strong>用<code>let</code>和<code>const</code>声明的变量是属于块级作用域的，而不是函数作用域。</strong></p>
+<p><strong>块级作用域就是大括号“{}”之间的部分。</strong></p>
+<p>类似的下面这个例子，我用<code>let</code>代替<code>var</code>来声明<code>dogYears</code>变量</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">if</span> (age &gt; <span class="number">12</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> dogYears = age * <span class="number">7</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`You are <span class="subst">$&#123;dogYears&#125;</span> dog years old!`</span>);</span><br><span class="line">&#125;</span><br><span class="line">dogYears;</span><br><span class="line"><span class="comment">// returns:</span></span><br><span class="line"><span class="comment">// Uncaught ReferenceError: dogYears is not defined</span></span><br></pre></td></tr></table></figure>
+<p>因为使用<code>let</code>定义<code>dogYears</code>变量，那么<code>dogYears</code>变量属于块级作用域，即if的作用域。</p>
+<h3 id="函数作用域（function-scope）"><a href="#函数作用域（function-scope）" class="headerlink" title="函数作用域（function scope）"></a>函数作用域（function scope）</h3><blockquote>
+<p>函数体内部叫函数作用域。</p>
+</blockquote>
+<ul>
+<li>用<code>var</code>声明的对象是属于函数作用域（function scope）的，如果你不在函数作用域下声明，那这个变量就是<em>更高级函数作用域</em>或者全局的（global scope）</li>
+</ul>
+<h3 id="块级作用域（block-scope）"><a href="#块级作用域（block-scope）" class="headerlink" title="块级作用域（block scope）"></a>块级作用域（block scope）</h3><blockquote>
+<p>大括号“{}”之间称为块级作用域，当然函数作用域也是块级作用域。</p>
+</blockquote>
+<ul>
+<li>用<code>let</code>和<code>const</code>声明的变量是属于块级作用域的，而不是函数作用域。（<strong>实际上可以看做立即执行函数内部的<code>var</code></strong></li>
+</ul>
+<h3 id="词法作用域（lexical-scope）"><a href="#词法作用域（lexical-scope）" class="headerlink" title="词法作用域（lexical scope）"></a>词法作用域（lexical scope）</h3><blockquote>
+<p>Variables in JavaScript are lexically scoped, so the static structure of a program determines the scope of a variable (it is not influenced by, say, where a function is called from).</p>
+</blockquote>
+<p>词法作用域就是可以通过源代码来看出哪个变量属于哪个作用域，不会根据函数被调用的上下文改变，词法和静态（static）可以看做是一样的。词法作用域根据声明变量的位置来确定该变量可被访问的位置。</p>
+<p>看个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeFunc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">&#x27;Mozilla&#x27;</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> displayName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myFunc = makeFunc();</span><br><span class="line">myFunc();</span><br></pre></td></tr></table></figure>
+
+<p><code>displayName</code>中可以访问外部函数<code>makeFunc</code>的变量<code>name</code>，而<code>displayName</code>实际调用时<code>makeFunc</code>的栈帧已经弹出，此时却还能访问<code>name</code>。词法作用域是通过静态代码看的，和具体执行无关。这其实是闭包提供的作用。</p>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><blockquote>
+<p>当你在作用域S中访问父作用域的局部变量是可以的，而访问兄弟作用域的局部变量是不可以的。<strong>这可以通过作用域链来理解</strong></p>
+</blockquote>
+<ul>
+<li>存在一个全局环境，里面存的是全局变量（函数）</li>
+<li>环境里的函数条目会指向函数对象</li>
+<li>函数对象通过内部的<code>[[Scope]]</code>属性来指向它的作用域</li>
+<li>函数被调用时，会为此函数作用域创建一个环境，这个环境通过<code>outer</code>属性指向父环境</li>
+<li>作用域会形成一条链</li>
+</ul>
+<p>如下图：</p>
+<p><img src="http://speakingjs.com/es5/images/spjs_2001.png"></p>
+<p>函数执行栈是动态的，而作用域链可以看做静态的（或者说是词法的，Lexical）。</p>
+<h2 id="相关话题"><a href="#相关话题" class="headerlink" title="相关话题"></a>相关话题</h2><h3 id="变量提升（变量声明提升，variables-declaration-hoisted）"><a href="#变量提升（变量声明提升，variables-declaration-hoisted）" class="headerlink" title="变量提升（变量声明提升，variables declaration hoisted）"></a>变量提升（变量声明提升，variables declaration hoisted）</h3><blockquote>
+<p>JavaScript将变量的声明提升到该变量的直接作用域下的开始处，变量的赋值并不提升（执行上下文创建时已经为变量分配空间并赋值为<code>undefined</code>，这就好像是“变量提升”了）。函数定义也会进行提升，因此作用域下函数定义在前在后没多大区别。</p>
+</blockquote>
+<p><strong>仅对于<code>var</code>声明的变量进行提升，对<code>const</code>、<code>let</code>声明的变量不适用。</strong></p>
+<p>看个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(bar);  <span class="comment">// undefined</span></span><br><span class="line">    <span class="keyword">var</span> bar = <span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(bar);  <span class="comment">// abc</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数<code>f()</code>的实现就好像如下定义一样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bar;</span><br><span class="line">    <span class="built_in">console</span>.log(bar);  <span class="comment">// undefined</span></span><br><span class="line">    bar = <span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(bar);  <span class="comment">// abc</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="关于“var是函数作用域的”引起的问题和解决办法"><a href="#关于“var是函数作用域的”引起的问题和解决办法" class="headerlink" title="关于“var是函数作用域的”引起的问题和解决办法"></a>关于“<code>var</code>是函数作用域的”引起的问题和解决办法</h3><p>举个例子，如下代码，假如说你不想在if语句后面使用<code>tmp</code>变量或者说你有一个新的同名的<code>tmp</code>变量，那你如何解决这个问题呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (condition) &#123;</span><br><span class="line">        <span class="keyword">var</span> tmp = ...;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// tmp still exists here</span></span><br><span class="line">    <span class="comment">// =&gt; not what we want</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法一：使用<code>let</code>（因为<code>let</code>是块级作用域的</li>
+<li>方法二：立即执行函数(<code>IIFE,Immediately Invoked Function Expression</code>)（利用<code>var</code>是函数作用域的，<code>ES5</code>时是一个常见的编程模式。<strong>但是效率比较低</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (condition) &#123;</span><br><span class="line">        (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  <span class="comment">// open block</span></span><br><span class="line">            <span class="keyword">var</span> tmp = ...;</span><br><span class="line">            ...</span><br><span class="line">        &#125;());  <span class="comment">// close block</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="关于“立即执行函数的问题”（立即执行函数表达式"><a href="#关于“立即执行函数的问题”（立即执行函数表达式" class="headerlink" title="关于“立即执行函数的问题”（立即执行函数表达式"></a>关于“立即执行函数的问题”（立即执行函数表达式</h3><h4 id="一个注意事项"><a href="#一个注意事项" class="headerlink" title="一个注意事项"></a>一个注意事项</h4><p>看个例子，如果第一个立即执行函数后面不加分号，那么第二个立即执行函数会当做参数。<strong>所以这种情况需要注意加分号</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;()) <span class="comment">// no semicolon</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+
+<h4 id="利用prefix-operators解决上述分号问题"><a href="#利用prefix-operators解决上述分号问题" class="headerlink" title="利用prefix operators解决上述分号问题"></a>利用<code>prefix operators</code>解决上述分号问题</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// open IIFE</span></span><br><span class="line">    <span class="comment">// inside IIFE</span></span><br><span class="line">&#125;(); <span class="comment">// close IIFE</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// open IIFE</span></span><br><span class="line">    <span class="comment">// inside IIFE</span></span><br><span class="line">&#125;(); <span class="comment">// close IIFE</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="如果函数定义已经处于一个表达式中，那么可以直接调用"><a href="#如果函数定义已经处于一个表达式中，那么可以直接调用" class="headerlink" title="如果函数定义已经处于一个表达式中，那么可以直接调用"></a>如果函数定义已经处于一个表达式中，那么可以直接调用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> File = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// open IIFE</span></span><br><span class="line">    <span class="keyword">var</span> UNTITLED = <span class="string">&#x27;Untitled&#x27;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">File</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name || UNTITLED;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> File;</span><br><span class="line">&#125;(); <span class="comment">// close IIFE</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@josephcardillo/the-difference-between-function-and-block-scope-in-javascript-4296b2322abe">The Difference Between Function and Block Scope in JavaScript</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=GhNA0r10MmA">What the Heck is Lexical Scope? (JavaScript)</a></li>
+<li><a target="_blank" rel="noopener" href="http://speakingjs.com/es5/ch16.html">Chapter 16. Variables: Scopes, Environments, and Closures</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/33-JS-Concept/" rel="tag"># 33 JS Concept</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/14/js-concept-1/" rel="prev" title="JavaScript必知33个概念系列：函数调用栈（执行上下文）">
+                  <i class="fa fa-chevron-left"></i> JavaScript必知33个概念系列：函数调用栈（执行上下文）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/11/15/js-concept-21-closures/" rel="next" title="JavaScript必知33个概念系列：闭包">
+                  JavaScript必知33个概念系列：闭包 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李明岳</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

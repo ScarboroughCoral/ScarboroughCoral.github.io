@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="this、call、bind、apply">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript必知33个概念系列：this、call、bind、apply">
+<meta property="og:url" content="http://example.com/2019/11/16/js-concept-15-this-call-bind-apply/index.html">
+<meta property="og:site_name" content="李明岳的网络日志">
+<meta property="og:description" content="this、call、bind、apply">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573900545399&di=7780c163c51b0655ee0a05c4e405fe29&imgtype=0&src=http%3A%2F%2Fimg1.tuwandata.com%2Fv2%2Fthumb%2Fall%2FMGZmMywwLDAsNCwzLDEsLTEsMCwsLDkw%2Fu%2Fwww.tuwan.com%2Fuploads%2Fallimg%2F1602%2F07%2F704-16020F95916.jpg">
+<meta property="article:published_time" content="2019-11-16T15:45:00.000Z">
+<meta property="article:modified_time" content="2021-08-23T15:24:20.008Z">
+<meta property="article:author" content="李明岳">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="33 JS Concept">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573900545399&di=7780c163c51b0655ee0a05c4e405fe29&imgtype=0&src=http%3A%2F%2Fimg1.tuwandata.com%2Fv2%2Fthumb%2Fall%2FMGZmMywwLDAsNCwzLDEsLTEsMCwsLDkw%2Fu%2Fwww.tuwan.com%2Fuploads%2Fallimg%2F1602%2F07%2F704-16020F95916.jpg">
+
+
+<link rel="canonical" href="http://example.com/2019/11/16/js-concept-15-this-call-bind-apply/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2019/11/16/js-concept-15-this-call-bind-apply/","path":"2019/11/16/js-concept-15-this-call-bind-apply/","title":"JavaScript必知33个概念系列：this、call、bind、apply"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaScript必知33个概念系列：this、call、bind、apply | 李明岳的网络日志</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">李明岳的网络日志</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E4%B8%AD%E7%9A%84this"><span class="nav-number">2.</span> <span class="nav-text">JavaScript中的this</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript%E4%B8%ADthis%E7%9A%845%E4%B8%AA%E7%BB%91%E5%AE%9A%E8%A7%84%E5%88%99"><span class="nav-number">2.1.</span> <span class="nav-text">JavaScript中this的5个绑定规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E7%BB%91%E5%AE%9A"><span class="nav-number">2.1.1.</span> <span class="nav-text">隐式绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%BB%91%E5%AE%9A"><span class="nav-number">2.1.2.</span> <span class="nav-text">显示绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#call"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">call</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#apply"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">apply</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bind"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">bind</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new-%E7%BB%91%E5%AE%9A"><span class="nav-number">2.1.3.</span> <span class="nav-text">new 绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%8D%E6%B3%95%E7%BB%91%E5%AE%9A"><span class="nav-number">2.1.4.</span> <span class="nav-text">词法绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window-%E7%BB%91%E5%AE%9A"><span class="nav-number">2.1.5.</span> <span class="nav-text">window 绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%A5%97%E8%B7%AF"><span class="nav-number">2.1.6.</span> <span class="nav-text">判断套路</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%AF%9D%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">相关话题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%9A%84this"><span class="nav-number">3.1.</span> <span class="nav-text">箭头函数的this</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李明岳</p>
+  <div class="site-description" itemprop="description">一个假的全栈工程师</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573900545399&di=7780c163c51b0655ee0a05c4e405fe29&imgtype=0&src=http%3A%2F%2Fimg1.tuwandata.com%2Fv2%2Fthumb%2Fall%2FMGZmMywwLDAsNCwzLDEsLTEsMCwsLDkw%2Fu%2Fwww.tuwan.com%2Fuploads%2Fallimg%2F1602%2F07%2F704-16020F95916.jpg" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/16/js-concept-15-this-call-bind-apply/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李明岳">
+      <meta itemprop="description" content="一个假的全栈工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李明岳的网络日志">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript必知33个概念系列：this、call、bind、apply
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-11-16 15:45:00" itemprop="dateCreated datePublished" datetime="2019-11-16T15:45:00+00:00">2019-11-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-23 15:24:20" itemprop="dateModified" datetime="2021-08-23T15:24:20+00:00">2021-08-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Front-End-Development/" itemprop="url" rel="index"><span itemprop="name">Front-End Development</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Front-End-Development/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note primary"><p>this、call、bind、apply</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JavaScript的灵活性也导致了规则的多样性。今天来总结一下JavaScript中的<code>this</code>关键字，及其相关话题<code>bind,call,apply</code></p>
+<h2 id="JavaScript中的this"><a href="#JavaScript中的this" class="headerlink" title="JavaScript中的this"></a>JavaScript中的this</h2><p>以前学其他语言比如说Java或者CPP时，那时理解的<code>this</code>就是当前对象，当调用构造函数创建对象时，<code>this</code>会绑定到创建的对象上。关于JavaScript中的<code>this</code>并没有过多的关注。</p>
+<h3 id="JavaScript中this的5个绑定规则"><a href="#JavaScript中this的5个绑定规则" class="headerlink" title="JavaScript中this的5个绑定规则"></a>JavaScript中this的5个绑定规则</h3><blockquote>
+<p>函数在哪里调用，<code>this</code>的引用就来自于这里。</p>
+</blockquote>
+<ul>
+<li>隐式绑定</li>
+<li>显示绑定</li>
+<li>new 绑定</li>
+<li>词法绑定</li>
+<li>window 绑定</li>
+</ul>
+<p>接下来我们一一解释。</p>
+<h4 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h4><p>如下代码，大多数<code>this</code>绑定的情况都是如此，你只需要判断调用函数的对象就知道this指的谁，<strong>即“.”左侧</strong>。下面例子中<code>this</code>分别指的是<code>user</code>和<code>user.mother</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mother</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Stacey&#x27;</span>,</span><br><span class="line">    <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      alert(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">user.greet();</span><br><span class="line">user.mother.greet();</span><br></pre></td></tr></table></figure>
+
+<h4 id="显示绑定"><a href="#显示绑定" class="headerlink" title="显示绑定"></a>显示绑定</h4><p>显示绑定就用到<code>bind,call,apply</code>方法了。这三个方法来自于<code>Function.prototype</code>。所以说每个函数都会有这三个方法。其中<code>call,apply</code>来自于ES3，<code>bind</code>来自于ES5。</p>
+<h5 id="call"><a href="#call" class="headerlink" title="call"></a>call</h5><blockquote>
+<p>“call” is a method on every function that allows you to invoke the function specifying in what context the function will be invoked.</p>
+</blockquote>
+<p>如下代码，当调用<code>greet</code>函数的时候并不知道这个<code>this</code>引用的哪个对象，无法通过<code>user.greet(x,x,x)</code>来调用，因为<code>user</code>并没有这个函数对象。那么我们只能单独的调用这个函数，我们可以通过<code>call</code>的方式来指定调用当前函数的对象，第一个参数就是<code>this</code>引用的对象，剩余的参数是函数调用所需要的参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span> (<span class="params">l1, l2, l3</span>) </span>&#123;</span><br><span class="line">  alert(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know <span class="subst">$&#123;l1&#125;</span>, <span class="subst">$&#123;l2&#125;</span>, and <span class="subst">$&#123;l3&#125;</span>`</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line">greet.call(user, languages[<span class="number">0</span>], languages[<span class="number">1</span>], languages[<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<h5 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h5><p><code>apply</code>和<code>call</code>类似，只不过<code>apply</code>解决了<code>call</code>一个问题，就像上面那个例子，当调用的函数需要接受很多参数的时候，需要一个一个将参数传入，如果我们有10个参数就需要单独输入10个参数。而<code>apply</code>只需要将参数当做数组传入，不必一个一个传入。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// greet.call(user, languages[0], languages[1], languages[2])</span></span><br><span class="line">greet.apply(user, languages)</span><br></pre></td></tr></table></figure>
+
+<h5 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h5><p><code>bind</code>和<code>call</code>也是类似的，只不过他不会立即调用函数，而是返回一个新函数，这个新函数绑定了一系列参数，其中第一个参数就是<code>this</code>的引用对象，其余参数是函数调用时所需要的参数，当你调用新函数时，仅需要将未绑定的参数（如果已全部绑定就无需传参）传入就行了。</p>
+<p>还是上面的例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span> (<span class="params">l1, l2, l3</span>) </span>&#123;</span><br><span class="line">  alert(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know <span class="subst">$&#123;l1&#125;</span>, <span class="subst">$&#123;l2&#125;</span>, and <span class="subst">$&#123;l3&#125;</span>`</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newFn = greet.bind(user, languages[<span class="number">0</span>], languages[<span class="number">1</span>], languages[<span class="number">2</span>])</span><br><span class="line">newFn() <span class="comment">// alerts &quot;Hello, my name is Tyler and I know JavaScript, Ruby, and Python&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="new-绑定"><a href="#new-绑定" class="headerlink" title="new 绑定"></a>new 绑定</h4><blockquote>
+<p>当使用<code>new</code>创建对象时，<code>JavaScript Interpretor</code>就会创建一个对象，这个对象叫<code>this</code>，也就是说<code>this</code>的引用对象就是新创建的对象。</p>
+</blockquote>
+<p>如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">    Under the hood, JavaScript creates a new object called `this`</span></span><br><span class="line"><span class="comment">    which delegates to the User&#x27;s prototype on failed lookups. If a</span></span><br><span class="line"><span class="comment">    function is called with the new keyword, then it&#x27;s this new object</span></span><br><span class="line"><span class="comment">    that interpretor created that the this keyword is referencing.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.name = name</span><br><span class="line">  <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> me = <span class="keyword">new</span> User(<span class="string">&#x27;Tyler&#x27;</span>, <span class="number">27</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="词法绑定"><a href="#词法绑定" class="headerlink" title="词法绑定"></a>词法绑定</h4><p>所谓的词法绑定就是“你主观认为<code>this</code>的引用对象就是所绑定的对象”</p>
+<p>例子如下，我们使用<code>reduce</code>函数，传入一个回调函数，这个回调函数中使用的<code>this</code>会引用哪个对象？当我们使用<code>function</code>定义时会创建<code>context</code>，<code>this</code>是引用的这个<code>context</code>，就如同下面的代码，这是有问题的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">languages</span>: [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>],</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> hello = <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know`</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> langs = <span class="built_in">this</span>.languages.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">str, lang, i</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (i === <span class="built_in">this</span>.languages.length - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> and <span class="subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> <span class="subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">    &#125;, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    alert(hello + langs)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">user.greet()<span class="comment">//Uncaught TypeError: Cannot read property &#x27;length&#x27; of undefined. </span></span><br></pre></td></tr></table></figure>
+
+<p><strong>然后，怎么解决？</strong><br>答案是使用箭头函数，箭头函数不会为<code>this</code>创建<code>context</code>，因此会引用外部的<code>context</code>，这是一个闭包。下面的代码就能正常工作了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">languages</span>: [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>],</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> hello = <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know`</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> langs = <span class="built_in">this</span>.languages.reduce(<span class="function">(<span class="params">str, lang, i</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (i === <span class="built_in">this</span>.languages.length - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> and <span class="subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> <span class="subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">    &#125;, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    alert(hello + langs)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="window-绑定"><a href="#window-绑定" class="headerlink" title="window 绑定"></a>window 绑定</h4><p>当不满足前几种绑定时，那<code>this</code>就会绑定window（用于catch-all）。</p>
+<p>如下代码，此情况<code>this</code>的引用对象就是window，因为window对象下没有age这个属性，所以undefined。如果定义了这个属性那就会输出这个属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span></span><br><span class="line">&#125;</span><br><span class="line">sayAge() <span class="comment">// My age is undefined</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.age=<span class="number">27</span></span><br><span class="line">sayAge() <span class="comment">// My age is 27</span></span><br></pre></td></tr></table></figure>
+
+<p>当然，如果你不想产生这种效果，不想让<code>this</code>绑定到window对象，那么你可以使用<code>use strict</code>声明来避免，window会认为<code>this</code>是undefined，如同下面的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.age = <span class="number">27</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayAge() <span class="comment">// TypeError: Cannot read property &#x27;age&#x27; of undefined</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="判断套路"><a href="#判断套路" class="headerlink" title="判断套路"></a>判断套路</h4><ol>
+<li>检查函数要在哪里被调用</li>
+<li><code>this</code>是否在箭头函数内部，如果是，那么<code>this</code>有可能词法绑定，引用父亲作用域的<code>this</code>（产生了闭包</li>
+<li>函数是否使用了<code>new</code>创建对象，如果有，那么<code>this</code>引用这个创建的对象。</li>
+<li>函数是否使用了<code>call,apply,bind</code>，如果有，那么<code>this</code>引用显示绑定的对象。</li>
+<li>函数左侧有无“.”，如果有，那么<code>this</code>就引用这个对象。</li>
+<li>你是否使用了<code>use strict</code>，如果有，那么<code>this</code>是<code>undefined</code></li>
+<li><code>this</code>引用了<code>window</code>对象</li>
+</ol>
+<h2 id="相关话题"><a href="#相关话题" class="headerlink" title="相关话题"></a>相关话题</h2><h3 id="箭头函数的this"><a href="#箭头函数的this" class="headerlink" title="箭头函数的this"></a>箭头函数的this</h3><p>箭头函数没有在函数调用创建函数执行上下文的时候创建<code>this</code>对象。详情请看<a href="js-concept-7-scope-2.html">JavaScript 必知 33 个概念系列：执行上下文（栈帧）、作用域、闭包、this 之间的关系</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://tylermcginnis.com/this-keyword-call-apply-bind-javascript/">Understanding the “this” keyword, call, apply, and bind in JavaScript</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/33-JS-Concept/" rel="tag"># 33 JS Concept</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/15/js-concept-21-closures/" rel="prev" title="JavaScript必知33个概念系列：闭包">
+                  <i class="fa fa-chevron-left"></i> JavaScript必知33个概念系列：闭包
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/11/17/js-storage/" rel="next" title="Web API系列：存储">
+                  Web API系列：存储 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李明岳</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

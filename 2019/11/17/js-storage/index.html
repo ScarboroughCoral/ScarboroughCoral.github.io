@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="cookie、localStorage、sessionStorage、indexedDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web API系列：存储">
+<meta property="og:url" content="http://example.com/2019/11/17/js-storage/index.html">
+<meta property="og:site_name" content="李明岳的网络日志">
+<meta property="og:description" content="cookie、localStorage、sessionStorage、indexedDB">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573981862890&di=dbc89d09f3ef3894a687b1bee0ec0a2e&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201711%2F30%2F20171130170432_QBaiK.jpeg">
+<meta property="article:published_time" content="2019-11-17T14:17:16.000Z">
+<meta property="article:modified_time" content="2021-08-23T15:24:20.012Z">
+<meta property="article:author" content="李明岳">
+<meta property="article:tag" content="Web API">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573981862890&di=dbc89d09f3ef3894a687b1bee0ec0a2e&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201711%2F30%2F20171130170432_QBaiK.jpeg">
+
+
+<link rel="canonical" href="http://example.com/2019/11/17/js-storage/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2019/11/17/js-storage/","path":"2019/11/17/js-storage/","title":"Web API系列：存储"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Web API系列：存储 | 李明岳的网络日志</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">李明岳的网络日志</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#localStorage"><span class="nav-number">2.1.</span> <span class="nav-text">localStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sessionStorage"><span class="nav-number">2.2.</span> <span class="nav-text">sessionStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie"><span class="nav-number">2.3.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexedDB"><span class="nav-number">2.4.</span> <span class="nav-text">indexedDB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E4%B8%BE%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">使用场景举例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#localStorage-1"><span class="nav-number">3.1.</span> <span class="nav-text">localStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sessionStorage-1"><span class="nav-number">3.2.</span> <span class="nav-text">sessionStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie-1"><span class="nav-number">3.3.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexedDB-1"><span class="nav-number">3.4.</span> <span class="nav-text">indexedDB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#localStorage-2"><span class="nav-number">4.1.</span> <span class="nav-text">localStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sessionStorage-2"><span class="nav-number">4.2.</span> <span class="nav-text">sessionStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie-2"><span class="nav-number">4.3.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexedDB-2"><span class="nav-number">4.4.</span> <span class="nav-text">indexedDB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%AF%9D%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">相关话题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李明岳</p>
+  <div class="site-description" itemprop="description">一个假的全栈工程师</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573981862890&di=dbc89d09f3ef3894a687b1bee0ec0a2e&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201711%2F30%2F20171130170432_QBaiK.jpeg" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/17/js-storage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李明岳">
+      <meta itemprop="description" content="一个假的全栈工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李明岳的网络日志">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Web API系列：存储
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-11-17 14:17:16" itemprop="dateCreated datePublished" datetime="2019-11-17T14:17:16+00:00">2019-11-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-23 15:24:20" itemprop="dateModified" datetime="2021-08-23T15:24:20+00:00">2021-08-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Front-End-Development/" itemprop="url" rel="index"><span itemprop="name">Front-End Development</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Front-End-Development/Web-API/" itemprop="url" rel="index"><span itemprop="name">Web API</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note primary"><p>cookie、localStorage、sessionStorage、indexedDB</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前可能用过<code>Web API</code>对象里面的存储对象，比如说<code>cookie</code>和<code>localStorage</code>。但是仅仅把他们当做一个浏览器端存储的工具，并没有认真区分它们的不同和应用场景。</p>
+<p>首先为什么需要浏览器端存储数据的<code>Web API</code>？HTTP是一个无状态（stateless）协议，需要浏览器记录一些东西。</p>
+<p><strong>本篇主要是简单的了解一些概念和用法，不会深入的总结</strong>，后续会深入了解。</p>
+<p>今天总结的主要有三个话题：</p>
+<ul>
+<li>区别</li>
+<li>使用场景举例</li>
+<li>使用方法（Web API）</li>
+</ul>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><ul>
+<li>存储的数据没有截止日期（有效期）的设置，也就是说只要你不主动删除它，它就可能永远存在。</li>
+<li>只能由客户端读取</li>
+<li>只能通过JavaScript清除存储条目，或者是用浏览器清除缓存和本地存储数据。</li>
+<li>存储的限制容量比sessionStorage和cookie要大</li>
+</ul>
+<h3 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><ul>
+<li>存储的数据只在一个会话中有效，也就是说当关闭浏览器（或者对应tab）时数据会失效。</li>
+<li>数据不会自动提交到服务器，只能由客户端读取</li>
+<li>存储的限制容量大于cookie（至少5MB）</li>
+</ul>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><ul>
+<li>一般存储一些后续请求中需要发送给服务器的数据，也就是说每次请求都会发送cookie（会涉及性能问题）</li>
+<li>有效期会可以由客户端设置，也可以由服务端设置（一般有服务端设置）</li>
+<li>Cookie一般主要由服务端读取，当然客户端也可以读取。（localStorage和sessionStorage只能由客户端读取）</li>
+<li>存储大小小于4KB</li>
+<li>可以设置<code>httpOnly</code>为<code>true</code>，这样就禁止客户端读取cookie</li>
+<li>涉及隐私问题</li>
+</ul>
+<h3 id="indexedDB"><a href="#indexedDB" class="headerlink" title="indexedDB"></a>indexedDB</h3><ul>
+<li>浏览器客户端的低级API</li>
+<li>能够存储大量的结构化数据，包括文件，支持大量数据存储。</li>
+<li>使用索引进行查询，性能高</li>
+<li>是一个事务型数据库系统，有点像基于SQL的关系型数据库管理系统（但列不是固定的）</li>
+<li>是基于JavaScript的面向对象数据库</li>
+</ul>
+<h2 id="使用场景举例"><a href="#使用场景举例" class="headerlink" title="使用场景举例"></a>使用场景举例</h2><h3 id="localStorage-1"><a href="#localStorage-1" class="headerlink" title="localStorage"></a>localStorage</h3><ul>
+<li>持久的较少量数据存储</li>
+</ul>
+<h3 id="sessionStorage-1"><a href="#sessionStorage-1" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><ul>
+<li>会话相关的较少量数据存储</li>
+</ul>
+<h3 id="cookie-1"><a href="#cookie-1" class="headerlink" title="cookie"></a>cookie</h3><p>Cookie的工作过程是这样的：</p>
+<ol>
+<li>客户端发起请求</li>
+<li>服务端想要在客户端保存一些状态信息，于是在HTTP响应报文添加头部字段<code>Set-Cookie</code>，这样客户端就会保存下来。<ol>
+<li>可以指定有效时间（<code>Expires</code>或<code>Max-Age</code>）和域名路径（<code>Domain</code>和<code>Path</code>）来限制cookie。</li>
+<li><code>Secure</code>对于<code>http:</code>协议尽管加密也不安全，一些浏览器已经已经不支持不安全的网站（<code>http:</code>）设置<code>Secure</code>了。</li>
+<li><code>HttpOnly</code>设置之后不允许浏览器端JavaScript访问<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HTTP/2.0 200 OK</span><br><span class="line">Content-type: text/html</span><br><span class="line">Set-Cookie: yummy_cookie=choco</span><br><span class="line">Set-Cookie: tasty_cookie=strawberry</span><br><span class="line"></span><br><span class="line">[page content]</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>客户端的后续请求都会携带客户端的cookie信息，即请求头<code>Cookie</code>字段<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /sample_page.html HTTP/2.0</span><br><span class="line">Host: www.example.org</span><br><span class="line">Cookie: yummy_cookie=choco; tasty_cookie=strawberry</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>下面是一些cookie的使用场景。</p>
+<ul>
+<li>会话管理<ul>
+<li>登陆状态、购物车、游戏分数等服务端需要记录的</li>
+</ul>
+</li>
+<li>个性化<ul>
+<li>用户偏好、主题、其他设置等</li>
+</ul>
+</li>
+<li>追踪<ul>
+<li>记录分析用户行为</li>
+</ul>
+</li>
+</ul>
+<h3 id="indexedDB-1"><a href="#indexedDB-1" class="headerlink" title="indexedDB"></a>indexedDB</h3><ul>
+<li>大量数据存储</li>
+<li>高性能查询</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="localStorage-2"><a href="#localStorage-2" class="headerlink" title="localStorage"></a>localStorage</h3><ul>
+<li>set<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;myCat&#x27;</span>, <span class="string">&#x27;Tom&#x27;</span>);</span><br><span class="line"><span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;colorSetting&#x27;</span>, <span class="string">&#x27;#a4509b&#x27;</span>);</span><br><span class="line"><span class="built_in">localStorage</span>.colorSetting = <span class="string">&#x27;#a4509b&#x27;</span>;<span class="comment">//不推荐</span></span><br><span class="line"><span class="built_in">localStorage</span>[<span class="string">&#x27;colorSetting&#x27;</span>] = <span class="string">&#x27;#a4509b&#x27;</span>;<span class="comment">///不推荐</span></span><br></pre></td></tr></table></figure></li>
+<li>get<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cat = <span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;myCat&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>remove<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">localStorage</span>.removeItem(<span class="string">&#x27;myCat&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>clear<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Clear all items</span></span><br><span class="line"><span class="built_in">localStorage</span>.clear();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="sessionStorage-2"><a href="#sessionStorage-2" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><p>和localStorage接口类似。</p>
+<h3 id="cookie-2"><a href="#cookie-2" class="headerlink" title="cookie"></a>cookie</h3><ul>
+<li>write<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie = <span class="string">&quot;yummy_cookie=choco&quot;</span>; </span><br><span class="line"><span class="built_in">document</span>.cookie = <span class="string">&quot;tasty_cookie=strawberry&quot;</span>; </span><br></pre></td></tr></table></figure></li>
+<li>read<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.cookie); </span><br><span class="line"><span class="comment">// logs &quot;yummy_cookie=choco; tasty_cookie=strawberry&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>reset<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie = <span class="string">&quot;yummy_cookie=&quot;</span>; </span><br><span class="line"><span class="built_in">document</span>.cookie = <span class="string">&quot;tasty_cookie=&quot;</span>; </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="indexedDB-2"><a href="#indexedDB-2" class="headerlink" title="indexedDB"></a>indexedDB</h3><p>先了解一下indexedDB的推荐使用流程</p>
+<ol>
+<li>检查是否支持indexedDB</li>
+<li>打开数据库<code>database</code></li>
+<li>在数据库中创建一个对象存储仓库<code>object store</code></li>
+<li>开启事务，请求数据库操作（添加、获取等）</li>
+<li>等待操作完成（可以通过监听事件来操作）</li>
+<li>使用查询结果</li>
+</ol>
+<p>其他的使用方法暂时不深入了解了，以后用到时再写一篇。</p>
+<h2 id="相关话题"><a href="#相关话题" class="headerlink" title="相关话题"></a>相关话题</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://scotch.io/@PratyushB/local-storage-vs-session-storage-vs-cookie">Local Storage vs Session Storage vs Cookie</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">HTTP cookies</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API">IndexedDB API</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">Web Storage API</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB">Using IndexedDB</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Web-API/" rel="tag"># Web API</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/16/js-concept-15-this-call-bind-apply/" rel="prev" title="JavaScript必知33个概念系列：this、call、bind、apply">
+                  <i class="fa fa-chevron-left"></i> JavaScript必知33个概念系列：this、call、bind、apply
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/11/17/js-concept-7-scope-2/" rel="next" title="JavaScript必知33个概念系列：执行上下文（栈帧）、作用域、闭包、this之间的关系">
+                  JavaScript必知33个概念系列：执行上下文（栈帧）、作用域、闭包、this之间的关系 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李明岳</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
