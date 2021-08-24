@@ -10,7 +10,7 @@ tags:
 categories:  
 - Back-End Development
 - C
-photo: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554800889468&di=ad0f8d11694ee8a128f0154581759efe&imgtype=0&src=http%3A%2F%2Fchouchou.cc%2Fabout%2Fimages%2Fw%2FC_W1_1080.jpg
+
 ---
 
 {% note info %}

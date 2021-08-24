@@ -11,7 +11,7 @@ tags:
 categories: 
 - Back-End Development
 - C
-photo: c-function-pointer.html20140317171259_KCBfP.jpeg
+
 ---
 
 {% note primary %}

@@ -9,7 +9,7 @@ tags:
 categories:
 - Tools
 - Git
-photo: http://abc.2008php.com/2012_Website_appreciate/2012-07-24/20120724143614.jpg
+
 ---
 
 {% note primary %}

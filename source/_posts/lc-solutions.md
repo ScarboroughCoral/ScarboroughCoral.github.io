@@ -10,7 +10,7 @@ tags:
 - LeetCode
 categories:
 - Algorithm & Data Structure
-photo: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573053856187&di=f0d4918a1cba36c9c80003a45e648e86&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fb372ba24b56ca5c48d0e587e0705004cda9a215e.jpg
+
 ---
 
 {% note primary %}

@@ -11,7 +11,7 @@ tags:
 categories:
 - Computer Science
 - Operating System
-photo: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569747594782&di=88fc69cf050e48ebef46090ca641e3a5&imgtype=0&src=http%3A%2F%2Fimages.ali213.net%2Fpicfile%2Fpic%2F2019%2F04%2F03%2F20190403115456782.jpg
+
 ---
 
 {% note primary %}

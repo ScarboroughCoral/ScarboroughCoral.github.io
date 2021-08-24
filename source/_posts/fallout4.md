@@ -10,7 +10,7 @@ tags:
 categories:
 - Game Review
 - FPS
-photo: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555853912496&di=ad82ae968b86a02e488a600dccbad901&imgtype=0&src=http%3A%2F%2Fwww.gamemei.com%2Fbackground%2Fuploads%2Fallimg%2F20170213%2F1486965809529394.jpg
+
 ---
 
 {% note primary %}

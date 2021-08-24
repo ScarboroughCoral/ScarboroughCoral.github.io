@@ -4,7 +4,7 @@ date: 2018-12-09 20:03:25
 tags:
 - Operating System
 - Docker
-photo: https://blog.syncano.rocks/blog/content/images/2016/02/docker-1920-1080.png
+
 categories: 
 - Computer Science
 - Operating System

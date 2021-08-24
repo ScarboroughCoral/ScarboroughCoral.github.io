@@ -10,7 +10,7 @@ tags:
 categories:
 - Protocol
 - HTTP
-photo: http://pic1.win4000.com/wallpaper/2018-11-06/5be155d25c184.jpg
+
 ---
 
 {% note primary %}

@@ -9,7 +9,7 @@ tags:
 categories:
 - Front-End Development
 - Web API
-photo: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573981862890&di=dbc89d09f3ef3894a687b1bee0ec0a2e&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201711%2F30%2F20171130170432_QBaiK.jpeg
+
 ---
 
 {% note primary %}

@@ -3,7 +3,7 @@ title: 双系统的实现原理
 date: 2018-03-23 15:01:57
 tags:
 - Operating System
-photo: https://pic.taifua.com/Picture/website/ubuntu/qq.png
+
 categories: 
 - Computer Science
 - Operating System

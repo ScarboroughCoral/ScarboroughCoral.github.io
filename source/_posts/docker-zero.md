@@ -1,7 +1,7 @@
 ---
 title: 多容器APP之Compose学习笔记(一)
 date: 2018-03-07 13:07:14
-photo: https://storage.googleapis.com/ehimages/2017/11/27/img_c107d0bcc49e276237201cb7b9a3e06d_1511779237167_original.jpg
+
 tags:
 - Docker
 - Docker-Compose

@@ -9,7 +9,7 @@ tags:
 categories:
 - Front-End Development
 - JavaScript
-photo: http://pcs4.clubstatic.lenovo.com.cn/data/attachment/forum/201710/06/170211venzdd4444brdrud.jpg
+
 ---
 
 {% note primary %}

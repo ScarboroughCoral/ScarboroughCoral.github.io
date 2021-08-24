@@ -9,7 +9,7 @@ tags:
 categories:
 - Front-End Development
 - JavaScript
-photo: https://gss0.baidu.com/70cFfyinKgQFm2e88IuM_a/forum/abpic/item/92ba9044ebf81a4c4fb4a920dd2a6059272da6da.jpg
+
 ---
 
 {% note primary %}

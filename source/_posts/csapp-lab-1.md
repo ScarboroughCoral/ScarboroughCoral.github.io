@@ -9,7 +9,7 @@ mathjax: true
 categories:
 - Computer Science
 - Operating System
-photo: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562342535590&di=4c6f896686ce4f754f829e73f83116ef&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201604%2F21%2F20160421220607_2Qase.jpeg
+
 ---
 
 {% note default %}

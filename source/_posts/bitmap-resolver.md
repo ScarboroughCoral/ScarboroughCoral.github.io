@@ -10,7 +10,7 @@ tags:
 categories: 
 - Computer Science
 - Computer Graphics
-photo: http://s1.1zoom.me/b4650/589/Texture_Geometry_529246_1920x1080.jpg
+
 ---
 
 {% note default %}

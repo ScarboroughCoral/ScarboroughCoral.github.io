@@ -9,7 +9,7 @@ tags:
 categories:
 - Tools
 - Git
-photo: http://pic1.win4000.com/wallpaper/4/59141c3f3d73e.jpg
+
 ---
 
 {% note primary %}

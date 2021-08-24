@@ -8,7 +8,7 @@ tags:
 - Method
 categories:
 - Method
-photo: http://img3.333cn.com/img333cn/2017/11/13/1510561438273.jpg
+
 ---
 
 {% note success %}

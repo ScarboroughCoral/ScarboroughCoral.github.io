@@ -7,7 +7,7 @@ tags:
 categories: 
 - Computer Science
 - Operating System
-photo: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562342580636&di=5c9454296b6ec084c73f7a113ee97c52&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201308%2F01%2F20130801201134_vRJa2.jpeg
+
 ---
 
 

@@ -10,7 +10,7 @@ tags:
 categories:
 - Computer Science
 - Computer Graphics
-photo: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553165479621&di=b4c9a7e397be6bfd773d67f8c58c0b77&imgtype=0&src=http%3A%2F%2Fimgs.aixifan.com%2Fo_1cm84jvfc1oqh198cu088o7q4co.jpg
+
 ---
 
 {% note primary %}

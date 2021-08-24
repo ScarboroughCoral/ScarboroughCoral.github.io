@@ -10,7 +10,7 @@ tags:
 categories:
 - Front-End Development
 - JavaScript
-photo: http://07imgmini.eastday.com/mobile/20181002/84ec6a264fd6d97d019837dd57c75021_wmk.jpeg
+
 ---
 
 {% note primary %}

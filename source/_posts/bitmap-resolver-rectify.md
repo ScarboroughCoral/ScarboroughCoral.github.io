@@ -10,7 +10,7 @@ tags:
 categories: 
 - Computer Science
 - Computer Graphics
-photo: http://www.33lc.com/article/UploadPic/2012-10/2012101811361423324.jpg
+
 ---
 
 {% note default %}

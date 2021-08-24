@@ -8,7 +8,7 @@ tags:
 - Technology
 - 5G
 categories: Technology
-photo: https://www.eng.it/resources/events/img/5g%20in%20rome_1920_1080.jpg
+
 ---
 
 {% note primary %}

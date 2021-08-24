@@ -10,7 +10,7 @@ tags:
 categories:
 - Computer Science
 - Operating System
-photo: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553014673216&di=cc09774f087d9dd8bf101a9fa0487299&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fpeople%2F201408%2F01%2F20140801015235_THAUE.jpeg
+
 ---
 
 {% note primary %}

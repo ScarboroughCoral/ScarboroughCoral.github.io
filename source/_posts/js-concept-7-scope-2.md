@@ -10,7 +10,7 @@ tags:
 categories:
 - Front-End Development
 - JavaScript
-photo: http://pic1.win4000.com/wallpaper/2018-03-15/5aaa256499442.jpg
+
 ---
 
 {% note primary %}

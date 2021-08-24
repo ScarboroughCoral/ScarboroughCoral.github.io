@@ -9,7 +9,7 @@ tags:
 categories:
 - Front-End Development
 - CSS
-photo: http://inews.gtimg.com/newsapp_match/0/10894881922/0.jpg
+
 ---
 
 {% note primary %}

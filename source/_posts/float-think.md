@@ -9,7 +9,7 @@ tags:
 - CSAPP
 categories:
 - Computer Science
-photo: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562342320901&di=0cdea09a53f922c5d30cdffc4506e9ac&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F05%2F20180705103913_VeX8i.jpeg
+
 ---
 
 {% note warning %}

@@ -8,7 +8,7 @@ tags:
 - Security
 categories:
 - Security
-photo: http://i-7.vcimg.com/trim/b68b1b513777815f0cf5b27e3568edae150489/trim.jpg
+
 ---
 
 {% note primary %}

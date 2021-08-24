@@ -1,7 +1,7 @@
 ---
 title: web前端入门建议
 date: 2018-01-14 10:46:28
-photo: http://pic1.win4000.com/wallpaper/2018-07-11/5b45cb6d71c41.jpg
+
 tags:
 - Front-End Development
 categories:

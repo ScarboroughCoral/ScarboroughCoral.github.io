@@ -9,7 +9,7 @@ tags:
 - Prose and Essay
 categories:
 - Computer Science
-photo: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562342446914&di=3daa7e7d03a5338e9be3e739caf1f2f0&imgtype=0&src=http%3A%2F%2Fattachments.gfan.net.cn%2Fforum%2F201503%2F14%2F2130333023g7bsqddoz93o.jpg
+
 ---
 
 {% note primary %}

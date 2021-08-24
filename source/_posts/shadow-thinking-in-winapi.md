@@ -1,7 +1,7 @@
 ---
 title: 浅谈Windows API
 date: 2018-10-08 15:22:14
-photo: https://stmed.net/sites/default/files/windows-8-wallpapers-30803-8681077.jpg
+
 tags:
 - Windows API
 - C
