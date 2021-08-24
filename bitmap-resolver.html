@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"scarboroughcoral.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="模拟信号到数字信号是一个神奇的过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BMP文件处理（C语言实现）">
+<meta property="og:url" content="https://scarboroughcoral.github.io/bitmap-resolver.html">
+<meta property="og:site_name" content="李明岳的网络日志">
+<meta property="og:description" content="模拟信号到数字信号是一个神奇的过程。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://scarboroughcoral.github.io/bitmap-resolver/origin.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/bitmap-resolver/rdivision.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/bitmap-resolver/grey.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/bitmap-resolver/degrey.png">
+<meta property="article:published_time" content="2019-03-06T18:19:56.000Z">
+<meta property="article:modified_time" content="2021-08-24T14:31:23.086Z">
+<meta property="article:author" content="李明岳">
+<meta property="article:tag" content="Computer Graphics">
+<meta property="article:tag" content="DIP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://scarboroughcoral.github.io/bitmap-resolver/origin.png">
+
+
+<link rel="canonical" href="https://scarboroughcoral.github.io/bitmap-resolver.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://scarboroughcoral.github.io/bitmap-resolver.html","path":"bitmap-resolver.html","title":"BMP文件处理（C语言实现）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BMP文件处理（C语言实现） | 李明岳的网络日志</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">李明岳的网络日志</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E8%A6%81%E6%B1%82"><span class="nav-number">2.</span> <span class="nav-text">题目要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%9B%BE%EF%BC%88%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%83%8F%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">原图（测试图像）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%8E%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.</span> <span class="nav-text">思路与步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BMP%E5%9B%BE%E5%83%8F%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">BMP图像文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E5%9B%BE%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="nav-number">5.1.</span> <span class="nav-text">位图文件头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E5%9B%BE%E4%BF%A1%E6%81%AF%E5%A4%B4"><span class="nav-number">5.2.</span> <span class="nav-text">位图信息头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E8%89%B2%E6%9D%BF"><span class="nav-number">5.3.</span> <span class="nav-text">调色板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E4%BD%8D%E5%9B%BE%E6%95%B0%E6%8D%AE"><span class="nav-number">5.4.</span> <span class="nav-text">实际位图数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="nav-number">6.</span> <span class="nav-text">详细实现思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RGB%E5%88%86%E7%A6%BB"><span class="nav-number">6.1.</span> <span class="nav-text">RGB分离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RGB%E8%BD%AC%E7%81%B0%E8%89%B2%E5%9B%BE"><span class="nav-number">6.2.</span> <span class="nav-text">RGB转灰色图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%8F%8D%E8%89%B2"><span class="nav-number">6.3.</span> <span class="nav-text">灰度图反色</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">7.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A0%E6%AD%A3"><span class="nav-number">7.1.</span> <span class="nav-text">纠正</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Main-c"><span class="nav-number">7.2.</span> <span class="nav-text">Main.c</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BMP-h"><span class="nav-number">7.3.</span> <span class="nav-text">BMP.h</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李明岳</p>
+  <div class="site-description" itemprop="description">一个假的全栈工程师</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ScarboroughCoral" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ScarboroughCoral" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://scarboroughcoral.github.io/bitmap-resolver.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李明岳">
+      <meta itemprop="description" content="一个假的全栈工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李明岳的网络日志">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BMP文件处理（C语言实现）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-06 18:19:56" itemprop="dateCreated datePublished" datetime="2019-03-06T18:19:56+00:00">2019-03-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-24 14:31:23" itemprop="dateModified" datetime="2021-08-24T14:31:23+00:00">2021-08-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/Computer-Graphics/" itemprop="url" rel="index"><span itemprop="name">Computer Graphics</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note default"><p>模拟信号到数字信号是一个神奇的过程。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本系列文章（DIP，Digital Image Processing），用于记录总结数字图像处理课程的实验内容。目录请参考<a href="/tags/DIP/">DIP系列文章</a></p>
+<h2 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h2><ol>
+<li>24位图像对R,G,B三个分量进行分离，产生3幅新的图像</li>
+<li>24位彩色图像灰度化</li>
+<li>对8位灰度图进行反色</li>
+</ol>
+<h2 id="原图（测试图像）"><a href="#原图（测试图像）" class="headerlink" title="原图（测试图像）"></a>原图（测试图像）</h2><p>找了一个便于观察的图像：</p>
+<p><img data-src="bitmap-resolver/origin.png"></p>
+<h2 id="思路与步骤"><a href="#思路与步骤" class="headerlink" title="思路与步骤"></a>思路与步骤</h2><p>整体思路如下：</p>
+<ol>
+<li>读取图像文件属性与图形数据内容</li>
+<li>图像文件属性与图形数据处理<ol>
+<li>对R,G,B三个分量进行分离，需要将无关分量置0</li>
+<li>灰度化需要利用RGB转灰度公式进行转换</li>
+<li>对灰度图进行255求补运算</li>
+</ol>
+</li>
+<li>将处理后的数据输出到目标图像文件</li>
+</ol>
+<h2 id="BMP图像文件格式"><a href="#BMP图像文件格式" class="headerlink" title="BMP图像文件格式"></a>BMP图像文件格式</h2><p>BMP图像文件由四部分构成：</p>
+<ol>
+<li>位图文件头</li>
+<li>位图信息头</li>
+<li>调色板</li>
+<li>实际位图数据</li>
+</ol>
+<p>以下是各部分的详细属性：</p>
+<h3 id="位图文件头"><a href="#位图文件头" class="headerlink" title="位图文件头"></a>位图文件头</h3><table>
+<thead>
+<tr>
+<th align="center">属性含义（按读取顺序描述）</th>
+<th align="center">所占空间大小（单位字节，byte）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">文件类型，必须是“BM”</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">文件大小，包含文件头的大小</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">保留字</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">保留字</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">从文件头到实际位图数据的偏移字节数</td>
+<td align="center">4</td>
+</tr>
+</tbody></table>
+<h3 id="位图信息头"><a href="#位图信息头" class="headerlink" title="位图信息头"></a>位图信息头</h3><table>
+<thead>
+<tr>
+<th align="center">属性含义（按读取顺序描述）</th>
+<th align="center">所占空间大小（单位字节，byte）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">该结构的长度，为40</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">图像宽度</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">图像高度</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">位平面数，必须为1</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">颜色位数：1为二值，4为16色，8为256色，24为真彩色</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">是否压缩：指定位图是否压缩，有效的值为BI_RGB，BI_RLE8，BI_RLE4，BI_BITFIELDS(都是一些Windows定义好的常量)。要说明的是，Windows位图可以采用RLE4，和RLE8的压缩格式，但用的不多。我们今后所讨论的只有第一种不压缩的情况，即biCompression为BI_RGB的情况。</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">实际位图数据占用的字节数：【实际位图数据占用的字节数】=【图像宽度】’ × 【图像高度】。上述公式中的【图像宽度】’必须是4的整倍数(所以不是【图像宽度】，而是【图像宽度】’，表示大于或等于【图像宽度】的，最接近4的整倍数。举个例子，如果【图像宽度】=240，则【图像宽度】’=240；如果【图像宽度】=241，【图像宽度】’=244)。</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">目标设备水平分辨率</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">目标设备垂直分辨率</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">实际使用的颜色数：如果该值为零，则用到的颜色数为2的【颜色位数】次方种。</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">图像中重要的颜色数</td>
+<td align="center">4</td>
+</tr>
+</tbody></table>
+<h3 id="调色板"><a href="#调色板" class="headerlink" title="调色板"></a>调色板</h3><p>可选项，只在需要调色板的情况下出现。</p>
+<p>调色板实际上是一个数组， 共有【实际使用的颜色数】个元素。数组中每个元素的类型是一个如下的结构，每个占4个字节，其定义如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性含义（按读取顺序描述）</th>
+<th align="center">所占空间大小（单位字节，byte）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">该颜色的蓝色分量</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">该颜色的绿色分量</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">该颜色的红色分量</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">保留值</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<h3 id="实际位图数据"><a href="#实际位图数据" class="headerlink" title="实际位图数据"></a>实际位图数据</h3><p>共有位图信息头中所示属性中的【实际位图数据占用的字节数】个字节，每3个字节构成一组RGB真彩色像素，所以共有$【实际位图数据占用的字节数/3】$个字节。</p>
+<h2 id="详细实现思路"><a href="#详细实现思路" class="headerlink" title="详细实现思路"></a>详细实现思路</h2><h3 id="RGB分离"><a href="#RGB分离" class="headerlink" title="RGB分离"></a>RGB分离</h3><ul>
+<li>实现</li>
+</ul>
+<p>只需要将每个RGB像素中的不同分量置0即可，如下代码就是得到分离R分量的方法，最终输出图片只有红色分量：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; itemCounts; i++)<span class="comment">//itemCounts：像素总数</span></span><br><span class="line">&#123;</span><br><span class="line">	(pitem + i)-&gt;g = <span class="number">0</span>;<span class="comment">//pitem：某个像素</span></span><br><span class="line">	(pitem + i)-&gt;b = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>结果</li>
+</ul>
+<p><img data-src="bitmap-resolver/rdivision.png"></p>
+<h3 id="RGB转灰色图"><a href="#RGB转灰色图" class="headerlink" title="RGB转灰色图"></a>RGB转灰色图</h3><ul>
+<li>实现</li>
+</ul>
+<p>采用如下公式转换：<br>$$<br>Gray = R\times0.299 + G\times0.587 + B\times0.114<br>$$<br>如下代码实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; itemCounts; i++)</span><br><span class="line">&#123;</span><br><span class="line">	gray = ((pitem + i)-&gt;r * <span class="number">299</span> + (pitem + i)-&gt;g * <span class="number">587</span> + (pitem + i)-&gt;b * <span class="number">114</span> + <span class="number">500</span>) / <span class="number">1000</span>;</span><br><span class="line">	(pitem + i)-&gt;r = gray;</span><br><span class="line">	(pitem + i)-&gt;g = gray;</span><br><span class="line">	(pitem + i)-&gt;b = gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>结果</li>
+</ul>
+<p><img data-src="bitmap-resolver/grey.png"></p>
+<h3 id="灰度图反色"><a href="#灰度图反色" class="headerlink" title="灰度图反色"></a>灰度图反色</h3><ul>
+<li>实现</li>
+</ul>
+<p>将灰度对255求补即可，如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; itemCounts; i++)</span><br><span class="line">&#123;</span><br><span class="line">	gray = ((pitem + i)-&gt;r * <span class="number">299</span> + (pitem + i)-&gt;g * <span class="number">587</span> + (pitem + i)-&gt;b * <span class="number">114</span> + <span class="number">500</span>) / <span class="number">1000</span>;</span><br><span class="line">	(pitem + i)-&gt;r = <span class="number">255</span>-gray;</span><br><span class="line">	(pitem + i)-&gt;g = <span class="number">255</span>-gray;</span><br><span class="line">	(pitem + i)-&gt;b = <span class="number">255</span>-gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>结果</li>
+</ul>
+<p><img data-src="bitmap-resolver/degrey.png"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="note primary"><p><strong>全部代码请查看[GitHub](<a target="_blank" rel="noopener" href="https://github.com/ScarboroughCoral/DIPModule">https://github.com/ScarboroughCoral/DIPModule</a></strong></p>
+</div>
+
+
+
+<div class="note warning"><h3 id="纠正"><a href="#纠正" class="headerlink" title="纠正"></a>纠正</h3><p>本程序是不完全版本，或者说是错误版本。有以下两点不足：</p>
+<ul>
+<li>未对图像宽度非4倍数进行特殊处理。</li>
+<li>本文只对灰度图只做了24位模拟，没有转化为8位灰度图。</li>
+<li>文件头的字节对齐问题，相关文章<a href="byte-alignment.html">计算机的字节对齐</a></li>
+</ul>
+<p>修正版本请查看<a href="bitmap-resolver-rectify.html">BMP文件的特殊宽度处理及字节对齐问题</a></p>
+</div>
+
+<p>所有代码如下：</p>
+<div class="note info"><h3 id="Main-c"><a href="#Main-c" class="headerlink" title="Main.c"></a>Main.c</h3></div>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Main.c</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;BMP.h&quot;</span></span></span><br><span class="line"><span class="comment">//#include &lt;Windows.h&gt;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> <span class="meta-keyword">warning</span>(disable : 4996)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	FILE * fp = fopen(<span class="string">&quot;test.bmp&quot;</span>,<span class="string">&quot;rb&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (fp==<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		getchar();</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	BMFILEHEADER header;</span><br><span class="line">	INFOHEADER info;</span><br><span class="line">	fread(&amp;header, <span class="keyword">sizeof</span>(header),<span class="number">1</span>,fp);</span><br><span class="line">	fread(&amp;info, <span class="keyword">sizeof</span>(info), <span class="number">1</span>, fp);</span><br><span class="line">	RGBQUAD * prgbquad = (RGBQUAD *)<span class="built_in">malloc</span>(info.colorUsed*<span class="keyword">sizeof</span>(RGBQUAD));</span><br><span class="line">	fread(prgbquad, <span class="keyword">sizeof</span>(RGBQUAD), info.colorUsed, fp);</span><br><span class="line">	<span class="comment">//fseek(fp, header.offset, 0);</span></span><br><span class="line">	RGBITEM *pitem = (RGBITEM *)<span class="built_in">malloc</span>(info.sizeImage);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">unsigned</span> itemCounts = info.sizeImage / (<span class="keyword">unsigned</span>)<span class="number">3</span>;</span><br><span class="line">	fread(pitem, <span class="keyword">sizeof</span>(RGBITEM), itemCounts, fp);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//修改单色</span></span><br><span class="line">	<span class="comment">//for (size_t i = 0; i &lt; itemCounts; i++)</span></span><br><span class="line">	<span class="comment">//&#123;</span></span><br><span class="line">	<span class="comment">//	//printf(&quot;%d\n&quot;, pitem-&gt;r);</span></span><br><span class="line">	<span class="comment">//	(pitem+i)-&gt;r = 0;</span></span><br><span class="line">	<span class="comment">//	//(pitem+i)-&gt;g = 0;</span></span><br><span class="line">	<span class="comment">//	(pitem + i)-&gt;b = 0;</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//灰度化</span></span><br><span class="line">	<span class="keyword">int</span> gray;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; itemCounts; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		gray = ((pitem + i)-&gt;r * <span class="number">299</span> + (pitem + i)-&gt;g * <span class="number">587</span> + (pitem + i)-&gt;b * <span class="number">114</span> + <span class="number">500</span>) / <span class="number">1000</span>;</span><br><span class="line">		(pitem + i)-&gt;r = gray;</span><br><span class="line">		(pitem + i)-&gt;g = gray;</span><br><span class="line">		(pitem + i)-&gt;b = gray;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//灰度图反色</span></span><br><span class="line">	<span class="comment">/*for (size_t i = 0; i &lt; itemCounts; i++)</span></span><br><span class="line"><span class="comment">	&#123;</span></span><br><span class="line"><span class="comment">		gray = ((pitem + i)-&gt;r * 299 + (pitem + i)-&gt;g * 587 + (pitem + i)-&gt;b * 114 + 500) / 1000;</span></span><br><span class="line"><span class="comment">		(pitem + i)-&gt;r = 255-gray;</span></span><br><span class="line"><span class="comment">		(pitem + i)-&gt;g = 255-gray;</span></span><br><span class="line"><span class="comment">		(pitem + i)-&gt;b = 255-gray;</span></span><br><span class="line"><span class="comment">	&#125;*/</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> * result = <span class="string">&quot;singleColor.bmp&quot;</span>;</span><br><span class="line">	FILE * rp = fopen(result, <span class="string">&quot;wb&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (rp==<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	fwrite(&amp;header, <span class="keyword">sizeof</span>(header), <span class="number">1</span>, rp);</span><br><span class="line">	fwrite(&amp;info, <span class="keyword">sizeof</span>(info), <span class="number">1</span>, rp);</span><br><span class="line">	<span class="comment">//fseek(rp, header.offset, 0);</span></span><br><span class="line">	fwrite(prgbquad, <span class="keyword">sizeof</span>(RGBQUAD), info.colorUsed, rp);</span><br><span class="line">	fwrite(pitem, <span class="keyword">sizeof</span>(RGBITEM), info.sizeImage / <span class="number">3</span>, rp);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Output singleColor.bmp  successfully!\n&quot;</span>);</span><br><span class="line">	system(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<div class="note info"><h3 id="BMP-h"><a href="#BMP-h" class="headerlink" title="BMP.h"></a>BMP.h</h3></div>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//BMP.h</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bitmapFileHeader</span> &#123;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> type[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">unsigned</span> size;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> resvered1[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> reserved2[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">unsigned</span> offset;</span><br><span class="line">&#125; BMFILEHEADER;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">rgb</span> &#123;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> r;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> b;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> g;</span><br><span class="line">&#125;RGBITEM;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bitMapInfoHeader</span> &#123;</span></span><br><span class="line">	<span class="keyword">unsigned</span> infoHeaderSize;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> width;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> height;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">short</span> planes;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">short</span> colorCount;</span><br><span class="line">	<span class="keyword">unsigned</span> isCompressed;</span><br><span class="line">	<span class="keyword">unsigned</span> sizeImage;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> xPelsPerMeter;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> yPelsPerMeter;</span><br><span class="line">	<span class="keyword">unsigned</span> colorUsed;</span><br><span class="line">	<span class="keyword">unsigned</span> colorImportant;</span><br><span class="line">&#125;INFOHEADER;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">RGBQUAD</span> &#123;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> b;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> g;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> r;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> reserved;</span><br><span class="line"></span><br><span class="line">&#125;RGBQUAD ;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>代码简单，关键在于知识点的掌握。请继续关注<a href="/tags/DIP/">DIP，数字图像处理系列文章</a>！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Graphics/" rel="tag"><i class="fa fa-tag"></i> Computer Graphics</a>
+              <a href="/tags/DIP/" rel="tag"><i class="fa fa-tag"></i> DIP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/float-think.html" rel="prev" title="有关计算机浮点数的思考。">
+                  <i class="fa fa-chevron-left"></i> 有关计算机浮点数的思考。
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/bitmap-resolver-rectify.html" rel="next" title="BMP文件的特殊宽度处理及字节对齐问题">
+                  BMP文件的特殊宽度处理及字节对齐问题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李明岳</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>

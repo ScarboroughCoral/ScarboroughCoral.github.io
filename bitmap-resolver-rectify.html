@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"scarboroughcoral.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="所见所观，皆为虚幻。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BMP文件的特殊宽度处理及字节对齐问题">
+<meta property="og:url" content="https://scarboroughcoral.github.io/bitmap-resolver-rectify.html">
+<meta property="og:site_name" content="李明岳的网络日志">
+<meta property="og:description" content="所见所观，皆为虚幻。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://scarboroughcoral.github.io/bitmap-resolver-rectify/1552183022513.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/bitmap-resolver-rectify/n4xout.png">
+<meta property="article:published_time" content="2019-03-08T08:10:54.000Z">
+<meta property="article:modified_time" content="2021-08-24T14:31:23.086Z">
+<meta property="article:author" content="李明岳">
+<meta property="article:tag" content="Computer Graphics">
+<meta property="article:tag" content="DIP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://scarboroughcoral.github.io/bitmap-resolver-rectify/1552183022513.png">
+
+
+<link rel="canonical" href="https://scarboroughcoral.github.io/bitmap-resolver-rectify.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://scarboroughcoral.github.io/bitmap-resolver-rectify.html","path":"bitmap-resolver-rectify.html","title":"BMP文件的特殊宽度处理及字节对齐问题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BMP文件的特殊宽度处理及字节对齐问题 | 李明岳的网络日志</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">李明岳的网络日志</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B4%E7%9A%84%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">文件头的字节对齐问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BMP%E6%96%87%E4%BB%B6%E7%9A%84%E7%89%B9%E6%AE%8A%E5%AE%BD%E5%BA%A6%E5%A4%84%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">BMP文件的特殊宽度处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E4%B8%BA8%E4%BD%8D%E7%81%B0%E5%BA%A6%E5%9B%BE"><span class="nav-number">4.</span> <span class="nav-text">转为8位灰度图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.2.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">5.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李明岳</p>
+  <div class="site-description" itemprop="description">一个假的全栈工程师</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ScarboroughCoral" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ScarboroughCoral" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://scarboroughcoral.github.io/bitmap-resolver-rectify.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李明岳">
+      <meta itemprop="description" content="一个假的全栈工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李明岳的网络日志">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BMP文件的特殊宽度处理及字节对齐问题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-08 08:10:54" itemprop="dateCreated datePublished" datetime="2019-03-08T08:10:54+00:00">2019-03-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-24 14:31:23" itemprop="dateModified" datetime="2021-08-24T14:31:23+00:00">2021-08-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/Computer-Graphics/" itemprop="url" rel="index"><span itemprop="name">Computer Graphics</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note default"><p>所见所观，皆为虚幻。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="bitmap-resolver.html">BMP文件处理（C语言实现）</a>这篇文章中说到了两个不足之处：</p>
+<ul>
+<li>文件头的字节对齐问题</li>
+<li>BMP文件的特殊宽度处理问题</li>
+</ul>
+<p>对于字节对齐，可以查看<a href="byte-alignment.html">计算机的字节对齐</a>这篇文章。本篇文章主要写对BMP文件的特殊宽度处理。</p>
+<h2 id="文件头的字节对齐问题"><a href="#文件头的字节对齐问题" class="headerlink" title="文件头的字节对齐问题"></a>文件头的字节对齐问题</h2><p>上次文章中写到的BMP文件头的结构体是下文中代码块这样的，结合字节对齐规则，<strong>“K大小的基本数据类型的地址必须是K的倍数”，“对于结构体，结构体的地址是结构体内最大元素字节大小的整数倍，结构体的大小是结构体内最大元素字节大小的整数倍”。</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bitmapFileHeader</span> &#123;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> type[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">unsigned</span> size;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> resvered1[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> reserved2[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">unsigned</span> offset;</span><br><span class="line">&#125; BMFILEHEADER;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>但是，实际要求BMP文件头大小必须是14，而针对以上结构体进行<code>sizeof()</code>运算得到的数值是<strong>16</strong>。结果显然是错误的，错误原因如下所示：</p>
+<ol>
+<li>结构体大小必须是结构体内最大元素字节大小的整数倍（最大的是unsigned，4字节）（<em>所以肯定不是</em>14）。</li>
+<li>结构体的地址是结构体内最大元素字节大小的整数倍，在此假设一个结构体首地址是0</li>
+</ol>
+<p>下图便是划分图：</p>
+<p><img data-src="bitmap-resolver-rectify/1552183022513.png" alt="1552183022513"></p>
+<p>对于char数组而言，并无特殊字节对齐要求，但是对于unsigned类型，需要首地址为4的倍数。因此在type字段后面的两个字节需要填充。</p>
+<p>这样，结构体的大小为最大元素大小4的倍数，结构体的地址是最大元素字节的整数倍。所以结果总大小为16。</p>
+<p>那么应该怎么写呢？需要14个字节的大小的BMP文件头。为了简单起见，我是这么写的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bitmapFileHeader</span> &#123;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> type[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> size[<span class="number">4</span>];</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> resvered1[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> reserved2[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> offset[<span class="number">4</span>];</span><br><span class="line">&#125; BMFILEHEADER;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>因为都是元素都是char类型的，所以不需要刻意的字节对齐。但是虽然简单了，数据访问是个问题。比如想访问offset这个应该为int类型的字段应该如何访问？在此感谢<a target="_blank" rel="noopener" href="https://github.com/Blameying">XBlame</a>的指导。写法是这样的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*(<span class="keyword">int</span> *)offset;</span><br></pre></td></tr></table></figure>
+
+<p>首先将<code>char*</code>类型转换为<code>int*</code>，然后通过<code>*</code>来索引，得到的就是一个int值。</p>
+<p>相对应的，你想获取size字段，就需要使用：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*(<span class="keyword">int</span> *)size;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="BMP文件的特殊宽度处理"><a href="#BMP文件的特殊宽度处理" class="headerlink" title="BMP文件的特殊宽度处理"></a>BMP文件的特殊宽度处理</h2><p><a href="bitmap-resolver.html">BMP文件处理（C语言实现）</a>这篇文章中说到BMP的宽度字节数规定必须为4的倍数，文章中的代码读取BMP宽度字节数为非4倍数并且不为3的倍数时（是3倍但不是4倍时，不会造成像素偏移），会造成像素偏移问题，效果如下：</p>
+<blockquote>
+<p>大图没有保留，只剩小的测试图了，不过效果就是有线条（RGB像素字节错位所致）</p>
+</blockquote>
+<p><img data-src="bitmap-resolver-rectify/n4xout.png"></p>
+<p>根据测试，BMP的宽度字节数不是4的倍数时，也有特别情况，这种情况下我的程序也能处理。为什么呢？</p>
+<p>BMP的宽度字节规定必须为4的倍数，在宽度字节数不为4的倍数时，就需要补齐。这说明补齐字节数有可能是0、1、2、3这几个数中的一个（0的时候宽度字节数是4的倍数）。如果需要补齐的字节数为3，这就是特殊情况，每行补齐三个字节数，顺序读取并没有导致RGB的字节错位。相反的，如果补齐字节数为1或者2，这样每一行都会多于1个或者2个字节，顺序读取就会造成RGB字节错位，而且是周期性的（补齐字节为1或2，则3行显示一行正确像素），所以显示图片能够看出原来的样子，但是有线条。如果字节全部错乱就完全不像原图了。</p>
+<p>那么解决方法是什么？</p>
+<blockquote>
+<p>遇到补齐的字节跳过。</p>
+</blockquote>
+<p>那么问题来了，如何知道每行补齐的字节数和实际？</p>
+<p>获取信息头里面的sizeImage字段（指的是图像实际用到的字节数，包含补齐），用它除以高度得到的是每行的字节数realWidth（包含补齐字节）。用realWidth整除每个像素所含字节数3，得到实际像素数；realWidth对3取余，得到补齐字节数。</p>
+<p>在读取的时候每行只需要跳过最终的补齐字节，输出时输出补齐字节即可。</p>
+<p>代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> offset = *(<span class="keyword">int</span> *)(header.offset);</span><br><span class="line"><span class="keyword">unsigned</span> realWidth = info.sizeImage / info.height;</span><br><span class="line"><span class="keyword">unsigned</span> rowPixelNumber = realWidth / <span class="keyword">sizeof</span>(RGBITEM);</span><br><span class="line"><span class="keyword">unsigned</span> remanentByteOfRow = realWidth % <span class="keyword">sizeof</span>(RGBITEM);</span><br><span class="line"><span class="keyword">unsigned</span> pixelCounts = rowPixelNumber * info.height;</span><br><span class="line">fseek(fp, offset, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">RGBITEM *pitem = (RGBITEM *)<span class="built_in">malloc</span>(pixelCounts*<span class="keyword">sizeof</span>(RGBITEM));</span><br><span class="line"><span class="comment">//char *garbage = (char *)malloc(remanentByteOfRow);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; info.height; i++)</span><br><span class="line">&#123;</span><br><span class="line">    RGBITEM * currentAddr = pitem + i * rowPixelNumber;</span><br><span class="line">    fread(currentAddr, <span class="keyword">sizeof</span>(RGBITEM), rowPixelNumber, fp);</span><br><span class="line">    <span class="comment">//fread(garbage, remanentByteOfRow, 1, fp);</span></span><br><span class="line">    fseek(fp, remanentByteOfRow, SEEK_CUR);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="转为8位灰度图"><a href="#转为8位灰度图" class="headerlink" title="转为8位灰度图"></a>转为8位灰度图</h2><p>在上篇文章中展示的灰度图是用24位真彩色位图模拟的，就是将RGB三个字节都设为通过RGB求得的一个灰度值，这样无疑就每3个字节浪费2个字节，结果是输出的位图8位灰度图大小比24模拟灰度图会小$\frac{2}{3}$。</p>
+<p>那么将24位真彩色（RGB）位图转换为8位灰度图需要修改那些属性呢？</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol>
+<li>图像数据$RGB24位真彩色\to8位灰度$</li>
+<li>调色板数据添加，每个单位1个字节</li>
+<li>文件头<ol>
+<li>文件大小</li>
+<li>偏移量</li>
+</ol>
+</li>
+<li>信息头<ol start="2">
+<li>颜色位数</li>
+<li>图像实际所用字节数</li>
+</ol>
+</li>
+</ol>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BMP24To8Gray</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> * from, <span class="keyword">const</span> <span class="keyword">char</span> * to)</span> </span>&#123;</span><br><span class="line">	BMFILEHEADER fromHeader;</span><br><span class="line">	INFOHEADER fromInfo;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	RGBITEM ** fromData = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(RGBITEM*));</span><br><span class="line">	RGBQUAD ** fromPalette = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(RGBQUAD*));</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> fromPixelNumber = BMPReader(from, &amp;fromHeader, &amp;fromInfo, fromPalette, fromData);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	BMFILEHEADER toHeader = fromHeader;</span><br><span class="line">	INFOHEADER toInfo = fromInfo;</span><br><span class="line">	<span class="comment">// set info</span></span><br><span class="line">	toInfo.colorCount = <span class="number">8</span>;</span><br><span class="line">	toInfo.infoHeaderSize = <span class="number">40</span>;</span><br><span class="line">	toInfo.planes = <span class="number">1</span>;</span><br><span class="line">	toInfo.sizeImage = (toInfo.width+<span class="number">3</span>)/<span class="number">4</span>*<span class="number">4</span>*toInfo.height;</span><br><span class="line">	toInfo.colorUsed = <span class="number">256</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	RGBQUAD ** toPalette = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(RGBQUAD*));</span><br><span class="line">	*toPalette = <span class="built_in">malloc</span>(<span class="number">256</span> * <span class="keyword">sizeof</span>(RGBQUAD));</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; <span class="number">256</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		((*toPalette) + i)-&gt;r = ((*toPalette) + i)-&gt;b = ((*toPalette) + i)-&gt;g = i;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> **toData = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span> *));</span><br><span class="line">	*toData = <span class="built_in">malloc</span>(fromPixelNumber);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; fromPixelNumber; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		*(*toData+i)= ((*fromData + i)-&gt;r * <span class="number">299</span> + (*fromData + i)-&gt;g * <span class="number">587</span> + (*fromData + i)-&gt;b * <span class="number">114</span> + <span class="number">500</span>) / <span class="number">1000</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	*(<span class="keyword">unsigned</span> *)toHeader.offset = <span class="keyword">sizeof</span>(toHeader) + <span class="keyword">sizeof</span>(toInfo) + <span class="number">256</span> * <span class="keyword">sizeof</span>(RGBQUAD);</span><br><span class="line">	*(<span class="keyword">unsigned</span> *)toHeader.size = toHeader.offset + toInfo.sizeImage;</span><br><span class="line"></span><br><span class="line">	BMPWriter8(to, &amp;toHeader, &amp;toInfo, toPalette, toData);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="note primary"><p><strong>全部代码请查看[GitHub](<a target="_blank" rel="noopener" href="https://github.com/ScarboroughCoral/DIPModule">https://github.com/ScarboroughCoral/DIPModule</a></strong></p>
+</div>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;BMP.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> <span class="meta-keyword">warning</span>(disable : 4996)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BMPResolver</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	FILE * fp = fopen(<span class="string">&quot;width.bmp&quot;</span>, <span class="string">&quot;rb&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (fp == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		getchar();</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	BMFILEHEADER header;</span><br><span class="line">	INFOHEADER info;</span><br><span class="line">	</span><br><span class="line">	fread(&amp;header, <span class="number">14</span>, <span class="number">1</span>, fp);</span><br><span class="line">	fread(&amp;info, <span class="keyword">sizeof</span>(INFOHEADER), <span class="number">1</span>, fp);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//RGBQUAD * prgbquad = (RGBQUAD *)malloc(info.colorUsed * sizeof(RGBQUAD));</span></span><br><span class="line">	<span class="comment">//fread(prgbquad, sizeof(RGBQUAD), info.colorUsed, fp);</span></span><br><span class="line">	<span class="keyword">unsigned</span> offset = *(<span class="keyword">int</span> *)(header.offset);</span><br><span class="line">	<span class="keyword">unsigned</span> realWidth = info.sizeImage / info.height;</span><br><span class="line">	<span class="keyword">unsigned</span> rowPixelNumber = realWidth / <span class="keyword">sizeof</span>(RGBITEM);</span><br><span class="line">	<span class="keyword">unsigned</span> remanentByteOfRow = realWidth % <span class="keyword">sizeof</span>(RGBITEM);</span><br><span class="line">	<span class="keyword">unsigned</span> pixelCounts = rowPixelNumber * info.height;</span><br><span class="line">	fseek(fp, offset, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	RGBITEM *pitem = (RGBITEM *)<span class="built_in">malloc</span>(pixelCounts*<span class="keyword">sizeof</span>(RGBITEM));</span><br><span class="line">	<span class="keyword">char</span> *garbage = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(remanentByteOfRow);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; info.height; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		RGBITEM * currentAddr = pitem + i * rowPixelNumber;</span><br><span class="line">		fread(currentAddr, <span class="keyword">sizeof</span>(RGBITEM), rowPixelNumber, fp);</span><br><span class="line">		fread(garbage, remanentByteOfRow, <span class="number">1</span>, fp);</span><br><span class="line">		<span class="comment">//fseek(fp, remanentByteOfRow, SEEK_CUR);</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//修改单色</span></span><br><span class="line">	<span class="comment">//for (size_t i = 0; i &lt; pixelCounts; i++)</span></span><br><span class="line">	<span class="comment">//&#123;</span></span><br><span class="line">	<span class="comment">//	//printf(&quot;%p-%p\n&quot;, pitem,pitem+1);</span></span><br><span class="line">	<span class="comment">//	//(pitem+i)-&gt;r = 0;</span></span><br><span class="line">	<span class="comment">//	(pitem + i)-&gt;g = 0;</span></span><br><span class="line">	<span class="comment">//	(pitem + i)-&gt;b = 0;</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//灰度化</span></span><br><span class="line">	<span class="keyword">int</span> gray;</span><br><span class="line">	<span class="comment">/*for (size_t i = 0; i &lt; pixelCounts; i++)</span></span><br><span class="line"><span class="comment">	&#123;</span></span><br><span class="line"><span class="comment">		gray = ((pitem + i)-&gt;r * 299 + (pitem + i)-&gt;g * 587 + (pitem + i)-&gt;b * 114 + 500) / 1000;</span></span><br><span class="line"><span class="comment">		(pitem + i)-&gt;r = gray;</span></span><br><span class="line"><span class="comment">		(pitem + i)-&gt;g = gray;</span></span><br><span class="line"><span class="comment">		(pitem + i)-&gt;b = gray;</span></span><br><span class="line"><span class="comment">	&#125;*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//灰度图反色</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; pixelCounts; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		gray = ((pitem + i)-&gt;r * <span class="number">299</span> + (pitem + i)-&gt;g * <span class="number">587</span> + (pitem + i)-&gt;b * <span class="number">114</span> + <span class="number">500</span>) / <span class="number">1000</span>;</span><br><span class="line">		(pitem + i)-&gt;r = <span class="number">255</span> - gray;</span><br><span class="line">		(pitem + i)-&gt;g = <span class="number">255</span> - gray;</span><br><span class="line">		(pitem + i)-&gt;b = <span class="number">255</span> - gray;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> * result = <span class="string">&quot;result.bmp&quot;</span>;</span><br><span class="line">	FILE * rp = fopen(result, <span class="string">&quot;wb&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (rp == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	fwrite(&amp;header, <span class="number">14</span>, <span class="number">1</span>, rp);</span><br><span class="line">	fwrite(&amp;info, <span class="keyword">sizeof</span>(INFOHEADER), <span class="number">1</span>, rp);</span><br><span class="line">	fseek(rp, offset, <span class="number">0</span>);</span><br><span class="line">	<span class="comment">//fwrite(prgbquad, sizeof(RGBQUAD), info.colorUsed, rp);</span></span><br><span class="line">	<span class="comment">//fwrite(pitem, sizeof(RGBITEM), info.sizeImage / 3, rp)</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; info.height; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		fwrite(pitem+i*rowPixelNumber, <span class="keyword">sizeof</span>(RGBITEM), rowPixelNumber, rp);</span><br><span class="line">		fwrite(garbage, remanentByteOfRow, <span class="number">1</span>, rp);</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Output singleColor.bmp  successfully!\n&quot;</span>);</span><br><span class="line">	fclose(fp);</span><br><span class="line">	fclose(rp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-Graphics/" rel="tag"><i class="fa fa-tag"></i> Computer Graphics</a>
+              <a href="/tags/DIP/" rel="tag"><i class="fa fa-tag"></i> DIP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/bitmap-resolver.html" rel="prev" title="BMP文件处理（C语言实现）">
+                  <i class="fa fa-chevron-left"></i> BMP文件处理（C语言实现）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/byte-alignment.html" rel="next" title="计算机的字节对齐">
+                  计算机的字节对齐 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李明岳</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>
