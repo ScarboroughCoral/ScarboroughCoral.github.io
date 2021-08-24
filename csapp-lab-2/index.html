@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"scarboroughcoral.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"scarboroughcoral.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="脑越用越灵，手越用越巧。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSAPP 之 Bomb Lab">
@@ -30,15 +30,32 @@
 <meta property="og:site_name" content="李明岳的网络日志">
 <meta property="og:description" content="脑越用越灵，手越用越巧。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552908036240&di=c8d7f7e0f53bb357d41bd8c7f3be8767&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01343a5821a386a84a0d304f153c8b.jpg">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/registers.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/stackframe.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/cgdb.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/bomb.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase1-input.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase1.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase1-inputstr.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase2.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase2-readnum.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase2.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase3.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase4.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase4-func.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase5.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase6-1.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase6-2.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/phrase6-linklist.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/success.png">
 <meta property="article:published_time" content="2019-03-18T16:31:05.000Z">
-<meta property="article:modified_time" content="2021-08-23T15:42:16.978Z">
+<meta property="article:modified_time" content="2021-08-24T14:14:51.135Z">
 <meta property="article:author" content="李明岳">
 <meta property="article:tag" content="CSAPP">
 <meta property="article:tag" content="Operating System">
 <meta property="article:tag" content="CSAPP Lab">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552908036240&di=c8d7f7e0f53bb357d41bd8c7f3be8767&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01343a5821a386a84a0d304f153c8b.jpg">
+<meta name="twitter:image" content="https://scarboroughcoral.github.io/csapp-lab-2/csapp-lab-2/registers.png">
 
 
 <link rel="canonical" href="https://scarboroughcoral.github.io/csapp-lab-2/">
@@ -81,15 +98,46 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
 
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -134,15 +182,22 @@
         </a>
       </div>
       <div class="site-state-item site-state-categories">
+            <a href="/categories/">
         <span class="site-state-item-count">24</span>
-        <span class="site-state-item-name">分类</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
+            <a href="/tags/">
         <span class="site-state-item-count">34</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ScarboroughCoral" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ScarboroughCoral" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
 
 
 
@@ -175,12 +230,7 @@
 
 <div class="post-block">
   
-  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-    
-    <div class="post-gallery-image">
-      <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552908036240&di=c8d7f7e0f53bb357d41bd8c7f3be8767&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01343a5821a386a84a0d304f153c8b.jpg" itemprop="contentUrl">
-    </div>
-    </div>
+  
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://scarboroughcoral.github.io/csapp-lab-2/">
@@ -214,7 +264,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-08-23 15:42:16" itemprop="dateModified" datetime="2021-08-23T15:42:16+00:00">2021-08-23</time>
+        <time title="修改时间：2021-08-24 14:14:51" itemprop="dateModified" datetime="2021-08-24T14:14:51+00:00">2021-08-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -256,7 +306,7 @@
 </div>
 
 <h3 id="栈帧"><a href="#栈帧" class="headerlink" title="栈帧"></a>栈帧</h3><p>想要了解栈帧的结构？我们还是先来回顾（review）以下有哪些和函数栈相关的寄存器吧。（这儿并没有包含浮点寄存器）</p>
-<p><img src="csapp-lab-2/registers.png"></p>
+<p><img data-src="csapp-lab-2/registers.png"></p>
 <ul>
 <li>所谓调用者保存，就是可以让被调用者（自身不作为另一个调用者）随意使用，也是为了自己用到的数据不被覆盖。</li>
 <li>所谓被调用者保存，恰恰与调用者保存相反。</li>
@@ -265,7 +315,7 @@
 <li><mark class="label primary">%rax</mark>用于保存函数调用返回值。</li>
 </ul>
 <p>了解了这些寄存器，我们再来看看栈帧的结构</p>
-<p><img src="csapp-lab-2/stackframe.png"></p>
+<p><img data-src="csapp-lab-2/stackframe.png"></p>
 <p>就拿函数P的栈帧来说，从栈底到栈顶的方向分别存储以下内容：</p>
 <ul>
 <li>被保存的寄存器</li>
@@ -274,7 +324,7 @@
 <li>调用其他函数时需要将返回地址压栈</li>
 </ul>
 <h3 id="工具使用方法"><a href="#工具使用方法" class="headerlink" title="工具使用方法"></a>工具使用方法</h3><h4 id="CGDB"><a href="#CGDB" class="headerlink" title="CGDB"></a>CGDB</h4><p>跟随<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31269514">孟佬</a>用的CGDB，<a target="_blank" rel="noopener" href="https://cgdb.github.io/">官网</a>及<a target="_blank" rel="noopener" href="http://csapp.cs.cmu.edu/3e/docs/gdbnotes-x86-64.pdf">gdb使用方式</a>，以下是CGDB运行缺省截图。</p>
-<p><img src="csapp-lab-2/cgdb.png"></p>
+<p><img data-src="csapp-lab-2/cgdb.png"></p>
 <h2 id="Bomb-Lab"><a href="#Bomb-Lab" class="headerlink" title="Bomb Lab"></a>Bomb Lab</h2><p>BombLab家喻户晓，个人感觉之所以这个实验这么有名，主要有三点：</p>
 <ul>
 <li>一是作为配套实验能够真正的训练学到的程序机器级表示的内容；</li>
@@ -286,7 +336,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cgdb bomb</span><br></pre></td></tr></table></figure>
 
 <p>就会看到如下界面：</p>
-<p><img src="csapp-lab-2/bomb.png"></p>
+<p><img data-src="csapp-lab-2/bomb.png"></p>
 <p>这是给我们的主程序，里面主要是炸弹程序的初始化，以及这些炸弹的输入以及输入检测。</p>
 <p>在CGDB模式下我们可以使用<code>:set disasm</code>命令将主程序以汇编形式展示，当然使用<code>:set nodisasm</code>就会返回原来的样子。</p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><div class="note success no-icon"><p>所有炸弹拆除的思路都很简单，就是设断点，并一步步调试，找到跳转到<code>explode_bomb</code>的跳转命令，结合逻辑和寄存器的值进行判断如何避免跳转引发爆炸。</p>
@@ -303,11 +353,11 @@
 <li>分析代码得出答案</li>
 </ul>
 <h3 id="Phrase-Before"><a href="#Phrase-Before" class="headerlink" title="#Phrase Before"></a>#Phrase Before</h3><p>如果你是第一次做实验的话，这一步你一定要知道：</p>
-<p><img src="csapp-lab-2/phrase1-input.png"></p>
+<p><img data-src="csapp-lab-2/phrase1-input.png"></p>
 <p>这六个炸弹都是都是通过一个<code>read_line</code>函数从输入流（不管是标准输入还是文件输入重定向）中读取的，返回值为<code>input</code>，对应于<code>%rax</code>寄存器（存放的一个输入字符串的首地址）。我们看到将<code>%rax</code>寄存器的内容转移到<code>%rdi</code>寄存器里了，我们知道寄存器<code>%rdi</code>用于存放调用函数时的第一个参数。接下来就调用炸弹函数了。</p>
 <p><strong>再强调一遍，所有的炸弹函数的第一个参数<code>%rdi</code>都是我们输入的字符串的首地址。</strong></p>
 <h3 id="Phrase-1"><a href="#Phrase-1" class="headerlink" title="#Phrase 1"></a>#Phrase 1</h3><p>第一个炸弹的汇编代码如下所示：</p>
-<p><img src="csapp-lab-2/phrase1.png"></p>
+<p><img data-src="csapp-lab-2/phrase1.png"></p>
 <p>第一个算是一个入门的，主要是想让你熟悉一下BombLab的流程。</p>
 <p>我们输入的字符串首地址在<code>%rdi</code>中；</p>
 <p>②行申请了8个字节的栈空间；</p>
@@ -315,12 +365,12 @@
 <p>④行调用了一个函数，如果你想快速通过的话不用看内部实现，是比较两个字符串是否相同。（内部比较就不说了，一个一个比较字符而已）</p>
 <p>⑤行使用test命令（同<code>and</code>命令，不修改目标对象的值）来测试<code>%eax</code>中的值是否为0，如果为0则跳过引爆炸弹的函数。</p>
 <p>很简单了，使用<code>x/s 0x402400</code>按字符串输出这个地址存储的内容（这个可能是我在比较字符串的函数内输出的 :smile: ）：</p>
-<p><img src="csapp-lab-2/phrase1-inputstr.png"></p>
+<p><img data-src="csapp-lab-2/phrase1-inputstr.png"></p>
 <p>第一弹，拆除完毕！</p>
 <h3 id="Phrase-2"><a href="#Phrase-2" class="headerlink" title="#Phrase 2"></a>#Phrase 2</h3><p>第二弹，来吧勇士！（好吧，感觉有点中二。）</p>
-<p><img src="csapp-lab-2/phrase2.png"></p>
+<p><img data-src="csapp-lab-2/phrase2.png"></p>
 <p>嗯，映入我们眼前的是一个<code>&lt;read_six_numbers&gt;</code>函数，一猜也是让我们输入6个数字:</p>
-<p><img src="csapp-lab-2/phrase2-readnum.png"></p>
+<p><img data-src="csapp-lab-2/phrase2-readnum.png"></p>
 <p>然后我们查看一下这个函数内部，发现里面又调用了<code>sscanf</code>这个函数（功能是从一个字符串中读取一定格式的数据，和<code>scanf</code>一样，除了<code>scanf</code>是从标准输入流中读取）。参数顺序分别是，待读取内容的字符串、用于格式读取的格式化字符串，还有各个变量读取后存放的地址。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sscanf</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *buffer, <span class="keyword">const</span> <span class="keyword">char</span> *format [, argument ] ... )</span></span>;</span><br></pre></td></tr></table></figure>
 
@@ -335,12 +385,12 @@
 <li>第五个、第六个值所在的地址需要通过压栈传参，由栈帧压栈顺序是从右向左压栈，可知，<code>phrase2</code>中的<code>%rsp+0x10</code>存放第五个值、<code>phrase2</code>中的<code>%rsp+0x14</code>存放第六个值。</li>
 </ul>
 <p>好了，知道输入的值都到哪儿去了，这样就简单了许多了，然后再看<code>phrase2</code>函数：</p>
-<p><img src="csapp-lab-2/phrase2.png"></p>
+<p><img data-src="csapp-lab-2/phrase2.png"></p>
 <p>首先看**&lt;+14&gt;**处，第一个数必须是1，不是炸弹就爆炸。</p>
 <p>不是就跳到**&lt;+52&gt;<strong>处，然后</strong>&lt;+27&gt;<strong>到</strong>&lt;+52&gt;**构成一个循环，意思是比较后一个数必须是前一个数的两倍。</p>
 <p>那答案就出来了：<code>1 2 4 8 16 32</code></p>
 <h3 id="Phrase-3"><a href="#Phrase-3" class="headerlink" title="#Phrase 3"></a>#Phrase 3</h3><p>好了，兄嘚，第三炮！</p>
-<p><img src="csapp-lab-2/phrase3.png"></p>
+<p><img data-src="csapp-lab-2/phrase3.png"></p>
 <p>输入还是<code>sscanf</code>函数，同理，<code>%rdi</code>是我们输入的，<code>%rsi</code>是<code>format</code>打印一下看是<code>%d %d</code>，需要两个地址存放，分别是<code>%rdx</code>和<code>%rcx</code>，对应于<code>%rsp+0x8</code>和<code>%rsp+0xc</code>。输入完成后，查看返回值<code>%eax</code>必须大于1，两个输入必然是最满足要求的。满足之后，我们来到了**&lt;+39&gt;**的位置，我们比较第一个输入值<code>x</code>和7，如果第一个<code>x</code>大于7则爆炸，所以<code>x</code>是&lt;=7的。</p>
 <p>接下来将x值放入<code>%eax</code>寄存器，然后通过间接跳转跳转到<code>0x402470+8*%eax</code>地址所存储的地址。我们可以看到这个跳转目标和输入有关的。然后我们可以输出相应的地址，发现跳转的地址刚好是修改<code>%eax</code>的地方，最终<code>%eax</code>都要和第二个数<code>y</code>（<code>%rsp+0xc</code>地址存储的值）相等。</p>
 <p>就比如说x为0，则跳转到<code>0x402470</code>的地址中存储的地址（**&lt;+57&gt;<strong>的位置），将<code>%eax</code>修改为0xcf（十进制207），然后跳转到</strong>&lt;+123&gt;**处比较0xcf和<code>y</code>值，相等才不会爆炸。所以结果可以输入<code>0 207</code>。</p>
@@ -348,7 +398,7 @@
 <h3 id="Phrase-4"><a href="#Phrase-4" class="headerlink" title="#Phrase 4"></a>#Phrase 4</h3><p>第四弹！</p>
 <p>主要考察递归函数调用（当然你也可以避过这个问题！）</p>
 <p>先看主要部分代码：</p>
-<p><img src="csapp-lab-2/phrase4.png"></p>
+<p><img data-src="csapp-lab-2/phrase4.png"></p>
 <p>通过这个程序我们可以分析出，除了输入函数和爆炸函数之外，还调用了一个<code>func4</code> 函数。输入的是两个数字，存于<code>%rsp+0x8</code>和<code>%rsp+0xc</code>处。我们还可以分析出，<strong>调用这个函数之后返回值<code>%eax</code>必须为0，而且第二个输入的数必须为0。</strong></p>
 <p>我们再看传入的参数：</p>
 <ul>
@@ -357,13 +407,13 @@
 <li><code>%rdx</code>：0xe，即14</li>
 <li><code>%rcx</code>：第二个数，记作y。不确定会不会用到，看到下面的代码很显然没用使用到，直接被覆盖了。</li>
 </ul>
-<p><img src="csapp-lab-2/phrase4-func.png"></p>
+<p><img data-src="csapp-lab-2/phrase4-func.png"></p>
 <p>查看代码，如果你进入了递归是太恶心了，不过也可以分析，好像要求输入x值必须满足是一个数列的元素。那么如何避免递归，看**&lt;+22&gt;<strong>行，可以分析出此时<code>%ecx</code>的值为7，如果<code>%edi</code>也就是x值如果&gt;=7的话，那就会跳转到</strong>&lt;+36&gt;**，此时将<code>%eax</code>置位0（满足返回值为0），然后再比较刚比较的<code>%edi</code>和<code>%ecx</code>，如果<code>%edi</code>&lt;=7的话就结束。所以最终x=7满足条件。</p>
 <p>所以很简单的答案，<code>7 0</code>。递归的值没仔细考虑，实在是递归太难调试了，可能是自己没掌握到方法。很遗憾。</p>
 <h3 id="Phrase-5"><a href="#Phrase-5" class="headerlink" title="#Phrase 5"></a>#Phrase 5</h3><p>第五发！</p>
 <p>这个也比较有趣，主要是涉及到了ASCII码，感觉真的是在破译代码，解除炸弹！</p>
 <p>下面就是代码：</p>
-<p><img src="csapp-lab-2/phrase5.png"></p>
+<p><img data-src="csapp-lab-2/phrase5.png"></p>
 <p>首先我们看到了<code>%fs</code>寄存器，这是用于存储<code>当前活动线程的TEB结构</code>地址的一个寄存器，和解题无关，可以不用在意。</p>
 <p>首先输入的字符串地址在<code>%rdi</code>中，然后调用<code>string_length</code>函数，可以看电脑返回值<code>%eax</code>必须为6，也就是输入的字符串长度必须为6。</p>
 <p>接下来的一段程序主要是以下作用：</p>
@@ -381,19 +431,19 @@
 <p>由于代码太多，就不一一写了，主要是写一下代码的作用。</p>
 <p>代码如下：</p>
 <p>首先是第一部分：</p>
-<p><img src="csapp-lab-2/phrase6-1.png"></p>
+<p><img data-src="csapp-lab-2/phrase6-1.png"></p>
 <p>首先读入了6个数字，分别放入了<code>%rsp+0x0、%rsp+0x4、%rsp+0x8、%rsp+0xc、%rsp+0x10、%rsp+0x14</code></p>
 <p>这是第一个大循环，**&lt;+32&gt;<strong>到</strong>&lt;+93&gt;<strong>行，内嵌一个小循环</strong>&lt;+65&gt;<strong>到</strong>&lt;+87&gt;**行。大循环中部分的作用是确定每个数必须&lt;=6；小循环的作用是确定第<code>i</code>个数不和第<code>i+1</code>~第<code>6</code>个数相同（也就是输入的所有数字不能有相同的）。</p>
 <p>接下来再看剩下的部分：</p>
-<p><img src="csapp-lab-2/phrase6-2.png" alt="2"></p>
+<p><img data-src="csapp-lab-2/phrase6-2.png" alt="2"></p>
 <p>首先有个循环**&lt;+103&gt;<strong>到</strong>&lt;+121&gt;**，主要作用就是令<code>a[i]=7-a[i],i=1,2,3,4,5,6</code>，就是将存于栈中的数（也是你输入的数）进行对7求补并保存回原位置。</p>
 <p>接下来又有一个大循环**&lt;+130&gt;<strong>到</strong>&lt;+181&gt;<strong>部分，里面嵌入了一个小循环</strong>&lt;+130&gt;<strong>到</strong>&lt;+139&gt;**。主要作用是访问一个链表，链表的首地址为<code>0x6032d0</code>，针对输入的第<code>i</code>个数，按照<code>a[i]</code>的值获取链表第<code>a[i]</code>个节点，并把节点首地址放入<code>%rsp+0x20+0x0</code>~到<code>%rsp+0x20+0x28</code>刚好是6个节点。</p>
 <p>然后下面一段代码，又是一个循环**&lt;+235&gt;<strong>到</strong>&lt;+257&gt;**，主要是说明<code>%rsp+0x20+0x0</code>~到<code>%rsp+0x20+0x28</code>存储的链表节点值必须是递减的。</p>
 <p>下面打印的是这六个节点的值和指向下一个节点的地址。</p>
-<p><img src="csapp-lab-2/phrase6-linklist.png"></p>
+<p><img data-src="csapp-lab-2/phrase6-linklist.png"></p>
 <p>找到了各节点的值，我们就可以排序得到节点标号的排序，节点标号的排序恰恰是输入6个数字对7求补的值，然后再对7求补即可得到结果<code>4 3 2 1 6 5</code>。</p>
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>完成的一瞬家很爽！秀一下结果！</p>
-<p><img src="csapp-lab-2/success.png"></p>
+<p><img data-src="csapp-lab-2/success.png"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这次实验真的是收货颇丰，一是完成了大名鼎鼎的bomblab，二是切切实实的学到了新东西。</p>
 <h3 id="所感"><a href="#所感" class="headerlink" title="所感"></a>所感</h3><ul>
 <li>相对于上次实验，感觉动手能力变强了</li>
@@ -420,9 +470,9 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/CSAPP/" rel="tag"># CSAPP</a>
-              <a href="/tags/Operating-System/" rel="tag"># Operating System</a>
-              <a href="/tags/CSAPP-Lab/" rel="tag"># CSAPP Lab</a>
+              <a href="/tags/CSAPP/" rel="tag"><i class="fa fa-tag"></i> CSAPP</a>
+              <a href="/tags/Operating-System/" rel="tag"><i class="fa fa-tag"></i> Operating System</a>
+              <a href="/tags/CSAPP-Lab/" rel="tag"><i class="fa fa-tag"></i> CSAPP Lab</a>
           </div>
 
         
@@ -474,10 +524,12 @@
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 

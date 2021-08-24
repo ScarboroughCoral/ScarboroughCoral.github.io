@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"scarboroughcoral.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"scarboroughcoral.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="大漠孤烟直？长河落日圆！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="空间域滤波">
@@ -30,14 +30,23 @@
 <meta property="og:site_name" content="李明岳的网络日志">
 <meta property="og:description" content="大漠孤烟直？长河落日圆！">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553165479621&di=b4c9a7e397be6bfd773d67f8c58c0b77&imgtype=0&src=http%3A%2F%2Fimgs.aixifan.com%2Fo_1cm84jvfc1oqh198cu088o7q4co.jpg">
+<meta property="og:image" content="https://scarboroughcoral.github.io/spatial-filter/spatial-filter/gray1.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/spatial-filter/spatial-filter/gray2.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/spatial-filter/spatial-filter/gray2-3.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/spatial-filter/spatial-filter/gray3.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/spatial-filter/spatial-filter/gray3-3.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/spatial-filter/spatial-filter/gray1.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/spatial-filter/spatial-filter/gray2.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/spatial-filter/spatial-filter/gray2-3.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/spatial-filter/spatial-filter/gray3.png">
+<meta property="og:image" content="https://scarboroughcoral.github.io/spatial-filter/spatial-filter/gray3-3.png">
 <meta property="article:published_time" content="2019-03-21T16:00:27.000Z">
-<meta property="article:modified_time" content="2021-08-23T15:42:17.074Z">
+<meta property="article:modified_time" content="2021-08-24T14:14:51.251Z">
 <meta property="article:author" content="李明岳">
 <meta property="article:tag" content="Computer Graphics">
 <meta property="article:tag" content="DIP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553165479621&di=b4c9a7e397be6bfd773d67f8c58c0b77&imgtype=0&src=http%3A%2F%2Fimgs.aixifan.com%2Fo_1cm84jvfc1oqh198cu088o7q4co.jpg">
+<meta name="twitter:image" content="https://scarboroughcoral.github.io/spatial-filter/spatial-filter/gray1.png">
 
 
 <link rel="canonical" href="https://scarboroughcoral.github.io/spatial-filter/">
@@ -80,15 +89,46 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
 
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -133,15 +173,22 @@
         </a>
       </div>
       <div class="site-state-item site-state-categories">
+            <a href="/categories/">
         <span class="site-state-item-count">24</span>
-        <span class="site-state-item-name">分类</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
+            <a href="/tags/">
         <span class="site-state-item-count">34</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ScarboroughCoral" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ScarboroughCoral" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
 
 
 
@@ -174,12 +221,7 @@
 
 <div class="post-block">
   
-  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-    
-    <div class="post-gallery-image">
-      <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553165479621&di=b4c9a7e397be6bfd773d67f8c58c0b77&imgtype=0&src=http%3A%2F%2Fimgs.aixifan.com%2Fo_1cm84jvfc1oqh198cu088o7q4co.jpg" itemprop="contentUrl">
-    </div>
-    </div>
+  
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://scarboroughcoral.github.io/spatial-filter/">
@@ -213,7 +255,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-08-23 15:42:17" itemprop="dateModified" datetime="2021-08-23T15:42:17+00:00">2021-08-23</time>
+        <time title="修改时间：2021-08-24 14:14:51" itemprop="dateModified" datetime="2021-08-24T14:14:51+00:00">2021-08-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -269,7 +311,7 @@
 <li>边缘处理，两种方法：不处理；扩充图像。</li>
 </ul>
 <h2 id="任务Start"><a href="#任务Start" class="headerlink" title="任务Start"></a>任务Start</h2><p>首先展示一下原图（因为需要找噪声比较明显的图像，所以没找到像素比较大的和attractive的 :cry:）：</p>
-<p><img src="spatial-filter/gray1.png"></p>
+<p><img data-src="spatial-filter/gray1.png"></p>
 <h3 id="平均处理"><a href="#平均处理" class="headerlink" title="平均处理"></a>平均处理</h3><p>比较常见的有两种平均处理核：</p>
 <ul>
 <li>第一种</li>
@@ -286,43 +328,43 @@
 <ul>
 <li>一次迭代运行结果</li>
 </ul>
-<p><img src="spatial-filter/gray2.png"></p>
+<p><img data-src="spatial-filter/gray2.png"></p>
 <ul>
 <li>三次迭代运行结果</li>
 </ul>
-<p><img src="spatial-filter/gray2-3.png"></p>
+<p><img data-src="spatial-filter/gray2-3.png"></p>
 <h3 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MedianFiltering</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> * src, <span class="keyword">const</span> <span class="keyword">char</span> * output)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	BMFILEHEADER header;</span><br><span class="line">	INFOHEADER info;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> ** data = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>*));</span><br><span class="line">	RGBQUAD ** palette = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(RGBQUAD*));</span><br><span class="line">	<span class="keyword">unsigned</span> pixelCounts = BMPReader8(src, &amp;header, &amp;info, palette, data);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> **outData = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>*));</span><br><span class="line"></span><br><span class="line">	*outData = <span class="built_in">malloc</span>(pixelCounts);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">unsigned</span> i = <span class="number">0</span>; i &lt; info.height; i++)</span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">unsigned</span> j = <span class="number">0</span>; j &lt; info.width; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (i == <span class="number">0</span> || (i == info.height - <span class="number">1</span>) || j == <span class="number">0</span> || (j == info.width - <span class="number">1</span>))</span><br><span class="line">			&#123;</span><br><span class="line">				*(*outData + i * info.width + j) = *(*data + i * info.width + j);</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">int</span> newGrays[] = &#123; *(*data + (i - <span class="number">1</span>) * info.width + (j - <span class="number">1</span>)) ,</span><br><span class="line">				*(*data + (i)* info.width + (j - <span class="number">1</span>)) ,</span><br><span class="line">				*(*data + (i + <span class="number">1</span>)* info.width + (j - <span class="number">1</span>)) ,</span><br><span class="line">				*(*data + (i - <span class="number">1</span>)* info.width + (j)) ,</span><br><span class="line">				*(*data + (i)* info.width + (j)) ,</span><br><span class="line">				*(*data + (i + <span class="number">1</span>)* info.width + (j)) ,</span><br><span class="line">				*(*data + (i - <span class="number">1</span>)* info.width + (j + <span class="number">1</span>)) ,</span><br><span class="line">				*(*data + (i)* info.width + (j + <span class="number">1</span>)) ,</span><br><span class="line">				*(*data + (i + <span class="number">1</span>)* info.width + (j + <span class="number">1</span>)) &#125;;</span><br><span class="line">			quicksort(newGrays, <span class="number">0</span>, <span class="number">8</span>);</span><br><span class="line">			<span class="keyword">int</span> newGray = newGrays[<span class="number">4</span>];</span><br><span class="line">			*(*outData + i * info.width + j) = newGray;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	BMPWriter8(output, &amp;header, &amp;info, palette, outData);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h4 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h4><p>与均值处理类似，中值处理也分别采用1次和3次迭代。</p>
 <ul>
 <li>一次迭代运行结果</li>
 </ul>
-<p><img src="spatial-filter/gray3.png"></p>
+<p><img data-src="spatial-filter/gray3.png"></p>
 <ul>
 <li>三次迭代运行结果</li>
 </ul>
-<p><img src="spatial-filter/gray3-3.png"></p>
+<p><img data-src="spatial-filter/gray3-3.png"></p>
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>整体看一下效果，可以打开一个图进行左右切换对比。</p>
 <ul>
 <li>原图</li>
 </ul>
-<p><img src="spatial-filter/gray1.png"></p>
+<p><img data-src="spatial-filter/gray1.png"></p>
 <ul>
 <li>平均处理（一次处理）</li>
 </ul>
-<p><img src="spatial-filter/gray2.png"></p>
+<p><img data-src="spatial-filter/gray2.png"></p>
 <ul>
 <li>平均处理（三次迭代）</li>
 </ul>
-<p><img src="spatial-filter/gray2-3.png"></p>
+<p><img data-src="spatial-filter/gray2-3.png"></p>
 <ul>
 <li>中值滤波（一次处理）</li>
 </ul>
-<p><img src="spatial-filter/gray3.png"></p>
+<p><img data-src="spatial-filter/gray3.png"></p>
 <ul>
 <li>中值滤波（三次迭代）</li>
 </ul>
-<p><img src="spatial-filter/gray3-3.png"></p>
+<p><img data-src="spatial-filter/gray3-3.png"></p>
 <h3 id="两者对比"><a href="#两者对比" class="headerlink" title="两者对比"></a>两者对比</h3><p>很明显，中值滤波处理方法更优。平均处理方法在模糊噪声的同时也一定程度的模糊的关键像素，会产生新的灰度值；而中值滤波只会选取已有的灰度值进行取值。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="note primary"><p><strong>全部代码请查看<a target="_blank" rel="noopener" href="https://github.com/ScarboroughCoral/DIPModule">GitHub</a></strong></p>
 </div>
@@ -339,8 +381,8 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Computer-Graphics/" rel="tag"># Computer Graphics</a>
-              <a href="/tags/DIP/" rel="tag"># DIP</a>
+              <a href="/tags/Computer-Graphics/" rel="tag"><i class="fa fa-tag"></i> Computer Graphics</a>
+              <a href="/tags/DIP/" rel="tag"><i class="fa fa-tag"></i> DIP</a>
           </div>
 
         
@@ -392,10 +434,12 @@
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
