@@ -3544,53 +3544,6 @@
       </tags>
   </entry>
   <entry>
-    <title>我的学习方法论</title>
-    <url>/learn-method.html</url>
-    <content><![CDATA[<div class="note success"><p>我应该如何高效学习。</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<h2 id="为什么写这篇文章"><a href="#为什么写这篇文章" class="headerlink" title="为什么写这篇文章"></a>为什么写这篇文章</h2><p>毕业之际，入职之际。需要学的东西铺天盖地而来，如何高效的学习，高效的完成个人任务是现在必须要思考的。</p>
-<p>我只喜欢做我自己喜欢做的事情（相信大多数人也是）。我这个人比较懒，执行力比较差，只要开始动手做就想做，不做就一点心思没有，这有点像看剧打游戏的我，不想刷剧一刷又停不下来。。。感觉是大学学坏的毛病。</p>
-<h2 id="如何高效学"><a href="#如何高效学" class="headerlink" title="如何高效学"></a>如何高效学</h2><p>如果自己想学点东西如何去学才学得快？读书？看视频？认真记笔记？</p>
-<h3 id="哪里找资源"><a href="#哪里找资源" class="headerlink" title="哪里找资源"></a>哪里找资源</h3><p>从这些网站去找需要哪些资源，而不是资源就在这。</p>
-<ul>
-<li><a href="https://www.google.com/">谷歌</a></li>
-<li><a href="https://www.zhihu.com/">知乎</a></li>
-</ul>
-<h3 id="快速入手选择视频-文档"><a href="#快速入手选择视频-文档" class="headerlink" title="快速入手选择视频+文档"></a>快速入手选择视频+文档</h3><p>比如需要入门新的语言，读厚书无疑很慢，官方文档如果教程很差，你应该怎么办？</p>
-<ul>
-<li>找一些相关MOOC，<strong>2倍播放~</strong></li>
-<li><strong>第三方文档</strong>有没有好点的！</li>
-</ul>
-<h3 id="快速入手后通过Coding和思考快速提升"><a href="#快速入手后通过Coding和思考快速提升" class="headerlink" title="快速入手后通过Coding和思考快速提升"></a>快速入手后通过Coding和思考快速提升</h3><p>快速入手了之后还是有些问题不会解决，或者没接触过，这需要加强练习。<br>比如入门新的语言，你可以入手之后开始刷题。如果是一个新工程策略，你可以简单的搭建一个demo</p>
-<ul>
-<li><a href="https://leetcode-cn.com/">LeetCode再刷一遍做过的题</a></li>
-<li><a href="https://www.codewars.com/">CodeWars刷一刷简单题或者是刷过的题</a></li>
-<li><a href="https://codelabs.developers.google.com/">谷歌code实验带你飞</a></li>
-</ul>
-<h3 id="系统学习需要慢慢地来读书"><a href="#系统学习需要慢慢地来读书" class="headerlink" title="系统学习需要慢慢地来读书"></a>系统学习需要慢慢地来读书</h3><p>这是需要日积月累的过程！做好计划，每日读书，每周读书。</p>
-<h3 id="笔记没那么重要！"><a href="#笔记没那么重要！" class="headerlink" title="笔记没那么重要！"></a>笔记没那么重要！</h3><p>不用做详细的笔记，太浪费时间！<strong>只做简要的笔记就够了！不会的时候回查就行了！</strong></p>
-<h2 id="如何做"><a href="#如何做" class="headerlink" title="如何做"></a>如何做</h2><p>学了之后怎么去做？</p>
-<h3 id="High-Priority-First"><a href="#High-Priority-First" class="headerlink" title="High Priority First"></a>High Priority First</h3><div class="note primary"><p>高优先级第一。</p>
-</div>
-
-<p>执行力差！尽力去做！养好心态！</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用Promise来描述。用async await感觉语义化不是很强。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> how2Learn=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>=&gt;</span>(<span class="string">&quot;需要学东西&quot;</span>,resolve()))</span><br><span class="line">  .then(<span class="function">()=&gt;</span>(<span class="string">&quot;找资源&quot;</span>,<span class="string">&quot;这是资源&quot;</span>))</span><br><span class="line">  .then(<span class="function"><span class="params">res</span>=&gt;</span><span class="string">`learn <span class="subst">$&#123;res&#125;</span>(MOOC+文档)`</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span>=&gt;</span><span class="string">&quot;刷题深刻理解&amp;&amp;开始干活&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> systemLearn=<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">days</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(days--)&#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">r</span>=&gt;</span><span class="built_in">setTimeout</span>(<span class="number">86400000</span>,<span class="function">()=&gt;</span>(<span class="string">&quot;每日读书&quot;</span>,r())))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.all([how2Learn,systemLearn()])</span><br><span class="line">  .then(<span class="function">()=&gt;</span><span class="string">&quot;I have learned it.&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>文字描述：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">需要学东西=&gt;找资源=&gt;MOOC文档快速入手=&gt;刷刷题案例或者直接开始干活</span><br><span class="line">                ||</span><br><span class="line">                ==&gt; 同时计划系统学习=&gt;读书，简单记笔记</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Method</category>
-      </categories>
-      <tags>
-        <tag>Method</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>操作系统开发平台</title>
     <url>/osdev-platform.html</url>
     <content><![CDATA[<div class="note default"><p>工欲善其事，必先利其器。</p>
