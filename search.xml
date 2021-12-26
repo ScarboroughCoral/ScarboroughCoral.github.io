@@ -5102,4 +5102,64 @@
         <tag>Operating System</tag>
       </tags>
   </entry>
+  <entry>
+    <title>rCore Lab 第一期：应用程序与基本执行环境</title>
+    <url>/rCore-lab-1.html</url>
+    <content><![CDATA[<div class="note primary"><p>实现彩色打印 Hello World。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><ul>
+<li><p>实现分支：ch1</p>
+</li>
+<li><p>完成实验指导书中的内容并在裸机上实现 hello world 输出。</p>
+</li>
+<li><p>实现彩色输出宏(只要求可以彩色输出，不要求 log 等级控制，不要求多种颜色)</p>
+</li>
+<li><p>隐形要求：可以关闭内核所有输出。从 lab2 开始要求关闭内核所有输出（如果实现了 log 等级控制，那么这一点自然就实现了）。</p>
+</li>
+<li><p>利用彩色输出宏输出 os 内存空间布局</p>
+</li>
+<li><p> 输出 .text、.data、.rodata、.bss 各段位置，输出等级为 INFO。</p>
+</li>
+</ul>
+<blockquote>
+<p>challenge: 支持多核，实现多个核的 boot。</p>
+</blockquote>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><div class="note info"><p>代码详情参考<a href="https://github.com/ScarboroughCoral/rCore-lab/tree/ch1">Github</a></p>
+</div>
+
+
+
+<p>基于<a href="https://github.com/rcore-os/rCore-Tutorial-v3">rCore-Tutorial-v3</a> 的 <code>ch1</code> 进行开发彩色打印“hello world”很简单，只需要参考<code>println!</code>宏进行实现即可，难点在于裸机打印。</p>
+<p>先晒结果：</p>
+<p><img data-src="rCore-lab-1/result.png"></p>
+<h3 id="打印彩色字体"><a href="#打印彩色字体" class="headerlink" title="打印彩色字体"></a>打印彩色字体</h3><p>彩色打印是基于<a href="https://zh.wikipedia.org/wiki/ANSI%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97">ANSI转义序列</a>。在shell中执行如下命令就可以打印彩色字体。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\x1b[31mhello world\x1b[0m&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在前端开发中，浏览器 devTools 的输出也支持彩色打印字体、背景等，跟上述shell打印是一样的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;\x1b[31mhello world\x1b[0m&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="在裸机上实现-hello-world-输出"><a href="#在裸机上实现-hello-world-输出" class="headerlink" title="在裸机上实现 hello world 输出"></a>在裸机上实现 hello world 输出</h3><p>首先要了解在操作系统支持下打印“hello world”和在裸机上打印的区别。知道在操作系统支持下打印“hello world”究竟发生了什么，这是如何在裸机上打印的关键点。<br>首先我们假设使用Rust向标准输出流打印“hello world”，会编写如下代码：</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后执行<code>cargo run</code>或者直接通过<code>rustc</code>进行编译执行，这样标准输出设备上就会显示“hello world”了。<code>println!</code>是一个rust标准库支持的宏，这个宏的实现实际上又调用了操作系统的系统调用，系统调用再调用硬件接口来实现打印功能。</p>
+<p>然而我们要在裸机上打印“hello world”，假设我们还需要使用上面的程序代码实现，这就有问题了，裸机并没有操作系统，所以没有系统调用供rust标准库来实现打印宏。</p>
+<p>还有一个问题，就算是裸机也有不同的硬件支持，我们编译的程序也需要知道编译结果需要在什么平台上运行，即目标平台，一般用（CPU架构，CPU厂商，操作系统，运行时）来区分，比如我们实验的平台就是<code>riscv64gc-unknown-none-elf</code>。rust标准库在裸机平台上没有实现，但在一些平台，比如<code>riscv64gc-unknown-linux-gnu</code>这种有操作系统和运行时的平台rust标准库是有实现的。</p>
+<p>综上，我们需要做的就是直接调用操作系统之下的运行环境接口（SBI，Supervisor Binary Interface）来打印而不使用标准库，并将rust程序编译为<code>riscv64gc-unknown-none-elf</code>平台上的程序，然后在对应裸机上执行。</p>
+<p>在这里，使用<code>qemu-system-riscv64</code>来模拟riscv裸机环境，其中有一些限制，你需要知道这个裸机对应的bootloader应该放在内存哪里，bootloader执行完成后跳转到的我们的程序起始位置在哪里。</p>
+<h3 id="log-控制等级、展示不同颜色"><a href="#log-控制等级、展示不同颜色" class="headerlink" title="log 控制等级、展示不同颜色"></a>log 控制等级、展示不同颜色</h3><p>因为rust有现成的crate可用，使用了log这个crate，只需要实现<code>Log</code>接口即可通过等级来打印不同颜色的日志，也可以设置最强日志等级进行拦截。</p>
+<h3 id="利用彩色输出宏输出-os-内存空间布局"><a href="#利用彩色输出宏输出-os-内存空间布局" class="headerlink" title="利用彩色输出宏输出 os 内存空间布局"></a>利用彩色输出宏输出 os 内存空间布局</h3><p>获取内存空间布局，即各个段的位置，即获取一些全局符号，<code>.stext</code>、<code>.etext</code>等的位置，在这里我们使用如下代码：</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">stext</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">etext</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">srodata</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">erodata</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">sdata</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">edata</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">sbss</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">ebss</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">boot_stack</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">boot_stack_top</span></span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是根据“C”这种约定的ABI来进行获取全局符号，这样我们就获得了各个段的开始和结尾。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://rcore-os.github.io/rCore-Tutorial-Book-v3/appendix-c/index.html">https://rcore-os.github.io/rCore-Tutorial-Book-v3/appendix-c/index.html</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Operating System</tag>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
 </search>
