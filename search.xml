@@ -695,6 +695,89 @@
       </tags>
   </entry>
   <entry>
+    <title>Reference &amp; Pointer in C(PP)</title>
+    <url>/c-reference-pointer.html</url>
+    <content><![CDATA[<div class="note info"><p>“Reference &amp; Pointer in C” expressed in English.</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="Forword"><a href="#Forword" class="headerlink" title="Forword"></a>Forword</h2><p>The reason why I write this blog article is just to understand the reference and pointer completely.Let’s have a look the underlying implementation of the reference and pointer.</p>
+<h2 id="Music"><a href="#Music" class="headerlink" title="Music"></a>Music</h2><blockquote>
+<p><em><strong>天净沙</strong></em> By <strong>骆集益/周志华</strong></p>
+</blockquote>
+<iframe frameborder="no" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=26344079&auto=1&height=66"></iframe>
+
+<h2 id="In-one-word"><a href="#In-one-word" class="headerlink" title="In one word"></a>In one word</h2><div class="note primary"><p>Reference is the same as pointer in essence.Both are the address,and the differences between both are the using rules.</p>
+</div>
+
+<h2 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h2><p>There are some situations:</p>
+<ul>
+<li>Basic data type reference</li>
+<li>Struct type reference</li>
+<li>Class type reference</li>
+<li>Class type pointer</li>
+<li>About the segment</li>
+</ul>
+<p>We will talk it in the above way.</p>
+<h3 id="0x01-Basic-data-type-reference"><a href="#0x01-Basic-data-type-reference" class="headerlink" title="0x01 Basic data type reference"></a>0x01 Basic data type reference</h3><p>There are two programs in this situation.</p>
+<ul>
+<li>Let’s see the reference and pointer in underlying assembly code :-)</li>
+</ul>
+<p><img data-src="c-reference-pointer/reference.png"></p>
+<p>In this program,we can conclude these results:</p>
+<ol>
+<li><p>The local variables is saved in the address begining with <code>%rbp-0x24</code>(to increasing direction.).The <code>int</code> type variables cover 4 bytes and the <code>address</code> type variables cover 8 bytes.</p>
+<ol>
+<li>Variable <code>a</code> is saved at <code>%rbp-0x24</code></li>
+<li>Variable <code>b</code> is saved at <code>%rbp-0x20</code></li>
+<li>Variable <code>c</code> is saved at <code>%rbp-0x18</code></li>
+<li>Variable <code>d</code> is saved at <code>%rbp-0x10</code> </li>
+</ol>
+</li>
+<li><p><strong>The reference and the pointer both are address.</strong></p>
+</li>
+</ol>
+<ul>
+<li>Let’s see the instance of reference in calling functions.</li>
+</ul>
+<p><img data-src="c-reference-pointer/reference2.png"></p>
+<p>We can conclude these results:</p>
+<ol>
+<li>Call-by-reference relays the parameters by their address.</li>
+<li>We have known that we can call by value.Of course,the address is also a value.Thus,we can think that there is only call-by-value.</li>
+</ol>
+<h3 id="0x02-Struct-type-reference"><a href="#0x02-Struct-type-reference" class="headerlink" title="0x02 Struct type reference"></a>0x02 Struct type reference</h3><p>Let’s talk about reference in struct type variables.</p>
+<p><img data-src="c-reference-pointer/reference-struct.png"></p>
+<p>In this program,we can conclude that:</p>
+<ol>
+<li>The variables defined in the way - <code>T a;</code> - are all saved in the stack frame.</li>
+<li>The reference of struct-type variables is also an address.</li>
+</ol>
+<h3 id="0x03-Class-type-reference"><a href="#0x03-Class-type-reference" class="headerlink" title="0x03 Class type reference"></a>0x03 Class type reference</h3><p>The class-type instance is the same as the struct.</p>
+<p>It’s easy! You can jump it!</p>
+<p><img data-src="c-reference-pointer/reference-class.png"></p>
+<h3 id="0x04-Class-type-pointer"><a href="#0x04-Class-type-pointer" class="headerlink" title="0x04 Class type pointer"></a>0x04 Class type pointer</h3><p>Let’s have a look at the instance defined by <code>new</code>:</p>
+<p><img data-src="c-reference-pointer/reference-class-new.png"></p>
+<p>We can conclude that the pointer is just the address points to the heap somewhere.Of course,the address in the heap is undefined,because it’s dynamic and the assembly code is <code>objdump</code> by <code>gcc -c(Compile and assemble, but do not link)</code></p>
+<h3 id="0x05-About-the-segment"><a href="#0x05-About-the-segment" class="headerlink" title="0x05 About the segment"></a>0x05 About the segment</h3><p>In the situation,I want to have a look at the global variables,but I don’t find it in the assembly code.It’s in the <strong>data segment</strong>!</p>
+<p><img data-src="c-reference-pointer/reference.png"></p>
+<p>Let’s retrospect the segment partition:</p>
+<p><img data-src="c-reference-pointer/segment.jpg"></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In the article,we explore the underlying assembly code of reference and pointer,and we review the segment partition.Hope you can get a lot.</p>
+<p>Have a nice day.<br>Bye!<br>-:)</p>
+]]></content>
+      <categories>
+        <category>Back-End Development</category>
+        <category>C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>Express in English</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>并发和并行的概念与应用</title>
     <url>/concurrency-parallelism.html</url>
     <content><![CDATA[<div class="note primary"><p>一句话说并发的目的：我们想让计算机做的更多，运行的更快。</p>
@@ -791,214 +874,6 @@
       <tags>
         <tag>CSAPP</tag>
         <tag>Operating System</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Reference &amp; Pointer in C(PP)</title>
-    <url>/c-reference-pointer.html</url>
-    <content><![CDATA[<div class="note info"><p>“Reference &amp; Pointer in C” expressed in English.</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<h2 id="Forword"><a href="#Forword" class="headerlink" title="Forword"></a>Forword</h2><p>The reason why I write this blog article is just to understand the reference and pointer completely.Let’s have a look the underlying implementation of the reference and pointer.</p>
-<h2 id="Music"><a href="#Music" class="headerlink" title="Music"></a>Music</h2><blockquote>
-<p><em><strong>天净沙</strong></em> By <strong>骆集益/周志华</strong></p>
-</blockquote>
-<iframe frameborder="no" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=26344079&auto=1&height=66"></iframe>
-
-<h2 id="In-one-word"><a href="#In-one-word" class="headerlink" title="In one word"></a>In one word</h2><div class="note primary"><p>Reference is the same as pointer in essence.Both are the address,and the differences between both are the using rules.</p>
-</div>
-
-<h2 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h2><p>There are some situations:</p>
-<ul>
-<li>Basic data type reference</li>
-<li>Struct type reference</li>
-<li>Class type reference</li>
-<li>Class type pointer</li>
-<li>About the segment</li>
-</ul>
-<p>We will talk it in the above way.</p>
-<h3 id="0x01-Basic-data-type-reference"><a href="#0x01-Basic-data-type-reference" class="headerlink" title="0x01 Basic data type reference"></a>0x01 Basic data type reference</h3><p>There are two programs in this situation.</p>
-<ul>
-<li>Let’s see the reference and pointer in underlying assembly code :-)</li>
-</ul>
-<p><img data-src="c-reference-pointer/reference.png"></p>
-<p>In this program,we can conclude these results:</p>
-<ol>
-<li><p>The local variables is saved in the address begining with <code>%rbp-0x24</code>(to increasing direction.).The <code>int</code> type variables cover 4 bytes and the <code>address</code> type variables cover 8 bytes.</p>
-<ol>
-<li>Variable <code>a</code> is saved at <code>%rbp-0x24</code></li>
-<li>Variable <code>b</code> is saved at <code>%rbp-0x20</code></li>
-<li>Variable <code>c</code> is saved at <code>%rbp-0x18</code></li>
-<li>Variable <code>d</code> is saved at <code>%rbp-0x10</code> </li>
-</ol>
-</li>
-<li><p><strong>The reference and the pointer both are address.</strong></p>
-</li>
-</ol>
-<ul>
-<li>Let’s see the instance of reference in calling functions.</li>
-</ul>
-<p><img data-src="c-reference-pointer/reference2.png"></p>
-<p>We can conclude these results:</p>
-<ol>
-<li>Call-by-reference relays the parameters by their address.</li>
-<li>We have known that we can call by value.Of course,the address is also a value.Thus,we can think that there is only call-by-value.</li>
-</ol>
-<h3 id="0x02-Struct-type-reference"><a href="#0x02-Struct-type-reference" class="headerlink" title="0x02 Struct type reference"></a>0x02 Struct type reference</h3><p>Let’s talk about reference in struct type variables.</p>
-<p><img data-src="c-reference-pointer/reference-struct.png"></p>
-<p>In this program,we can conclude that:</p>
-<ol>
-<li>The variables defined in the way - <code>T a;</code> - are all saved in the stack frame.</li>
-<li>The reference of struct-type variables is also an address.</li>
-</ol>
-<h3 id="0x03-Class-type-reference"><a href="#0x03-Class-type-reference" class="headerlink" title="0x03 Class type reference"></a>0x03 Class type reference</h3><p>The class-type instance is the same as the struct.</p>
-<p>It’s easy! You can jump it!</p>
-<p><img data-src="c-reference-pointer/reference-class.png"></p>
-<h3 id="0x04-Class-type-pointer"><a href="#0x04-Class-type-pointer" class="headerlink" title="0x04 Class type pointer"></a>0x04 Class type pointer</h3><p>Let’s have a look at the instance defined by <code>new</code>:</p>
-<p><img data-src="c-reference-pointer/reference-class-new.png"></p>
-<p>We can conclude that the pointer is just the address points to the heap somewhere.Of course,the address in the heap is undefined,because it’s dynamic and the assembly code is <code>objdump</code> by <code>gcc -c(Compile and assemble, but do not link)</code></p>
-<h3 id="0x05-About-the-segment"><a href="#0x05-About-the-segment" class="headerlink" title="0x05 About the segment"></a>0x05 About the segment</h3><p>In the situation,I want to have a look at the global variables,but I don’t find it in the assembly code.It’s in the <strong>data segment</strong>!</p>
-<p><img data-src="c-reference-pointer/reference.png"></p>
-<p>Let’s retrospect the segment partition:</p>
-<p><img data-src="c-reference-pointer/segment.jpg"></p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In the article,we explore the underlying assembly code of reference and pointer,and we review the segment partition.Hope you can get a lot.</p>
-<p>Have a nice day.<br>Bye!<br>-:)</p>
-]]></content>
-      <categories>
-        <category>Back-End Development</category>
-        <category>C</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>Express in English</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSAPP 之 Attack Lab</title>
-    <url>/csapp-lab-3.html</url>
-    <content><![CDATA[<div class="note primary"><p>《深入理解计算机系统》之Attack Lab。</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>开始第三个实验——Attack Lab了！本次试验还是基于第三章《程序的机器级表示》。</p>
-<h2 id="先来首歌Relax一下"><a href="#先来首歌Relax一下" class="headerlink" title="先来首歌Relax一下"></a>先来首歌Relax一下</h2><p>比较好听的一首古风歌，与《霓裳羽衣曲》一字之差。唐朝诗人白居易在元和年间见到当时宫廷里表演的《霓裳羽衣曲》时，舞者“不著人家俗衣服。虹裳霞帔步摇冠，钿缨累累佩珊珊。”此曲此词皆有其意境。</p>
-<iframe frameborder="no"  marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1295233186&auto=1&height=66"></iframe>
-
-<h2 id="CSAPP-实验记录"><a href="#CSAPP-实验记录" class="headerlink" title="CSAPP 实验记录"></a>CSAPP 实验记录</h2><div class="note info"><p><strong><a href="/tags/CSAPP-Lab/">本系列文章</a>主要记录 CSAPP 3.0 的实验过程，所有实验记录文章请查看<a href="/tags/CSAPP-Lab/">这儿</a></strong></p>
-</div>
-
-
-<p>快速开始请访问 <code>CSAPP</code> <a href="http://csapp.cs.cmu.edu/3e/labs.html">Lab</a> 官网，本次实验记录是基于 CSAPP 3.0，实验日期始于：<code>2019-3-25</code></p>
-<h2 id="实验开始前的归纳"><a href="#实验开始前的归纳" class="headerlink" title="实验开始前的归纳"></a>实验开始前的归纳</h2><h2 id="Attack-Lab"><a href="#Attack-Lab" class="headerlink" title="Attack Lab"></a>Attack Lab</h2><p>Attack分为两个部分，代码注入攻击和ROP（Return-Oriented Program）攻击，分别要对<strong>Ctarget</strong>程序和<strong>Rtarget</strong>程序进行攻击。</p>
-<h3 id="Ctarget"><a href="#Ctarget" class="headerlink" title="Ctarget"></a>Ctarget</h3><p>针对于Ctarget程序的攻击，思路都是一样的：利用buffer溢出。首先利用buffer溢出修改callee的ret的返回位置，然后在ret位置可以注入代码进行操作，说的时髦一点就是攻击。</p>
-<h4 id="如何操作"><a href="#如何操作" class="headerlink" title="如何操作"></a>如何操作</h4><p>每做一个实验就需要熟悉具体的操作流程，虽然比较浪费时间，但是这确实能够增加我们的视野，而且能让我们了解许多知识，比如：</p>
-<ul>
-<li>字节序，intel的字节序是小端法</li>
-<li>代码注入不能为输入字符串的ASCII码，而是需要通过hex2raw方法输入原始字节序列</li>
-</ul>
-<p>方式：</p>
-<ol>
-<li>通过<strong>objdump</strong>或者<strong>gdb</strong>确定一些需要的值，比如说<strong>rsp</strong>的值或者是某个函数的位置。</li>
-<li>编写注入代码，并用<strong>gcc</strong>汇编，用<strong>objdump</strong>获取指令及其编码</li>
-<li>将这些编码通过<strong>hex2raw</strong>输出为原始字节序</li>
-</ol>
-<h4 id="Phase1"><a href="#Phase1" class="headerlink" title="# Phase1"></a># Phase1</h4><div class="note primary"><p><strong>目标：注入代码调用touch1函数。</strong></p>
-</div>
-
-<p>第一个，只是练手的，take it easy…</p>
-<p><img data-src="csapp-lab-3/phrase1.png"></p>
-<p>根据给出的test函数和touch1函数的代码，我们可以看出test函数并没有调用touch1函数，而是只调用了一个getbuf函数，这个函数就是获取输入的内容的，而getbuf函数允许最大输入0x28（十进制40）个字节。那么思路很明显了，只需要利用buffer溢出，修改ret的值就好了（因为栈内buffer的下面就是ret的返回地址了）。也就是说只需要输入40个字节任意字符+touch1的地址就好了。</p>
-<p>结果如下：<br><img data-src="csapp-lab-3/phrase1-success.png"></p>
-<h4 id="Phase2"><a href="#Phase2" class="headerlink" title="# Phase2"></a># Phase2</h4><div class="note primary"><p><strong>目标：注入代码传参并调用touch2函数。</strong></p>
-</div>
-
-<p>这个相对于第一个来说复杂了一点，要求你将cookie.txt文件里面的数值0x59b997fa作为参数调用touch2函数。</p>
-<p>对于第一个phrase只需要直接输入字符串就行了，而第二个需要注入原始字节序代码了。</p>
-<p>先说一下思路，因为需要传递参数，只需要传递一个，那就需要修改 <strong>%rdi</strong>寄存器的值，要想修改就必须用指令实现。我们需要做的就是写代码，注入，让程序跳转到我们注入代码的地方。</p>
-<p>具体一点，思路如下：</p>
-<p>因为一开始获取输入的都是getbuf函数，这一点和phrase1相同，这说明buffersize没变。所以我们还需要输入40个字节的字符和返回地址。我们要做的就是将返回地址修改为我们注入代码的地方，记为<strong>addr</strong>，我们需要将注入的代码放到哪里呢？buffer里完全够用，如果放到其他地方反而有可能造成segmentfault。从buffer首地址，也就是caller——getbuf函数一开始的rsp值开始注入我们的代码，这个rsp值也是我们需要跳转的值<strong>addr</strong>。</p>
-<p>我们注入的代码有什么用？</p>
-<ul>
-<li>修改 <strong>%rdi</strong>的值为0x59b997fa</li>
-<li>控制交给touch2，因为不能用jmp和call，所以只能用ret来实现。</li>
-</ul>
-<p>注入代码如下：</p>
-<p><img data-src="csapp-lab-3/phrase2-insert.png"></p>
-<p>然后需要做的事就是将这段汇编代码用<code>gcc -c xxx</code>来汇编，并用<code>objdump -d xxx</code>来查看汇编指令对应的字节序列了（如上图）。<br>得到字节序列之后还需要将他和buffer的其他部分还有我们注入代码的首地址放入。然后通过hex2raw程序将其按照原始字节序列输入。</p>
-<p>结束！运行结果如下：</p>
-<p><img data-src="csapp-lab-3/phrase2-success.png"></p>
-<h4 id="Phase3"><a href="#Phase3" class="headerlink" title="# Phase3"></a># Phase3</h4><div class="note primary"><p><strong>目标：注入固定字符串ASCII码序列并传首地址作为参数然后调用touch3函数。</strong></p>
-</div>
-
-<p>第三个和第二个差不多，只不过多了一点坑，同样是传递参数，只不过需要传一个字符串，而字符串需要自己保存，而且还有可能函数调用的过程中被其他数据覆盖。</p>
-<p>我们先来思考一下需要哪些数据吧：</p>
-<ul>
-<li>cookie十六进制数的ASCII码值</li>
-<li>getbuf申请内存后的rsp值</li>
-<li>要存取ASCII码序列的地址</li>
-<li>touch3地址</li>
-</ul>
-<p>其他的都好确定，存取ASCII码序列的地址无法确定，有可能你第一次尝试是错误的。主要是因为touch函数调用了hexmatch函数，而这个函数对缓冲区进行了修改。</p>
-<p>截了一下图。</p>
-<p><strong>执行hexmatch函数前：</strong></p>
-<p><img data-src="csapp-lab-3/phrase3-rsp-old.png"></p>
-<p><strong>执行hexmatch函数后：</strong></p>
-<p><img data-src="csapp-lab-3/phrase3-rsp-new.png"></p>
-<p>我们发现第三行（0x5561dc98）之前的大多数都被修改了，所以我们要把数据继续放到栈的更底部位置。也就是从0x5561dca4之后的位置开始。那就简单了。</p>
-<p>展示一下栈结构：</p>
-<p><img data-src="csapp-lab-3%5C1553868529136.png" alt="1553868529136"></p>
-<p>完事！</p>
-<p><img data-src="csapp-lab-3/phrase3-success.png"></p>
-<h3 id="Rtarget"><a href="#Rtarget" class="headerlink" title="Rtarget"></a>Rtarget</h3><p>下面开始ROP攻击，虽然需要利用buffer溢出来攻击，但是和代码注入攻击不同的是栈内的数据会不能当做指令来执行。所以需要使用一些程序中已经存在的代码区域的gadgets小工具来拼凑自己想要的指令序列。</p>
-<h4 id="Phase4"><a href="#Phase4" class="headerlink" title="# Phase4"></a># Phase4</h4><p>第一弹，还是执行完getbuf函数就去执行touch2而不返回test函数。</p>
-<div class="note primary"><p><strong>目标：利用gadget传参并调用touch2函数。</strong></p>
-</div>
-
-<p>​    </p>
-<p>因为无法执行栈中的指令，所以只能通过已有代码来拼凑，那要拼凑成什么，首先还是看数据：</p>
-<ul>
-<li><p>cookie值</p>
-</li>
-<li><p>touch2地址</p>
-</li>
-</ul>
-<p>  我们需要将cookie值传入rdi寄存器中，而cookie值只能通过输入保存到栈中，所以可以通过gadget根据指令编码找到一个pop命令pop到rdi中。但是遗憾的是farm前半部分并没有找到这个命令，所以我们只能另寻他法。最后我们可以通过pop先pop到rax中，然后使用mov命令将rax的值传入rdi中。</p>
-<p>  我用到的是这两个gadget：一个包含<code>pop %rax</code>命令，一个包含<code>mov %rax,%rdi</code>命令。</p>
-<p>  <img data-src="csapp-lab-3%5C1553869869465.png" alt="1553869869465"></p>
-<p>  好了rdi中已经存储的cookie值了，下一步就是跳转到touch2了。</p>
-<p>  怎么跳转？很简单，如果此时栈顶的元素是touch2的地址，并且接下来执行一条ret指令就OK了。</p>
-<p>所以说很简单了，栈结构如下：</p>
-<p>因为无法执行栈内代码，所以buffer合法部分已经没用了。</p>
-<p><img data-src="csapp-lab-3%5C1553870526705.png" alt="1553870526705"></p>
-<h4 id="Phase5"><a href="#Phase5" class="headerlink" title="# Phase5"></a># Phase5</h4><p>选做等于不做，好吧，是自己太菜了。到此为止95′已经到手，没必要争这5′了。了解一下内存栈的模型和这两种攻击手段就好了。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本次实验整体提升不是很大，不过了解了两种攻击手段。</p>
-<h3 id="所感"><a href="#所感" class="headerlink" title="所感"></a>所感</h3><ul>
-<li>自己还有些浮躁，有时静不下心来。</li>
-<li>自己不应该有太多空闲时间，不然无所事事。</li>
-<li>英语专业阅读水平有了一定的提高</li>
-</ul>
-<h3 id="所得"><a href="#所得" class="headerlink" title="所得"></a>所得</h3><ul>
-<li>进一步了解了栈帧结构</li>
-<li>了解了代码注入和ROP两种攻击手段，虽然现在已经很难适用了。</li>
-</ul>
-<h3 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h3><ul>
-<li>养成阅读英语书籍和文档的习惯</li>
-<li>做好日常规划</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Computer Science</category>
-        <category>Operating System</category>
-      </categories>
-      <tags>
-        <tag>CSAPP</tag>
-        <tag>Operating System</tag>
-        <tag>CSAPP Lab</tag>
       </tags>
   </entry>
   <entry>
@@ -1187,70 +1062,128 @@
       </tags>
   </entry>
   <entry>
-    <title>CSS系列：对齐</title>
-    <url>/css-align-center.html</url>
-    <content><![CDATA[<div class="note primary"><p>水平居中、垂直居中、右对齐。</p>
+    <title>CSAPP 之 Attack Lab</title>
+    <url>/csapp-lab-3.html</url>
+    <content><![CDATA[<div class="note primary"><p>《深入理解计算机系统》之Attack Lab。</p>
 </div>
 
 <span id="more"></span>
 
 <hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>元素居中是实际前端开发中常用的一种操作。元素居中分为垂直居中和水平居中，为了以后方便重查，本篇文章总结一下一些常见的对齐方式。</p>
-<p><strong>样例代码如下，查看时请参考下面的代码。</strong></p>
-<p class="codepen" data-height="800" data-theme-id="dark" data-default-tab="css,result" data-user="scarboroughcoral" data-slug-hash="oNNmbMV" style="height: 400px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Centering with CSS Part 1">
-  <span>See the Pen <a href="https://codepen.io/scarboroughcoral/pen/oNNmbMV">
-  Centering with CSS Part 1</a> by 李明岳 (<a href="https://codepen.io/scarboroughcoral">@scarboroughcoral</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>开始第三个实验——Attack Lab了！本次试验还是基于第三章《程序的机器级表示》。</p>
+<h2 id="先来首歌Relax一下"><a href="#先来首歌Relax一下" class="headerlink" title="先来首歌Relax一下"></a>先来首歌Relax一下</h2><p>比较好听的一首古风歌，与《霓裳羽衣曲》一字之差。唐朝诗人白居易在元和年间见到当时宫廷里表演的《霓裳羽衣曲》时，舞者“不著人家俗衣服。虹裳霞帔步摇冠，钿缨累累佩珊珊。”此曲此词皆有其意境。</p>
+<iframe frameborder="no"  marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1295233186&auto=1&height=66"></iframe>
 
-<h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><h4 id="文本水平居中"><a href="#文本水平居中" class="headerlink" title="文本水平居中"></a>文本水平居中</h4><ul>
-<li><code>text-align</code>属性</li>
+<h2 id="CSAPP-实验记录"><a href="#CSAPP-实验记录" class="headerlink" title="CSAPP 实验记录"></a>CSAPP 实验记录</h2><div class="note info"><p><strong><a href="/tags/CSAPP-Lab/">本系列文章</a>主要记录 CSAPP 3.0 的实验过程，所有实验记录文章请查看<a href="/tags/CSAPP-Lab/">这儿</a></strong></p>
+</div>
+
+
+<p>快速开始请访问 <code>CSAPP</code> <a href="http://csapp.cs.cmu.edu/3e/labs.html">Lab</a> 官网，本次实验记录是基于 CSAPP 3.0，实验日期始于：<code>2019-3-25</code></p>
+<h2 id="实验开始前的归纳"><a href="#实验开始前的归纳" class="headerlink" title="实验开始前的归纳"></a>实验开始前的归纳</h2><h2 id="Attack-Lab"><a href="#Attack-Lab" class="headerlink" title="Attack Lab"></a>Attack Lab</h2><p>Attack分为两个部分，代码注入攻击和ROP（Return-Oriented Program）攻击，分别要对<strong>Ctarget</strong>程序和<strong>Rtarget</strong>程序进行攻击。</p>
+<h3 id="Ctarget"><a href="#Ctarget" class="headerlink" title="Ctarget"></a>Ctarget</h3><p>针对于Ctarget程序的攻击，思路都是一样的：利用buffer溢出。首先利用buffer溢出修改callee的ret的返回位置，然后在ret位置可以注入代码进行操作，说的时髦一点就是攻击。</p>
+<h4 id="如何操作"><a href="#如何操作" class="headerlink" title="如何操作"></a>如何操作</h4><p>每做一个实验就需要熟悉具体的操作流程，虽然比较浪费时间，但是这确实能够增加我们的视野，而且能让我们了解许多知识，比如：</p>
+<ul>
+<li>字节序，intel的字节序是小端法</li>
+<li>代码注入不能为输入字符串的ASCII码，而是需要通过hex2raw方法输入原始字节序列</li>
 </ul>
-<h4 id="div水平居中"><a href="#div水平居中" class="headerlink" title="div水平居中"></a>div水平居中</h4><ul>
-<li><strong>蓝色盒子</strong>，将父容器设为<code>text-align:center</code>，div设为<code>display:inline-block</code>，适用于多个div水平居中。</li>
-<li>【推荐】<strong>黄色盒子</strong>，使用<code>margin:auto</code>属性设置（需要设置宽度）</li>
-<li>【推荐，常用于响应式开发，注意脱离文档流带来的问题】<strong>绿色盒子</strong>，父容器<code>position:relative</code>，div设置<code>position:absolute</code>和<code>left:50%</code>和<code>transform:translateX(-50%)</code></li>
-<li><strong>绿色盒子</strong>，父容器<code>position:relative</code>，div设置<code>position:absolute</code>和<code>left:50%</code>和<code>margin-left:(-width/2)</code></li>
-<li>【极度推荐,响应式，无需计算margin】<strong>粉色盒子</strong>，父容器<code>display:flex</code>并<code>flex-direction:row</code>（默认），然后<code>justify-content:center</code>（要看主轴的方向）</li>
+<p>方式：</p>
+<ol>
+<li>通过<strong>objdump</strong>或者<strong>gdb</strong>确定一些需要的值，比如说<strong>rsp</strong>的值或者是某个函数的位置。</li>
+<li>编写注入代码，并用<strong>gcc</strong>汇编，用<strong>objdump</strong>获取指令及其编码</li>
+<li>将这些编码通过<strong>hex2raw</strong>输出为原始字节序</li>
+</ol>
+<h4 id="Phase1"><a href="#Phase1" class="headerlink" title="# Phase1"></a># Phase1</h4><div class="note primary"><p><strong>目标：注入代码调用touch1函数。</strong></p>
+</div>
+
+<p>第一个，只是练手的，take it easy…</p>
+<p><img data-src="csapp-lab-3/phrase1.png"></p>
+<p>根据给出的test函数和touch1函数的代码，我们可以看出test函数并没有调用touch1函数，而是只调用了一个getbuf函数，这个函数就是获取输入的内容的，而getbuf函数允许最大输入0x28（十进制40）个字节。那么思路很明显了，只需要利用buffer溢出，修改ret的值就好了（因为栈内buffer的下面就是ret的返回地址了）。也就是说只需要输入40个字节任意字符+touch1的地址就好了。</p>
+<p>结果如下：<br><img data-src="csapp-lab-3/phrase1-success.png"></p>
+<h4 id="Phase2"><a href="#Phase2" class="headerlink" title="# Phase2"></a># Phase2</h4><div class="note primary"><p><strong>目标：注入代码传参并调用touch2函数。</strong></p>
+</div>
+
+<p>这个相对于第一个来说复杂了一点，要求你将cookie.txt文件里面的数值0x59b997fa作为参数调用touch2函数。</p>
+<p>对于第一个phrase只需要直接输入字符串就行了，而第二个需要注入原始字节序代码了。</p>
+<p>先说一下思路，因为需要传递参数，只需要传递一个，那就需要修改 <strong>%rdi</strong>寄存器的值，要想修改就必须用指令实现。我们需要做的就是写代码，注入，让程序跳转到我们注入代码的地方。</p>
+<p>具体一点，思路如下：</p>
+<p>因为一开始获取输入的都是getbuf函数，这一点和phrase1相同，这说明buffersize没变。所以我们还需要输入40个字节的字符和返回地址。我们要做的就是将返回地址修改为我们注入代码的地方，记为<strong>addr</strong>，我们需要将注入的代码放到哪里呢？buffer里完全够用，如果放到其他地方反而有可能造成segmentfault。从buffer首地址，也就是caller——getbuf函数一开始的rsp值开始注入我们的代码，这个rsp值也是我们需要跳转的值<strong>addr</strong>。</p>
+<p>我们注入的代码有什么用？</p>
+<ul>
+<li>修改 <strong>%rdi</strong>的值为0x59b997fa</li>
+<li>控制交给touch2，因为不能用jmp和call，所以只能用ret来实现。</li>
 </ul>
-<h3 id="右对齐"><a href="#右对齐" class="headerlink" title="右对齐"></a>右对齐</h3><h4 id="文本右对齐"><a href="#文本右对齐" class="headerlink" title="文本右对齐"></a>文本右对齐</h4><ul>
-<li>使用<code>text-align:right</code></li>
+<p>注入代码如下：</p>
+<p><img data-src="csapp-lab-3/phrase2-insert.png"></p>
+<p>然后需要做的事就是将这段汇编代码用<code>gcc -c xxx</code>来汇编，并用<code>objdump -d xxx</code>来查看汇编指令对应的字节序列了（如上图）。<br>得到字节序列之后还需要将他和buffer的其他部分还有我们注入代码的首地址放入。然后通过hex2raw程序将其按照原始字节序列输入。</p>
+<p>结束！运行结果如下：</p>
+<p><img data-src="csapp-lab-3/phrase2-success.png"></p>
+<h4 id="Phase3"><a href="#Phase3" class="headerlink" title="# Phase3"></a># Phase3</h4><div class="note primary"><p><strong>目标：注入固定字符串ASCII码序列并传首地址作为参数然后调用touch3函数。</strong></p>
+</div>
+
+<p>第三个和第二个差不多，只不过多了一点坑，同样是传递参数，只不过需要传一个字符串，而字符串需要自己保存，而且还有可能函数调用的过程中被其他数据覆盖。</p>
+<p>我们先来思考一下需要哪些数据吧：</p>
+<ul>
+<li>cookie十六进制数的ASCII码值</li>
+<li>getbuf申请内存后的rsp值</li>
+<li>要存取ASCII码序列的地址</li>
+<li>touch3地址</li>
 </ul>
-<h4 id="div右对齐"><a href="#div右对齐" class="headerlink" title="div右对齐"></a>div右对齐</h4><ul>
-<li>使用<code>position:absolute</code>和<code>right:0</code>实现</li>
-<li>【推荐】使用<code>flex</code>布局</li>
-<li>（十分奇妙）使用<code>margin-left:auto</code>，需要设置宽度</li>
-<li>使用<code>float</code>，注意脱离文档流带来的问题（eg：如果高度大于父容器，则需要设置父容器<code>overflow:auto</code>）</li>
-<li>将父容器设为<code>text-align:right</code>，div设为<code>display:inline-block</code></li>
-</ul>
-<h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3><p>垂直居中不太好演示，代码直接在这里写了。</p>
-<h4 id="文本垂直居中"><a href="#文本垂直居中" class="headerlink" title="文本垂直居中"></a>文本垂直居中</h4><ul>
-<li>《不推荐》使用<code>padding</code></li>
-<li>【推荐】使用<code>height</code>和<code>line-height</code>设置，考虑文本多行<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.center</span> &#123;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">3px</span> solid green;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* If the text has multiple lines, add the following: */</span></span><br><span class="line"><span class="selector-class">.center</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="div垂直居中"><a href="#div垂直居中" class="headerlink" title="div垂直居中"></a>div垂直居中</h4><ul>
-<li><p>父容器设置<code>line-height</code>和<code>height</code>等高，div设置为<code>display:inline-block</code>和<code>vertical-align:middle</code></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">line-height</span>:<span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>:inline-block;</span><br><span class="line">  <span class="attribute">vertical-align</span>:middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>父容器<code>position:relative</code>，div设置<code>position:absolute</code>和<code>top:50%</code>和<code>margin-top:(-height/2)</code></p>
+<p>其他的都好确定，存取ASCII码序列的地址无法确定，有可能你第一次尝试是错误的。主要是因为touch函数调用了hexmatch函数，而这个函数对缓冲区进行了修改。</p>
+<p>截了一下图。</p>
+<p><strong>执行hexmatch函数前：</strong></p>
+<p><img data-src="csapp-lab-3/phrase3-rsp-old.png"></p>
+<p><strong>执行hexmatch函数后：</strong></p>
+<p><img data-src="csapp-lab-3/phrase3-rsp-new.png"></p>
+<p>我们发现第三行（0x5561dc98）之前的大多数都被修改了，所以我们要把数据继续放到栈的更底部位置。也就是从0x5561dca4之后的位置开始。那就简单了。</p>
+<p>展示一下栈结构：</p>
+<p><img data-src="csapp-lab-3%5C1553868529136.png" alt="1553868529136"></p>
+<p>完事！</p>
+<p><img data-src="csapp-lab-3/phrase3-success.png"></p>
+<h3 id="Rtarget"><a href="#Rtarget" class="headerlink" title="Rtarget"></a>Rtarget</h3><p>下面开始ROP攻击，虽然需要利用buffer溢出来攻击，但是和代码注入攻击不同的是栈内的数据会不能当做指令来执行。所以需要使用一些程序中已经存在的代码区域的gadgets小工具来拼凑自己想要的指令序列。</p>
+<h4 id="Phase4"><a href="#Phase4" class="headerlink" title="# Phase4"></a># Phase4</h4><p>第一弹，还是执行完getbuf函数就去执行touch2而不返回test函数。</p>
+<div class="note primary"><p><strong>目标：利用gadget传参并调用touch2函数。</strong></p>
+</div>
+
+<p>​    </p>
+<p>因为无法执行栈中的指令，所以只能通过已有代码来拼凑，那要拼凑成什么，首先还是看数据：</p>
+<ul>
+<li><p>cookie值</p>
 </li>
-<li><p>【推荐,响应式】父容器<code>position:relative</code>，div设置<code>position:absolute</code>和<code>top:50%</code>和<code>transform:translateY(-50%)</code></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>:relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>:absolute;</span><br><span class="line">  <span class="attribute">top</span>:<span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">transform</span>:<span class="built_in">translateY</span>(-<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>【极度推荐,响应式，无需计算margin】使用<code>flex</code></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>:flex;</span><br><span class="line">  <span class="attribute">align-items</span>:center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>touch2地址</p>
+</li>
 </ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>大致就是如此，后续发现其他方法继续补充。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://www.w3schools.com/css/css_align.asp">CSS Layout - Horizontal &amp; Vertical Align</a></li>
-<li><a href="https://www.freecodecamp.org/news/how-to-center-things-with-style-in-css-dc87b7542689">How to center things with style in CSS</a></li>
+<p>  我们需要将cookie值传入rdi寄存器中，而cookie值只能通过输入保存到栈中，所以可以通过gadget根据指令编码找到一个pop命令pop到rdi中。但是遗憾的是farm前半部分并没有找到这个命令，所以我们只能另寻他法。最后我们可以通过pop先pop到rax中，然后使用mov命令将rax的值传入rdi中。</p>
+<p>  我用到的是这两个gadget：一个包含<code>pop %rax</code>命令，一个包含<code>mov %rax,%rdi</code>命令。</p>
+<p>  <img data-src="csapp-lab-3%5C1553869869465.png" alt="1553869869465"></p>
+<p>  好了rdi中已经存储的cookie值了，下一步就是跳转到touch2了。</p>
+<p>  怎么跳转？很简单，如果此时栈顶的元素是touch2的地址，并且接下来执行一条ret指令就OK了。</p>
+<p>所以说很简单了，栈结构如下：</p>
+<p>因为无法执行栈内代码，所以buffer合法部分已经没用了。</p>
+<p><img data-src="csapp-lab-3%5C1553870526705.png" alt="1553870526705"></p>
+<h4 id="Phase5"><a href="#Phase5" class="headerlink" title="# Phase5"></a># Phase5</h4><p>选做等于不做，好吧，是自己太菜了。到此为止95′已经到手，没必要争这5′了。了解一下内存栈的模型和这两种攻击手段就好了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本次实验整体提升不是很大，不过了解了两种攻击手段。</p>
+<h3 id="所感"><a href="#所感" class="headerlink" title="所感"></a>所感</h3><ul>
+<li>自己还有些浮躁，有时静不下心来。</li>
+<li>自己不应该有太多空闲时间，不然无所事事。</li>
+<li>英语专业阅读水平有了一定的提高</li>
+</ul>
+<h3 id="所得"><a href="#所得" class="headerlink" title="所得"></a>所得</h3><ul>
+<li>进一步了解了栈帧结构</li>
+<li>了解了代码注入和ROP两种攻击手段，虽然现在已经很难适用了。</li>
+</ul>
+<h3 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h3><ul>
+<li>养成阅读英语书籍和文档的习惯</li>
+<li>做好日常规划</li>
 </ul>
 ]]></content>
       <categories>
-        <category>Front-End Development</category>
-        <category>CSS</category>
+        <category>Computer Science</category>
+        <category>Operating System</category>
       </categories>
       <tags>
-        <tag>CSS</tag>
+        <tag>CSAPP</tag>
+        <tag>Operating System</tag>
+        <tag>CSAPP Lab</tag>
       </tags>
   </entry>
   <entry>
@@ -1457,84 +1390,62 @@
       </tags>
   </entry>
   <entry>
-    <title>CSS系列：CSS选择器总结【WIP】</title>
-    <url>/css-selectors.html</url>
-    <content><![CDATA[<div class="note primary"><p>type,universal,attribute,class,id,pseudo-class,pseudo-element,combinator</p>
+    <title>CSS系列：对齐</title>
+    <url>/css-align-center.html</url>
+    <content><![CDATA[<div class="note primary"><p>水平居中、垂直居中、右对齐。</p>
 </div>
 
 <span id="more"></span>
 
 <hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>css的选择器一直常用的就几个，也就记住了这几个，初学时系统的学过一遍不过现在也忘得差不多了，今天就来总结一下CSS中到底有哪些选择器。</p>
-<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>所有的选择器如下，我们接下来会一一介绍其用法和语义，还有他们的优先级。</p>
-<ul>
-<li>简单选择器<ul>
-<li>通配选择器</li>
-<li>标签（类型）选择器</li>
-<li>属性选择器</li>
-<li>类选择器</li>
-<li>ID选择器</li>
-<li>伪类选择器</li>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>元素居中是实际前端开发中常用的一种操作。元素居中分为垂直居中和水平居中，为了以后方便重查，本篇文章总结一下一些常见的对齐方式。</p>
+<p><strong>样例代码如下，查看时请参考下面的代码。</strong></p>
+<p class="codepen" data-height="800" data-theme-id="dark" data-default-tab="css,result" data-user="scarboroughcoral" data-slug-hash="oNNmbMV" style="height: 400px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Centering with CSS Part 1">
+  <span>See the Pen <a href="https://codepen.io/scarboroughcoral/pen/oNNmbMV">
+  Centering with CSS Part 1</a> by 李明岳 (<a href="https://codepen.io/scarboroughcoral">@scarboroughcoral</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><h4 id="文本水平居中"><a href="#文本水平居中" class="headerlink" title="文本水平居中"></a>文本水平居中</h4><ul>
+<li><code>text-align</code>属性</li>
 </ul>
+<h4 id="div水平居中"><a href="#div水平居中" class="headerlink" title="div水平居中"></a>div水平居中</h4><ul>
+<li><strong>蓝色盒子</strong>，将父容器设为<code>text-align:center</code>，div设为<code>display:inline-block</code>，适用于多个div水平居中。</li>
+<li>【推荐】<strong>黄色盒子</strong>，使用<code>margin:auto</code>属性设置（需要设置宽度）</li>
+<li>【推荐，常用于响应式开发，注意脱离文档流带来的问题】<strong>绿色盒子</strong>，父容器<code>position:relative</code>，div设置<code>position:absolute</code>和<code>left:50%</code>和<code>transform:translateX(-50%)</code></li>
+<li><strong>绿色盒子</strong>，父容器<code>position:relative</code>，div设置<code>position:absolute</code>和<code>left:50%</code>和<code>margin-left:(-width/2)</code></li>
+<li>【极度推荐,响应式，无需计算margin】<strong>粉色盒子</strong>，父容器<code>display:flex</code>并<code>flex-direction:row</code>（默认），然后<code>justify-content:center</code>（要看主轴的方向）</li>
+</ul>
+<h3 id="右对齐"><a href="#右对齐" class="headerlink" title="右对齐"></a>右对齐</h3><h4 id="文本右对齐"><a href="#文本右对齐" class="headerlink" title="文本右对齐"></a>文本右对齐</h4><ul>
+<li>使用<code>text-align:right</code></li>
+</ul>
+<h4 id="div右对齐"><a href="#div右对齐" class="headerlink" title="div右对齐"></a>div右对齐</h4><ul>
+<li>使用<code>position:absolute</code>和<code>right:0</code>实现</li>
+<li>【推荐】使用<code>flex</code>布局</li>
+<li>（十分奇妙）使用<code>margin-left:auto</code>，需要设置宽度</li>
+<li>使用<code>float</code>，注意脱离文档流带来的问题（eg：如果高度大于父容器，则需要设置父容器<code>overflow:auto</code>）</li>
+<li>将父容器设为<code>text-align:right</code>，div设为<code>display:inline-block</code></li>
+</ul>
+<h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3><p>垂直居中不太好演示，代码直接在这里写了。</p>
+<h4 id="文本垂直居中"><a href="#文本垂直居中" class="headerlink" title="文本垂直居中"></a>文本垂直居中</h4><ul>
+<li>《不推荐》使用<code>padding</code></li>
+<li>【推荐】使用<code>height</code>和<code>line-height</code>设置，考虑文本多行<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.center</span> &#123;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">3px</span> solid green;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* If the text has multiple lines, add the following: */</span></span><br><span class="line"><span class="selector-class">.center</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="div垂直居中"><a href="#div垂直居中" class="headerlink" title="div垂直居中"></a>div垂直居中</h4><ul>
+<li><p>父容器设置<code>line-height</code>和<code>height</code>等高，div设置为<code>display:inline-block</code>和<code>vertical-align:middle</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">line-height</span>:<span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>:inline-block;</span><br><span class="line">  <span class="attribute">vertical-align</span>:middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>父容器<code>position:relative</code>，div设置<code>position:absolute</code>和<code>top:50%</code>和<code>margin-top:(-height/2)</code></p>
 </li>
-<li>伪元素选择器</li>
-<li>组合选择器</li>
+<li><p>【推荐,响应式】父容器<code>position:relative</code>，div设置<code>position:absolute</code>和<code>top:50%</code>和<code>transform:translateY(-50%)</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>:relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>:absolute;</span><br><span class="line">  <span class="attribute">top</span>:<span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">transform</span>:<span class="built_in">translateY</span>(-<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>【极度推荐,响应式，无需计算margin】使用<code>flex</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>:flex;</span><br><span class="line">  <span class="attribute">align-items</span>:center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>再具体介绍各类选择器之前，我们必须先来谈个概念——命名空间。<strong>这部分内容没怎么用过，不会详细展开，只会简单总结一下用法。以后用到会继续补充，如果有错请右下角小窗或者文章右上角修改pr</strong></p>
-<p>命名空间可以作用于通配选择器、标签（类型）选择器和属性选择器，目的就是只选择某个或某些命名空间内的元素。<br>命名空间通常用于处理文档中包含多个命名空间，比如说HTML5文档内联一些SVG、MathML、XML等。</p>
-<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><ul>
-<li>任何 <code>@namespace</code> 规则都必须在所有的 <code>@charset</code> 和 <code>@import</code> 规则之后, 并且在样式表中，位于其他任何 <code>style declarations</code> 之前。</li>
-</ul>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 默认命名空间 */</span></span><br><span class="line"><span class="keyword">@namespace</span> url(XML-namespace-URL);</span><br><span class="line"><span class="keyword">@namespace</span> <span class="string">&quot;XML-namespace-URL&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 命名空间前缀 */</span></span><br><span class="line"><span class="keyword">@namespace</span> prefix url(XML-namespace-URL);</span><br><span class="line"><span class="keyword">@namespace</span> prefix <span class="string">&quot;XML-namespace-URL&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*使用*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*匹配prefix命名空间的selector元素*/</span></span><br><span class="line">prefix|selector&#123;&#125;</span><br><span class="line"><span class="comment">/*匹配所有命名空间下的selector元素*/</span></span><br><span class="line">*|selector&#123;&#125;</span><br><span class="line"><span class="comment">/*匹配默认命名空间下的selector元素*/</span></span><br><span class="line">selector&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@namespace</span> url(<span class="attribute">http</span>://www.w3.org/<span class="number">1999</span>/xhtml);</span><br><span class="line"><span class="keyword">@namespace</span> svg url(<span class="attribute">http</span>://www.w3.org/<span class="number">2000</span>/svg);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 匹配所有的XHTML &lt;a&gt; 元素, 因为 XHTML 是默认无前缀命名空间 */</span></span><br><span class="line"><span class="selector-tag">a</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 匹配所有的 SVG &lt;a&gt; 元素 */</span></span><br><span class="line">svg|<span class="selector-tag">a</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 匹配 XHTML 和 SVG &lt;a&gt; 元素 */</span></span><br><span class="line">*|<span class="selector-tag">a</span> &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="简单选择器及其语义"><a href="#简单选择器及其语义" class="headerlink" title="简单选择器及其语义"></a>简单选择器及其语义</h2><p>我们把以下常见的6中选择器称为简单原则器。</p>
-<h3 id="通配选择器"><a href="#通配选择器" class="headerlink" title="通配选择器"></a>通配选择器</h3><p><code>*</code>，选择任意标签元素。</p>
-<h3 id="标签（类型）选择器"><a href="#标签（类型）选择器" class="headerlink" title="标签（类型）选择器"></a>标签（类型）选择器</h3><p><code>type</code>，选择<code>type</code>类型的标签。</p>
-<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><p>根据标签的属性来选择。</p>
-<h4 id="属性存在性和值选择器"><a href="#属性存在性和值选择器" class="headerlink" title="属性存在性和值选择器"></a>属性存在性和值选择器</h4><ul>
-<li><code>[att]</code>，选择含<code>att</code>属性的元素，不管属性值是什么。</li>
-<li><code>[att=val]</code>，选择含<code>att</code>属性并且属性值为<code>val</code>的元素。</li>
-<li><code>[att~=val]</code>，选择满足如下条件的元素：含<code>att</code>属性，并且<code>att</code>属性值是一个列表，列表中有一个值为<code>val</code>。（<code>val</code>只是一个值，如果其中含空格或者为空串就不会代表任何值）</li>
-<li><code>[att|=val]</code>，选择包含<code>att</code>属性并且属性值是<code>val</code>或者以<code>val</code>开头并且后跟<code>-</code>的元素。</li>
-</ul>
-<h4 id="值串匹配属性选择器"><a href="#值串匹配属性选择器" class="headerlink" title="值串匹配属性选择器"></a>值串匹配属性选择器</h4><ul>
-<li><code>[att^=val]</code>，选择含<code>att</code>属性并且值以<code>val</code>开头的元素，如果<code>val</code>为空串则不代表任何值。</li>
-<li><code>[att$=val]</code>，选择含<code>att</code>属性并且值以<code>val</code>结束的元素，如果<code>val</code>为空串则不代表任何值。</li>
-<li><code>[att*=val]</code>，选择含<code>att</code>属性并且值包含<code>val</code>子串的元素，如果<code>val</code>为空串则不代表任何值。</li>
-</ul>
-<h3 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h3><p><code>.selector</code>，选择含有<code>class</code>属性并且值中包含<code>selector</code>值的元素。<strong>类似于<code>[class~=selector]</code>属性选择器</strong>。</p>
-<h3 id="ID选择器"><a href="#ID选择器" class="headerlink" title="ID选择器"></a>ID选择器</h3><p><code>#selector</code>，选择包含<code>id</code>属性并且值为<code>selector</code>的元素。</p>
-<h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><p><code>:selector</code>，伪类是为了解决使用其他简单选择器无法实现的选择问题。选择通常是基于和DOM树无关的信息。通常以<code>:</code>开头。</p>
-<h4 id="动态伪类选择器"><a href="#动态伪类选择器" class="headerlink" title="动态伪类选择器"></a>动态伪类选择器</h4><p>不会出现在源码和DOM树中。</p>
-<h5 id="链接伪类选择器"><a href="#链接伪类选择器" class="headerlink" title="链接伪类选择器"></a>链接伪类选择器</h5><ul>
-<li><code>:link</code>，选择未被访问过的链接元素。</li>
-<li><code>:visited</code>，选择已被访问过的链接元素。</li>
-</ul>
-<h5 id="用户动作伪类选择器"><a href="#用户动作伪类选择器" class="headerlink" title="用户动作伪类选择器"></a>用户动作伪类选择器</h5><p>有可能同时触发。</p>
-<ul>
-<li><code>:hover</code>，选择被用户选定的（不一定激活元素动作）的元素。</li>
-<li><code>:active</code>，选择被用户激活动作的元素。</li>
-<li><code>:focus</code>，选择被用户聚焦的元素。</li>
-</ul>
-<h4 id="目标伪类选择器"><a href="#目标伪类选择器" class="headerlink" title="目标伪类选择器"></a>目标伪类选择器</h4><ul>
-<li><code>:target</code>，和网页内部索引有关，某个URI对应一个<code>id</code>，比如当前链接是<code>http://example.com/html/top.html#section_2</code>，被这个链接能够索引到<code>id</code>为<code>section_2</code>的元素，<code>:target</code>就是选择当前URI索引的<code>target</code>元素，如果页内没有<code>target</code>（<code>id</code>）就不会被触发。</li>
-</ul>
-<h4 id="语言伪类选择器"><a href="#语言伪类选择器" class="headerlink" title="语言伪类选择器"></a>语言伪类选择器</h4><ul>
-<li><code>:lang(language)</code>，</li>
-</ul>
-<h4 id="UI元素状态伪类选择器"><a href="#UI元素状态伪类选择器" class="headerlink" title="UI元素状态伪类选择器"></a>UI元素状态伪类选择器</h4><ul>
-<li><code>:enabled</code></li>
-<li><code>:disabled</code></li>
-<li><code>:checked</code></li>
-<li><code>:interminate</code></li>
-</ul>
-<h4 id="结构伪类选择器"><a href="#结构伪类选择器" class="headerlink" title="结构伪类选择器"></a>结构伪类选择器</h4><h2 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h2><h2 id="组合选择器"><a href="#组合选择器" class="headerlink" title="组合选择器"></a>组合选择器</h2><h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://www.w3.org/TR/selectors-3/">Selectors Level 3</a></li>
-<li><a href="https://www.w3.org/TR/2014/REC-css-namespaces-3-20140320/">CSS Namespaces Module Level 3</a></li>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>大致就是如此，后续发现其他方法继续补充。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://www.w3schools.com/css/css_align.asp">CSS Layout - Horizontal &amp; Vertical Align</a></li>
+<li><a href="https://www.freecodecamp.org/news/how-to-center-things-with-style-in-css-dc87b7542689">How to center things with style in CSS</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1616,6 +1527,95 @@
 </ul>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a href="https://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">Rendering: repaint, reflow/relayout, restyle</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Front-End Development</category>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS系列：CSS选择器总结【WIP】</title>
+    <url>/css-selectors.html</url>
+    <content><![CDATA[<div class="note primary"><p>type,universal,attribute,class,id,pseudo-class,pseudo-element,combinator</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>css的选择器一直常用的就几个，也就记住了这几个，初学时系统的学过一遍不过现在也忘得差不多了，今天就来总结一下CSS中到底有哪些选择器。</p>
+<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>所有的选择器如下，我们接下来会一一介绍其用法和语义，还有他们的优先级。</p>
+<ul>
+<li>简单选择器<ul>
+<li>通配选择器</li>
+<li>标签（类型）选择器</li>
+<li>属性选择器</li>
+<li>类选择器</li>
+<li>ID选择器</li>
+<li>伪类选择器</li>
+</ul>
+</li>
+<li>伪元素选择器</li>
+<li>组合选择器</li>
+</ul>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>再具体介绍各类选择器之前，我们必须先来谈个概念——命名空间。<strong>这部分内容没怎么用过，不会详细展开，只会简单总结一下用法。以后用到会继续补充，如果有错请右下角小窗或者文章右上角修改pr</strong></p>
+<p>命名空间可以作用于通配选择器、标签（类型）选择器和属性选择器，目的就是只选择某个或某些命名空间内的元素。<br>命名空间通常用于处理文档中包含多个命名空间，比如说HTML5文档内联一些SVG、MathML、XML等。</p>
+<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><ul>
+<li>任何 <code>@namespace</code> 规则都必须在所有的 <code>@charset</code> 和 <code>@import</code> 规则之后, 并且在样式表中，位于其他任何 <code>style declarations</code> 之前。</li>
+</ul>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 默认命名空间 */</span></span><br><span class="line"><span class="keyword">@namespace</span> url(XML-namespace-URL);</span><br><span class="line"><span class="keyword">@namespace</span> <span class="string">&quot;XML-namespace-URL&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 命名空间前缀 */</span></span><br><span class="line"><span class="keyword">@namespace</span> prefix url(XML-namespace-URL);</span><br><span class="line"><span class="keyword">@namespace</span> prefix <span class="string">&quot;XML-namespace-URL&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*使用*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*匹配prefix命名空间的selector元素*/</span></span><br><span class="line">prefix|selector&#123;&#125;</span><br><span class="line"><span class="comment">/*匹配所有命名空间下的selector元素*/</span></span><br><span class="line">*|selector&#123;&#125;</span><br><span class="line"><span class="comment">/*匹配默认命名空间下的selector元素*/</span></span><br><span class="line">selector&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@namespace</span> url(<span class="attribute">http</span>://www.w3.org/<span class="number">1999</span>/xhtml);</span><br><span class="line"><span class="keyword">@namespace</span> svg url(<span class="attribute">http</span>://www.w3.org/<span class="number">2000</span>/svg);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 匹配所有的XHTML &lt;a&gt; 元素, 因为 XHTML 是默认无前缀命名空间 */</span></span><br><span class="line"><span class="selector-tag">a</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 匹配所有的 SVG &lt;a&gt; 元素 */</span></span><br><span class="line">svg|<span class="selector-tag">a</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 匹配 XHTML 和 SVG &lt;a&gt; 元素 */</span></span><br><span class="line">*|<span class="selector-tag">a</span> &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="简单选择器及其语义"><a href="#简单选择器及其语义" class="headerlink" title="简单选择器及其语义"></a>简单选择器及其语义</h2><p>我们把以下常见的6中选择器称为简单原则器。</p>
+<h3 id="通配选择器"><a href="#通配选择器" class="headerlink" title="通配选择器"></a>通配选择器</h3><p><code>*</code>，选择任意标签元素。</p>
+<h3 id="标签（类型）选择器"><a href="#标签（类型）选择器" class="headerlink" title="标签（类型）选择器"></a>标签（类型）选择器</h3><p><code>type</code>，选择<code>type</code>类型的标签。</p>
+<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><p>根据标签的属性来选择。</p>
+<h4 id="属性存在性和值选择器"><a href="#属性存在性和值选择器" class="headerlink" title="属性存在性和值选择器"></a>属性存在性和值选择器</h4><ul>
+<li><code>[att]</code>，选择含<code>att</code>属性的元素，不管属性值是什么。</li>
+<li><code>[att=val]</code>，选择含<code>att</code>属性并且属性值为<code>val</code>的元素。</li>
+<li><code>[att~=val]</code>，选择满足如下条件的元素：含<code>att</code>属性，并且<code>att</code>属性值是一个列表，列表中有一个值为<code>val</code>。（<code>val</code>只是一个值，如果其中含空格或者为空串就不会代表任何值）</li>
+<li><code>[att|=val]</code>，选择包含<code>att</code>属性并且属性值是<code>val</code>或者以<code>val</code>开头并且后跟<code>-</code>的元素。</li>
+</ul>
+<h4 id="值串匹配属性选择器"><a href="#值串匹配属性选择器" class="headerlink" title="值串匹配属性选择器"></a>值串匹配属性选择器</h4><ul>
+<li><code>[att^=val]</code>，选择含<code>att</code>属性并且值以<code>val</code>开头的元素，如果<code>val</code>为空串则不代表任何值。</li>
+<li><code>[att$=val]</code>，选择含<code>att</code>属性并且值以<code>val</code>结束的元素，如果<code>val</code>为空串则不代表任何值。</li>
+<li><code>[att*=val]</code>，选择含<code>att</code>属性并且值包含<code>val</code>子串的元素，如果<code>val</code>为空串则不代表任何值。</li>
+</ul>
+<h3 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h3><p><code>.selector</code>，选择含有<code>class</code>属性并且值中包含<code>selector</code>值的元素。<strong>类似于<code>[class~=selector]</code>属性选择器</strong>。</p>
+<h3 id="ID选择器"><a href="#ID选择器" class="headerlink" title="ID选择器"></a>ID选择器</h3><p><code>#selector</code>，选择包含<code>id</code>属性并且值为<code>selector</code>的元素。</p>
+<h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><p><code>:selector</code>，伪类是为了解决使用其他简单选择器无法实现的选择问题。选择通常是基于和DOM树无关的信息。通常以<code>:</code>开头。</p>
+<h4 id="动态伪类选择器"><a href="#动态伪类选择器" class="headerlink" title="动态伪类选择器"></a>动态伪类选择器</h4><p>不会出现在源码和DOM树中。</p>
+<h5 id="链接伪类选择器"><a href="#链接伪类选择器" class="headerlink" title="链接伪类选择器"></a>链接伪类选择器</h5><ul>
+<li><code>:link</code>，选择未被访问过的链接元素。</li>
+<li><code>:visited</code>，选择已被访问过的链接元素。</li>
+</ul>
+<h5 id="用户动作伪类选择器"><a href="#用户动作伪类选择器" class="headerlink" title="用户动作伪类选择器"></a>用户动作伪类选择器</h5><p>有可能同时触发。</p>
+<ul>
+<li><code>:hover</code>，选择被用户选定的（不一定激活元素动作）的元素。</li>
+<li><code>:active</code>，选择被用户激活动作的元素。</li>
+<li><code>:focus</code>，选择被用户聚焦的元素。</li>
+</ul>
+<h4 id="目标伪类选择器"><a href="#目标伪类选择器" class="headerlink" title="目标伪类选择器"></a>目标伪类选择器</h4><ul>
+<li><code>:target</code>，和网页内部索引有关，某个URI对应一个<code>id</code>，比如当前链接是<code>http://example.com/html/top.html#section_2</code>，被这个链接能够索引到<code>id</code>为<code>section_2</code>的元素，<code>:target</code>就是选择当前URI索引的<code>target</code>元素，如果页内没有<code>target</code>（<code>id</code>）就不会被触发。</li>
+</ul>
+<h4 id="语言伪类选择器"><a href="#语言伪类选择器" class="headerlink" title="语言伪类选择器"></a>语言伪类选择器</h4><ul>
+<li><code>:lang(language)</code>，</li>
+</ul>
+<h4 id="UI元素状态伪类选择器"><a href="#UI元素状态伪类选择器" class="headerlink" title="UI元素状态伪类选择器"></a>UI元素状态伪类选择器</h4><ul>
+<li><code>:enabled</code></li>
+<li><code>:disabled</code></li>
+<li><code>:checked</code></li>
+<li><code>:interminate</code></li>
+</ul>
+<h4 id="结构伪类选择器"><a href="#结构伪类选择器" class="headerlink" title="结构伪类选择器"></a>结构伪类选择器</h4><h2 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h2><h2 id="组合选择器"><a href="#组合选择器" class="headerlink" title="组合选择器"></a>组合选择器</h2><h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://www.w3.org/TR/selectors-3/">Selectors Level 3</a></li>
+<li><a href="https://www.w3.org/TR/2014/REC-css-namespaces-3-20140320/">CSS Namespaces Module Level 3</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1898,57 +1898,6 @@
       </tags>
   </entry>
   <entry>
-    <title>多容器APP之Compose学习笔记(二)</title>
-    <url>/docker-two.html</url>
-    <content><![CDATA[<div class="note default"><p>人类善用工具，是因为懒。</p>
-</div>
-
-<span id="more"></span>
-
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>已经不能称之为学习笔记了，因为官方文档实在是枯燥，于是我就直接对着某个实例上了。本次我搭建了一个可以复用的环境，<code>Mysql+Tomcat+Nginx</code>可能这样搭配有点不合理，或许，毕竟对这方面了解的不多，不过搭建出来确实能用。而且能够复用，你只需要将你的JavaWeb工程打包成War文件放到Tomcat的webapps目录下就行了。</p>
-<h3 id="Compose服务配置"><a href="#Compose服务配置" class="headerlink" title="Compose服务配置"></a>Compose服务配置</h3><p>这个环境中需要三层服务，一是数据库层，二是app层，三是nginx用作代理层。因为是比较小的项目所以没有做反向代理的配置，但是此环境可用于扩展，将Tomcat部署到不同的模拟服务器下，并用nginx反向代理。这是可扩展的。下面是我的目录结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">env_template</span><br><span class="line">│   </span><br><span class="line">│   docker-compose.yml</span><br><span class="line">│</span><br><span class="line">└───lostfound</span><br><span class="line">│   │   </span><br><span class="line">│   │   Dockerfile</span><br><span class="line">│   </span><br><span class="line">└───nginx</span><br><span class="line">    │   </span><br><span class="line">    │   nginx.conf</span><br><span class="line">    │   Dockerfile</span><br></pre></td></tr></table></figure>
-
-<p>服务配置使用默认名为docker-compose.yml的配置文件来配置的。下面是我的配置文件</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;2&#x27;</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">lostfound:</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">lostfound:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">lostfound</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">lostfound</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">$PWD/lostfound/webapps:/usr/local/tomcat/webapps</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">db</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8080:8080&quot;</span></span><br><span class="line">  <span class="attr">nginx:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">lostfound</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">lostfound</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;80:80&quot;</span></span><br><span class="line">  <span class="attr">db:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">&quot;mysql:5.7.15&quot;</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">lostfound</span> </span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">MYSQL_ROOT_PASSWORD:</span> <span class="string">root</span></span><br><span class="line">      <span class="attr">MYSQL_USER:</span> <span class="string">lostfound</span></span><br><span class="line">      <span class="attr">MYSQL_PASSWORD:</span> <span class="string">******</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">$PWD/data:/var/lib/mysql</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3306:3306&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>简单说一下，三层服务配置。三项服务在同一个网络<code>lostfound</code>内，lostfound层就是app层，是从工程目录下的lostfound文件夹构建的，里面就是tomcat，端口映射8080。为了容易部署我的web应用程序，我将lostfound层的<code>tomcat/webapps</code>挂载到本地。然后app层依赖于数据库层，等待数据库层构建运行，数据库层应用了Mysql5.7里面有一些环境的配置，另外为了使得数据持久化，我将容器中的保存数据的文件夹也挂载到本地，端口映射为3306，<strong>如果你的3306端口被占用，时会报错的，你需要停止你的3306端口的应用程序，一般来说是Mysql服务</strong>。使用<code>sudo service mysql stop</code>来结束本地的mysql服务。然后是nginx服务，这层服务对于这种小工程来说不是必需的，但是为了可扩展我就加上了。端口映射为默认端口80。</p>
-<h3 id="Tomcat-构建"><a href="#Tomcat-构建" class="headerlink" title="Tomcat 构建"></a>Tomcat 构建</h3><p>这个比较简单，就是<code>pull</code>一个镜像，并暴露端口8080。这是其Dockerfile文件：</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> tomcat</span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8080</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Nginx-构建"><a href="#Nginx-构建" class="headerlink" title="Nginx 构建"></a>Nginx 构建</h3><p>这个也是<code>pull</code>一个镜像，然后将代理设置一下。</p>
-<ul>
-<li>Dockerfile<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx</span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> nginx.conf /etc/nginx/nginx.conf</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br></pre></td></tr></table></figure></li>
-<li>nginx.conf<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">worker_processes</span> <span class="number">4</span>;</span><br><span class="line"><span class="section">events</span> &#123;<span class="attribute">worker_connections</span> <span class="number">1024</span>;&#125;</span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://lostfound:8080;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<blockquote>
-<p>将tomcat运行的webapp代理到nginx。</p>
-</blockquote>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><blockquote>
-<p>运行此环境需要你安装以下工具：</p>
-</blockquote>
-<ul>
-<li>Docker</li>
-<li>Docker-Compose</li>
-</ul>
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose up</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>打开浏览器，地址栏内输入<code>localhost/yourappname</code></p>
-</blockquote>
-<h3 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h3><blockquote>
-<p><a href="https://github.com/ScarboroughCoral/SE_Docker">https://github.com/ScarboroughCoral/SE_Docker</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Tools</category>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>Docker-Compose</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker入门思考</title>
     <url>/docker-one.html</url>
     <content><![CDATA[<div class="note default"><p>人类善用工具，是因为懒。</p>
@@ -2006,6 +1955,57 @@
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多容器APP之Compose学习笔记(二)</title>
+    <url>/docker-two.html</url>
+    <content><![CDATA[<div class="note default"><p>人类善用工具，是因为懒。</p>
+</div>
+
+<span id="more"></span>
+
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>已经不能称之为学习笔记了，因为官方文档实在是枯燥，于是我就直接对着某个实例上了。本次我搭建了一个可以复用的环境，<code>Mysql+Tomcat+Nginx</code>可能这样搭配有点不合理，或许，毕竟对这方面了解的不多，不过搭建出来确实能用。而且能够复用，你只需要将你的JavaWeb工程打包成War文件放到Tomcat的webapps目录下就行了。</p>
+<h3 id="Compose服务配置"><a href="#Compose服务配置" class="headerlink" title="Compose服务配置"></a>Compose服务配置</h3><p>这个环境中需要三层服务，一是数据库层，二是app层，三是nginx用作代理层。因为是比较小的项目所以没有做反向代理的配置，但是此环境可用于扩展，将Tomcat部署到不同的模拟服务器下，并用nginx反向代理。这是可扩展的。下面是我的目录结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">env_template</span><br><span class="line">│   </span><br><span class="line">│   docker-compose.yml</span><br><span class="line">│</span><br><span class="line">└───lostfound</span><br><span class="line">│   │   </span><br><span class="line">│   │   Dockerfile</span><br><span class="line">│   </span><br><span class="line">└───nginx</span><br><span class="line">    │   </span><br><span class="line">    │   nginx.conf</span><br><span class="line">    │   Dockerfile</span><br></pre></td></tr></table></figure>
+
+<p>服务配置使用默认名为docker-compose.yml的配置文件来配置的。下面是我的配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;2&#x27;</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">lostfound:</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">lostfound:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">lostfound</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">lostfound</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">$PWD/lostfound/webapps:/usr/local/tomcat/webapps</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">db</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8080:8080&quot;</span></span><br><span class="line">  <span class="attr">nginx:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">lostfound</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">lostfound</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;80:80&quot;</span></span><br><span class="line">  <span class="attr">db:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">&quot;mysql:5.7.15&quot;</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">lostfound</span> </span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">MYSQL_ROOT_PASSWORD:</span> <span class="string">root</span></span><br><span class="line">      <span class="attr">MYSQL_USER:</span> <span class="string">lostfound</span></span><br><span class="line">      <span class="attr">MYSQL_PASSWORD:</span> <span class="string">******</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">$PWD/data:/var/lib/mysql</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3306:3306&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>简单说一下，三层服务配置。三项服务在同一个网络<code>lostfound</code>内，lostfound层就是app层，是从工程目录下的lostfound文件夹构建的，里面就是tomcat，端口映射8080。为了容易部署我的web应用程序，我将lostfound层的<code>tomcat/webapps</code>挂载到本地。然后app层依赖于数据库层，等待数据库层构建运行，数据库层应用了Mysql5.7里面有一些环境的配置，另外为了使得数据持久化，我将容器中的保存数据的文件夹也挂载到本地，端口映射为3306，<strong>如果你的3306端口被占用，时会报错的，你需要停止你的3306端口的应用程序，一般来说是Mysql服务</strong>。使用<code>sudo service mysql stop</code>来结束本地的mysql服务。然后是nginx服务，这层服务对于这种小工程来说不是必需的，但是为了可扩展我就加上了。端口映射为默认端口80。</p>
+<h3 id="Tomcat-构建"><a href="#Tomcat-构建" class="headerlink" title="Tomcat 构建"></a>Tomcat 构建</h3><p>这个比较简单，就是<code>pull</code>一个镜像，并暴露端口8080。这是其Dockerfile文件：</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> tomcat</span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8080</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Nginx-构建"><a href="#Nginx-构建" class="headerlink" title="Nginx 构建"></a>Nginx 构建</h3><p>这个也是<code>pull</code>一个镜像，然后将代理设置一下。</p>
+<ul>
+<li>Dockerfile<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx</span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> nginx.conf /etc/nginx/nginx.conf</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br></pre></td></tr></table></figure></li>
+<li>nginx.conf<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">worker_processes</span> <span class="number">4</span>;</span><br><span class="line"><span class="section">events</span> &#123;<span class="attribute">worker_connections</span> <span class="number">1024</span>;&#125;</span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://lostfound:8080;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>将tomcat运行的webapp代理到nginx。</p>
+</blockquote>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><blockquote>
+<p>运行此环境需要你安装以下工具：</p>
+</blockquote>
+<ul>
+<li>Docker</li>
+<li>Docker-Compose</li>
+</ul>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose up</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>打开浏览器，地址栏内输入<code>localhost/yourappname</code></p>
+</blockquote>
+<h3 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h3><blockquote>
+<p><a href="https://github.com/ScarboroughCoral/SE_Docker">https://github.com/ScarboroughCoral/SE_Docker</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Tools</category>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Docker-Compose</tag>
       </tags>
   </entry>
   <entry>
@@ -3590,6 +3590,185 @@
       </tags>
   </entry>
   <entry>
+    <title>rCore Lab 第一期：应用程序与基本执行环境</title>
+    <url>/rCore-lab-1.html</url>
+    <content><![CDATA[<div class="note primary"><p>实现彩色打印 Hello World。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><ul>
+<li><p>实现分支：ch1</p>
+</li>
+<li><p>完成实验指导书中的内容并在裸机上实现 hello world 输出。</p>
+</li>
+<li><p>实现彩色输出宏(只要求可以彩色输出，不要求 log 等级控制，不要求多种颜色)</p>
+</li>
+<li><p>隐形要求：可以关闭内核所有输出。从 lab2 开始要求关闭内核所有输出（如果实现了 log 等级控制，那么这一点自然就实现了）。</p>
+</li>
+<li><p>利用彩色输出宏输出 os 内存空间布局</p>
+</li>
+<li><p> 输出 .text、.data、.rodata、.bss 各段位置，输出等级为 INFO。</p>
+</li>
+</ul>
+<blockquote>
+<p>challenge: 支持多核，实现多个核的 boot。</p>
+</blockquote>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><div class="note info"><p>代码详情参考<a href="https://github.com/ScarboroughCoral/rCore-lab/tree/ch1">Github</a></p>
+</div>
+
+
+
+<p>基于<a href="https://github.com/rcore-os/rCore-Tutorial-v3">rCore-Tutorial-v3</a> 的 <code>ch1</code> 进行开发彩色打印“hello world”很简单，只需要参考<code>println!</code>宏进行实现即可，难点在于裸机打印。</p>
+<p>先晒结果：</p>
+<p><img data-src="rCore-lab-1/result.png"></p>
+<h3 id="打印彩色字体"><a href="#打印彩色字体" class="headerlink" title="打印彩色字体"></a>打印彩色字体</h3><p>彩色打印是基于<a href="https://zh.wikipedia.org/wiki/ANSI%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97">ANSI转义序列</a>。在shell中执行如下命令就可以打印彩色字体。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\x1b[31mhello world\x1b[0m&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在前端开发中，浏览器 devTools 的输出也支持彩色打印字体、背景等，跟上述shell打印是一样的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;\x1b[31mhello world\x1b[0m&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="在裸机上实现-hello-world-输出"><a href="#在裸机上实现-hello-world-输出" class="headerlink" title="在裸机上实现 hello world 输出"></a>在裸机上实现 hello world 输出</h3><p>首先要了解在操作系统支持下打印“hello world”和在裸机上打印的区别。知道在操作系统支持下打印“hello world”究竟发生了什么，这是如何在裸机上打印的关键点。<br>首先我们假设使用Rust向标准输出流打印“hello world”，会编写如下代码：</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后执行<code>cargo run</code>或者直接通过<code>rustc</code>进行编译执行，这样标准输出设备上就会显示“hello world”了。<code>println!</code>是一个rust标准库支持的宏，这个宏的实现实际上又调用了操作系统的系统调用，系统调用再调用硬件接口来实现打印功能。</p>
+<p>然而我们要在裸机上打印“hello world”，假设我们还需要使用上面的程序代码实现，这就有问题了，裸机并没有操作系统，所以没有系统调用供rust标准库来实现打印宏。</p>
+<p>还有一个问题，就算是裸机也有不同的硬件支持，我们编译的程序也需要知道编译结果需要在什么平台上运行，即目标平台，一般用（CPU架构，CPU厂商，操作系统，运行时）来区分，比如我们实验的平台就是<code>riscv64gc-unknown-none-elf</code>。rust标准库在裸机平台上没有实现，但在一些平台，比如<code>riscv64gc-unknown-linux-gnu</code>这种有操作系统和运行时的平台rust标准库是有实现的。</p>
+<p>综上，我们需要做的就是直接调用操作系统之下的运行环境接口（SBI，Supervisor Binary Interface）来打印而不使用标准库，并将rust程序编译为<code>riscv64gc-unknown-none-elf</code>平台上的程序，然后在对应裸机上执行。</p>
+<p>在这里，使用<code>qemu-system-riscv64</code>来模拟riscv裸机环境，其中有一些限制，你需要知道这个裸机对应的bootloader应该放在内存哪里，bootloader执行完成后跳转到的我们的程序起始位置在哪里。</p>
+<h3 id="log-控制等级、展示不同颜色"><a href="#log-控制等级、展示不同颜色" class="headerlink" title="log 控制等级、展示不同颜色"></a>log 控制等级、展示不同颜色</h3><p>因为rust有现成的crate可用，使用了log这个crate，只需要实现<code>Log</code>接口即可通过等级来打印不同颜色的日志，也可以设置最强日志等级进行拦截。</p>
+<h3 id="利用彩色输出宏输出-os-内存空间布局"><a href="#利用彩色输出宏输出-os-内存空间布局" class="headerlink" title="利用彩色输出宏输出 os 内存空间布局"></a>利用彩色输出宏输出 os 内存空间布局</h3><p>获取内存空间布局，即各个段的位置，即获取一些全局符号，<code>.stext</code>、<code>.etext</code>等的位置，在这里我们使用如下代码：</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">stext</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">etext</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">srodata</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">erodata</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">sdata</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">edata</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">sbss</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">ebss</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">boot_stack</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">boot_stack_top</span></span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是根据“C”这种约定的ABI来进行获取全局符号，这样我们就获得了各个段的开始和结尾。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://rcore-os.github.io/rCore-Tutorial-Book-v3/appendix-c/index.html">https://rcore-os.github.io/rCore-Tutorial-Book-v3/appendix-c/index.html</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Operating System</tag>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Web安全系列：同源策略和跨域请求</title>
+    <url>/secure-same-origin-policy.html</url>
+    <content><![CDATA[<div class="note primary"><p>同源策略和跨域请求。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="0x1-前言"><a href="#0x1-前言" class="headerlink" title="0x1. 前言"></a>0x1. 前言</h2><p>同源策略问题也是一个面试常问的问题，这篇文章来总结一下。</p>
+<p>大体内容如下：</p>
+<ul>
+<li><a href="#0x1-%E5%89%8D%E8%A8%80">0x1. 前言</a></li>
+<li><a href="#0x2-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5">0x2. 同源策略</a><ul>
+<li><a href="#0x21-%E4%BB%80%E4%B9%88%E6%98%AF%E5%90%8C%E6%BA%90">0x2.1 什么是同源</a></li>
+<li><a href="#0x22-%E5%90%8C%E6%BA%90%E9%97%AE%E9%A2%98%E4%B8%BE%E4%BE%8B">0x2.2 同源问题举例</a></li>
+<li><a href="#0x23-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E7%9A%84%E9%99%90%E5%88%B6">0x2.3 同源策略的限制</a></li>
+<li><a href="#0x24-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5">0x2.4 为什么有同源策略</a></li>
+</ul>
+</li>
+<li><a href="#0x3-%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98">0x3. 跨域问题</a><ul>
+<li><a href="#0x31-%E5%A6%82%E4%BD%95%E5%8F%91%E8%B5%B7ajax%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82">0x3.1 如何发起Ajax跨域请求</a><ul>
+<li><a href="#0x311-jsonpjson-with-padding">0x3.1.1 JSONP(JSON with Padding)</a></li>
+<li><a href="#0x312-corscross-origin-resource-sharing">0x3.1.2 CORS(Cross-Origin Resource Sharing)</a></li>
+<li><a href="#0x313-websockets">0x3.1.3 WebSockets</a></li>
+<li><a href="#0x314-cors-vs-jsonp">0x3.1.4 CORS vs JSONP</a></li>
+</ul>
+</li>
+<li><a href="#0x32-%E5%85%B6%E4%BB%96%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98">0x3.2 其他跨域问题</a><ul>
+<li><a href="#0x321-%E8%B7%A8%E5%9F%9F%E5%85%B1%E4%BA%ABcookie">0x3.2.1 跨域共享Cookie</a></li>
+<li><a href="#0x322-%E8%B7%A8%E5%9F%9Fiframe">0x3.2.2 跨域iframe</a></li>
+<li><a href="#0x322-%E8%B7%A8%E5%9F%9Flocalstorage">0x3.2.2 跨域localStorage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#0x4-reference">0x4. Reference</a></li>
+</ul>
+<h2 id="0x2-同源策略"><a href="#0x2-同源策略" class="headerlink" title="0x2. 同源策略"></a>0x2. 同源策略</h2><blockquote>
+<p>同源策略是一种安全机制，这种安全机制限制了一个源内的文档或脚本如何和其他源的资源交互。这种机制有利于隔离潜在的恶意文本。</p>
+</blockquote>
+<h3 id="0x2-1-什么是同源"><a href="#0x2-1-什么是同源" class="headerlink" title="0x2.1 什么是同源"></a>0x2.1 什么是同源</h3><p>如果两个源的【协议、主机、端口号】三元组都相同的话那么就称这两个源是同源的。</p>
+<h3 id="0x2-2-同源问题举例"><a href="#0x2-2-同源问题举例" class="headerlink" title="0x2.2 同源问题举例"></a>0x2.2 同源问题举例</h3><p>举例来说，<code>http://www.example.com/dir/page.html</code>这个网址，协议是<code>http://</code>，域名是<code>www.example.com</code>，端口是<code>80</code>（默认端口可以省略）。它的同源情况如下。</p>
+<ul>
+<li><code>http://www.example.com/dir2/other.html</code>：同源</li>
+<li><code>http://example.com/dir/other.html</code>：不同源（域名不同）</li>
+<li><code>http://v2.www.example.com/dir/other.html</code>：不同源（域名不同）</li>
+<li><code>http://www.example.com:81/dir/other.html</code>：不同源（端口不同）</li>
+</ul>
+<h3 id="0x2-3-同源策略的限制"><a href="#0x2-3-同源策略的限制" class="headerlink" title="0x2.3 同源策略的限制"></a>0x2.3 同源策略的限制</h3><p>同源策略限制的是JavaScript的脚本，也就是说一些资源比如说CSS、HTML和动态加载的脚本就能够通过HTML标签跨域。<a href="secure-xss-csrf.html">CSRF</a>就是利用了这一点。</p>
+<p>那么具体限制JavaScript的哪些行为呢？</p>
+<ul>
+<li>跨域Cookie、LocalStorage 和 IndexDB 无法读取。</li>
+<li>跨域DOM 无法获得。</li>
+<li>跨域AJAX 请求不能发送。</li>
+</ul>
+<h3 id="0x2-4-为什么有同源策略"><a href="#0x2-4-为什么有同源策略" class="headerlink" title="0x2.4 为什么有同源策略"></a>0x2.4 为什么有同源策略</h3><p>同源策略在一定程度上保证了信息安全。<br>就像CSRF那个例子一样。现在网站很多都是通过cookie进行身份认证的，如果网站A的cookie能够在网站B获取，那么我就可以在网站B发送请求给网站A的服务器。</p>
+<h2 id="0x3-跨域问题"><a href="#0x3-跨域问题" class="headerlink" title="0x3. 跨域问题"></a>0x3. 跨域问题</h2><p>在一些场景中同源策略就显得限制性太强了，比如不同子域名属于跨域，不允许其交互，但是属于同一个父域名。</p>
+<h3 id="0x3-1-如何发起Ajax跨域请求"><a href="#0x3-1-如何发起Ajax跨域请求" class="headerlink" title="0x3.1 如何发起Ajax跨域请求"></a>0x3.1 如何发起Ajax跨域请求</h3><p>下面是一些常见的Ajax跨域请求方法。</p>
+<h4 id="0x3-1-1-JSONP-JSON-with-Padding"><a href="#0x3-1-1-JSONP-JSON-with-Padding" class="headerlink" title="0x3.1.1 JSONP(JSON with Padding)"></a>0x3.1.1 JSONP(JSON with Padding)</h4><p>跨域Ajax请求的常用方法。只能发送<code>Get</code>请求。<br>通过动态添加<code>&lt;script&gt;&lt;/script&gt;</code>标签，利用<code>src</code>字段向目的源服务器请求数据，这是不受同源策略限制的，因为并没有使用JavaScript进行跨域请求。</p>
+<p><code>src</code>中必须声明回调函数，也就是有一个查询字符串<code>callback</code>参数，值为回调函数的名称。</p>
+<p>如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://server.example.com/Users/1234?callback=parseResponse&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>服务端会将返回的数据包装在<code>parseResponse()</code>的括号内（这就是JSONP名称的由来<code>Padding or Payload</code>），注意这是一个文本。</p>
+<p>客户端实际接收到的数据是<code>parseResponse(data)</code>，因为<code>&lt;scirpt&gt;</code>标签加载的文件会自动执行，所以只要定义了<code>parseResponse</code>这个函数那就会自动调用。</p>
+<p>只能通过<code>&lt;script&gt;</code>的<code>src</code>指定请求路径，这就决定了<code>JSONP</code>只能发起get请求。</p>
+<h4 id="0x3-1-2-CORS-Cross-Origin-Resource-Sharing"><a href="#0x3-1-2-CORS-Cross-Origin-Resource-Sharing" class="headerlink" title="0x3.1.2 CORS(Cross-Origin Resource Sharing)"></a>0x3.1.2 CORS(Cross-Origin Resource Sharing)</h4><p>目标源服务端允许的源可向其发起跨域请求。</p>
+<p>过程如下：</p>
+<ol>
+<li>客户端跨域请求</li>
+<li>浏览器发送一个<code>OPTIONS</code>请求到目标源服务器，这个请求报文里包含<code>Origin</code>字段（当前网站的源），还有一些其他细节。</li>
+<li>目标源服务端返回。</li>
+<li>浏览器检查目标源服务器返回的报文，如果包含<code>Access-Control-Allow-Origin</code>字段且当前源满足条件则发起请求。</li>
+</ol>
+<p>验证是否满足跨域条件的例子（来自维基百科）：</p>
+<ul>
+<li><code>OPTIONS</code>请求：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OPTIONS /</span><br><span class="line">Host: service.example.com</span><br><span class="line">Origin: http://www.example.com</span><br></pre></td></tr></table></figure></li>
+<li>目标源服务器返回：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Access-Control-Allow-Origin: http://www.example.com</span><br><span class="line">Access-Control-Allow-Methods: PUT, DELETE</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>维基百科跨域XHR的创建：</p>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flowchart_showing_Simple_and_Preflight_XHR.svg/770px-Flowchart_showing_Simple_and_Preflight_XHR.svg.png"></p>
+<h4 id="0x3-1-3-WebSockets"><a href="#0x3-1-3-WebSockets" class="headerlink" title="0x3.1.3 WebSockets"></a>0x3.1.3 WebSockets</h4><p><code>ws</code>是一种协议，使用<code>ws://</code>（非加密）和<code>wss://</code>（加密）作为协议前缀，这个协议不受同源策略限制。</p>
+<p>客户端请求时添加<code>origin</code>字段，表示当前源是哪，服务器根据这个字段进行相应，如果在白名单内则允许本次通信。</p>
+<h4 id="0x3-1-4-CORS-vs-JSONP"><a href="#0x3-1-4-CORS-vs-JSONP" class="headerlink" title="0x3.1.4 CORS vs JSONP"></a>0x3.1.4 CORS vs JSONP</h4><ul>
+<li>JSONP只支持GET请求；CORS也支持其他HTTP请求</li>
+<li>CORS使程序员写跨域请求像普通请求一样，便于维护；JSONP则相对不易维护。</li>
+<li>JSONP在古老的浏览器上也能运行；CORS在大多数现代浏览器上能运行</li>
+<li>JSONP可能会被XSS攻击如果跨域请求目的源不够安全的话；CORS则更安全。</li>
+</ul>
+<h3 id="0x3-2-其他跨域问题"><a href="#0x3-2-其他跨域问题" class="headerlink" title="0x3.2 其他跨域问题"></a>0x3.2 其他跨域问题</h3><h4 id="0x3-2-1-跨域共享Cookie"><a href="#0x3-2-1-跨域共享Cookie" class="headerlink" title="0x3.2.1 跨域共享Cookie"></a>0x3.2.1 跨域共享Cookie</h4><p>跨域Cookie的共享可以通过修改<code>document.domain</code>属性来跨域。**<code>domain</code>必须是当前页面的域名或者是其父域名。**，而且端口号必须相同，设置<code>domain</code>时会将端口号设为<code>null</code>。</p>
+<p>共享Cookie也可以在服务端设置Cookie时，将Cookie的域名范围设为父域名。</p>
+<p>比如<code>http://a.example.com</code>和<code>http://b.example.com</code>，服务器设置cookie时，只需要设置为<code>Set-Cookie: key=value; domain=.example.com; path=/</code></p>
+<h4 id="0x3-2-2-跨域iframe"><a href="#0x3-2-2-跨域iframe" class="headerlink" title="0x3.2.2 跨域iframe"></a>0x3.2.2 跨域iframe</h4><p>如果两个不同源的网页拥有共同的一级域名，那么就可以通过修改<code>document.domain</code>的方式实现跨域。</p>
+<p>如果完全不同源可以通过如下三种方式：</p>
+<ul>
+<li>片段标识符</li>
+<li>window.name</li>
+<li>Cross-document messaging</li>
+</ul>
+<p>前两种比较捞就不总结了，第三种跨文本通信才是正统的Web API，就是通过<code>window.postMessage(message,origin)</code>方法进行跨窗口通信，不管是否同源。</p>
+<p>一般来说通过postMessage+listener的方式进行通信。</p>
+<h4 id="0x3-2-2-跨域localStorage"><a href="#0x3-2-2-跨域localStorage" class="headerlink" title="0x3.2.2 跨域localStorage"></a>0x3.2.2 跨域localStorage</h4><p>可以使用如上所说的跨文本通信进行通信。</p>
+<h2 id="0x4-Reference"><a href="#0x4-Reference" class="headerlink" title="0x4. Reference"></a>0x4. Reference</h2><ul>
+<li><a href="https://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html">浏览器同源政策及其规避方法</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">Same-origin policy</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Archive/Misc_top_level/Same-origin_policy_for_file:_URIs">Same-origin policy for file: URIs</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Same-origin_policy">Same-origin policy</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">Cross-origin resource sharing</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JSONP">JSONP</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Security</category>
+      </categories>
+      <tags>
+        <tag>Security</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Web安全系列：XSS和CSRF</title>
     <url>/secure-xss-csrf.html</url>
     <content><![CDATA[<div class="note primary"><p>XSS、CSRF</p>
@@ -3743,125 +3922,6 @@
       <tags>
         <tag>C</tag>
         <tag>Windows API</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Web安全系列：同源策略和跨域请求</title>
-    <url>/secure-same-origin-policy.html</url>
-    <content><![CDATA[<div class="note primary"><p>同源策略和跨域请求。</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<h2 id="0x1-前言"><a href="#0x1-前言" class="headerlink" title="0x1. 前言"></a>0x1. 前言</h2><p>同源策略问题也是一个面试常问的问题，这篇文章来总结一下。</p>
-<p>大体内容如下：</p>
-<ul>
-<li><a href="#0x1-%E5%89%8D%E8%A8%80">0x1. 前言</a></li>
-<li><a href="#0x2-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5">0x2. 同源策略</a><ul>
-<li><a href="#0x21-%E4%BB%80%E4%B9%88%E6%98%AF%E5%90%8C%E6%BA%90">0x2.1 什么是同源</a></li>
-<li><a href="#0x22-%E5%90%8C%E6%BA%90%E9%97%AE%E9%A2%98%E4%B8%BE%E4%BE%8B">0x2.2 同源问题举例</a></li>
-<li><a href="#0x23-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E7%9A%84%E9%99%90%E5%88%B6">0x2.3 同源策略的限制</a></li>
-<li><a href="#0x24-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5">0x2.4 为什么有同源策略</a></li>
-</ul>
-</li>
-<li><a href="#0x3-%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98">0x3. 跨域问题</a><ul>
-<li><a href="#0x31-%E5%A6%82%E4%BD%95%E5%8F%91%E8%B5%B7ajax%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82">0x3.1 如何发起Ajax跨域请求</a><ul>
-<li><a href="#0x311-jsonpjson-with-padding">0x3.1.1 JSONP(JSON with Padding)</a></li>
-<li><a href="#0x312-corscross-origin-resource-sharing">0x3.1.2 CORS(Cross-Origin Resource Sharing)</a></li>
-<li><a href="#0x313-websockets">0x3.1.3 WebSockets</a></li>
-<li><a href="#0x314-cors-vs-jsonp">0x3.1.4 CORS vs JSONP</a></li>
-</ul>
-</li>
-<li><a href="#0x32-%E5%85%B6%E4%BB%96%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98">0x3.2 其他跨域问题</a><ul>
-<li><a href="#0x321-%E8%B7%A8%E5%9F%9F%E5%85%B1%E4%BA%ABcookie">0x3.2.1 跨域共享Cookie</a></li>
-<li><a href="#0x322-%E8%B7%A8%E5%9F%9Fiframe">0x3.2.2 跨域iframe</a></li>
-<li><a href="#0x322-%E8%B7%A8%E5%9F%9Flocalstorage">0x3.2.2 跨域localStorage</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#0x4-reference">0x4. Reference</a></li>
-</ul>
-<h2 id="0x2-同源策略"><a href="#0x2-同源策略" class="headerlink" title="0x2. 同源策略"></a>0x2. 同源策略</h2><blockquote>
-<p>同源策略是一种安全机制，这种安全机制限制了一个源内的文档或脚本如何和其他源的资源交互。这种机制有利于隔离潜在的恶意文本。</p>
-</blockquote>
-<h3 id="0x2-1-什么是同源"><a href="#0x2-1-什么是同源" class="headerlink" title="0x2.1 什么是同源"></a>0x2.1 什么是同源</h3><p>如果两个源的【协议、主机、端口号】三元组都相同的话那么就称这两个源是同源的。</p>
-<h3 id="0x2-2-同源问题举例"><a href="#0x2-2-同源问题举例" class="headerlink" title="0x2.2 同源问题举例"></a>0x2.2 同源问题举例</h3><p>举例来说，<code>http://www.example.com/dir/page.html</code>这个网址，协议是<code>http://</code>，域名是<code>www.example.com</code>，端口是<code>80</code>（默认端口可以省略）。它的同源情况如下。</p>
-<ul>
-<li><code>http://www.example.com/dir2/other.html</code>：同源</li>
-<li><code>http://example.com/dir/other.html</code>：不同源（域名不同）</li>
-<li><code>http://v2.www.example.com/dir/other.html</code>：不同源（域名不同）</li>
-<li><code>http://www.example.com:81/dir/other.html</code>：不同源（端口不同）</li>
-</ul>
-<h3 id="0x2-3-同源策略的限制"><a href="#0x2-3-同源策略的限制" class="headerlink" title="0x2.3 同源策略的限制"></a>0x2.3 同源策略的限制</h3><p>同源策略限制的是JavaScript的脚本，也就是说一些资源比如说CSS、HTML和动态加载的脚本就能够通过HTML标签跨域。<a href="secure-xss-csrf.html">CSRF</a>就是利用了这一点。</p>
-<p>那么具体限制JavaScript的哪些行为呢？</p>
-<ul>
-<li>跨域Cookie、LocalStorage 和 IndexDB 无法读取。</li>
-<li>跨域DOM 无法获得。</li>
-<li>跨域AJAX 请求不能发送。</li>
-</ul>
-<h3 id="0x2-4-为什么有同源策略"><a href="#0x2-4-为什么有同源策略" class="headerlink" title="0x2.4 为什么有同源策略"></a>0x2.4 为什么有同源策略</h3><p>同源策略在一定程度上保证了信息安全。<br>就像CSRF那个例子一样。现在网站很多都是通过cookie进行身份认证的，如果网站A的cookie能够在网站B获取，那么我就可以在网站B发送请求给网站A的服务器。</p>
-<h2 id="0x3-跨域问题"><a href="#0x3-跨域问题" class="headerlink" title="0x3. 跨域问题"></a>0x3. 跨域问题</h2><p>在一些场景中同源策略就显得限制性太强了，比如不同子域名属于跨域，不允许其交互，但是属于同一个父域名。</p>
-<h3 id="0x3-1-如何发起Ajax跨域请求"><a href="#0x3-1-如何发起Ajax跨域请求" class="headerlink" title="0x3.1 如何发起Ajax跨域请求"></a>0x3.1 如何发起Ajax跨域请求</h3><p>下面是一些常见的Ajax跨域请求方法。</p>
-<h4 id="0x3-1-1-JSONP-JSON-with-Padding"><a href="#0x3-1-1-JSONP-JSON-with-Padding" class="headerlink" title="0x3.1.1 JSONP(JSON with Padding)"></a>0x3.1.1 JSONP(JSON with Padding)</h4><p>跨域Ajax请求的常用方法。只能发送<code>Get</code>请求。<br>通过动态添加<code>&lt;script&gt;&lt;/script&gt;</code>标签，利用<code>src</code>字段向目的源服务器请求数据，这是不受同源策略限制的，因为并没有使用JavaScript进行跨域请求。</p>
-<p><code>src</code>中必须声明回调函数，也就是有一个查询字符串<code>callback</code>参数，值为回调函数的名称。</p>
-<p>如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://server.example.com/Users/1234?callback=parseResponse&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>服务端会将返回的数据包装在<code>parseResponse()</code>的括号内（这就是JSONP名称的由来<code>Padding or Payload</code>），注意这是一个文本。</p>
-<p>客户端实际接收到的数据是<code>parseResponse(data)</code>，因为<code>&lt;scirpt&gt;</code>标签加载的文件会自动执行，所以只要定义了<code>parseResponse</code>这个函数那就会自动调用。</p>
-<p>只能通过<code>&lt;script&gt;</code>的<code>src</code>指定请求路径，这就决定了<code>JSONP</code>只能发起get请求。</p>
-<h4 id="0x3-1-2-CORS-Cross-Origin-Resource-Sharing"><a href="#0x3-1-2-CORS-Cross-Origin-Resource-Sharing" class="headerlink" title="0x3.1.2 CORS(Cross-Origin Resource Sharing)"></a>0x3.1.2 CORS(Cross-Origin Resource Sharing)</h4><p>目标源服务端允许的源可向其发起跨域请求。</p>
-<p>过程如下：</p>
-<ol>
-<li>客户端跨域请求</li>
-<li>浏览器发送一个<code>OPTIONS</code>请求到目标源服务器，这个请求报文里包含<code>Origin</code>字段（当前网站的源），还有一些其他细节。</li>
-<li>目标源服务端返回。</li>
-<li>浏览器检查目标源服务器返回的报文，如果包含<code>Access-Control-Allow-Origin</code>字段且当前源满足条件则发起请求。</li>
-</ol>
-<p>验证是否满足跨域条件的例子（来自维基百科）：</p>
-<ul>
-<li><code>OPTIONS</code>请求：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OPTIONS /</span><br><span class="line">Host: service.example.com</span><br><span class="line">Origin: http://www.example.com</span><br></pre></td></tr></table></figure></li>
-<li>目标源服务器返回：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Access-Control-Allow-Origin: http://www.example.com</span><br><span class="line">Access-Control-Allow-Methods: PUT, DELETE</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>维基百科跨域XHR的创建：</p>
-<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flowchart_showing_Simple_and_Preflight_XHR.svg/770px-Flowchart_showing_Simple_and_Preflight_XHR.svg.png"></p>
-<h4 id="0x3-1-3-WebSockets"><a href="#0x3-1-3-WebSockets" class="headerlink" title="0x3.1.3 WebSockets"></a>0x3.1.3 WebSockets</h4><p><code>ws</code>是一种协议，使用<code>ws://</code>（非加密）和<code>wss://</code>（加密）作为协议前缀，这个协议不受同源策略限制。</p>
-<p>客户端请求时添加<code>origin</code>字段，表示当前源是哪，服务器根据这个字段进行相应，如果在白名单内则允许本次通信。</p>
-<h4 id="0x3-1-4-CORS-vs-JSONP"><a href="#0x3-1-4-CORS-vs-JSONP" class="headerlink" title="0x3.1.4 CORS vs JSONP"></a>0x3.1.4 CORS vs JSONP</h4><ul>
-<li>JSONP只支持GET请求；CORS也支持其他HTTP请求</li>
-<li>CORS使程序员写跨域请求像普通请求一样，便于维护；JSONP则相对不易维护。</li>
-<li>JSONP在古老的浏览器上也能运行；CORS在大多数现代浏览器上能运行</li>
-<li>JSONP可能会被XSS攻击如果跨域请求目的源不够安全的话；CORS则更安全。</li>
-</ul>
-<h3 id="0x3-2-其他跨域问题"><a href="#0x3-2-其他跨域问题" class="headerlink" title="0x3.2 其他跨域问题"></a>0x3.2 其他跨域问题</h3><h4 id="0x3-2-1-跨域共享Cookie"><a href="#0x3-2-1-跨域共享Cookie" class="headerlink" title="0x3.2.1 跨域共享Cookie"></a>0x3.2.1 跨域共享Cookie</h4><p>跨域Cookie的共享可以通过修改<code>document.domain</code>属性来跨域。**<code>domain</code>必须是当前页面的域名或者是其父域名。**，而且端口号必须相同，设置<code>domain</code>时会将端口号设为<code>null</code>。</p>
-<p>共享Cookie也可以在服务端设置Cookie时，将Cookie的域名范围设为父域名。</p>
-<p>比如<code>http://a.example.com</code>和<code>http://b.example.com</code>，服务器设置cookie时，只需要设置为<code>Set-Cookie: key=value; domain=.example.com; path=/</code></p>
-<h4 id="0x3-2-2-跨域iframe"><a href="#0x3-2-2-跨域iframe" class="headerlink" title="0x3.2.2 跨域iframe"></a>0x3.2.2 跨域iframe</h4><p>如果两个不同源的网页拥有共同的一级域名，那么就可以通过修改<code>document.domain</code>的方式实现跨域。</p>
-<p>如果完全不同源可以通过如下三种方式：</p>
-<ul>
-<li>片段标识符</li>
-<li>window.name</li>
-<li>Cross-document messaging</li>
-</ul>
-<p>前两种比较捞就不总结了，第三种跨文本通信才是正统的Web API，就是通过<code>window.postMessage(message,origin)</code>方法进行跨窗口通信，不管是否同源。</p>
-<p>一般来说通过postMessage+listener的方式进行通信。</p>
-<h4 id="0x3-2-2-跨域localStorage"><a href="#0x3-2-2-跨域localStorage" class="headerlink" title="0x3.2.2 跨域localStorage"></a>0x3.2.2 跨域localStorage</h4><p>可以使用如上所说的跨文本通信进行通信。</p>
-<h2 id="0x4-Reference"><a href="#0x4-Reference" class="headerlink" title="0x4. Reference"></a>0x4. Reference</h2><ul>
-<li><a href="https://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html">浏览器同源政策及其规避方法</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">Same-origin policy</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Archive/Misc_top_level/Same-origin_policy_for_file:_URIs">Same-origin policy for file: URIs</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Same-origin_policy">Same-origin policy</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">Cross-origin resource sharing</a></li>
-<li><a href="https://en.wikipedia.org/wiki/JSONP">JSONP</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Security</category>
-      </categories>
-      <tags>
-        <tag>Security</tag>
       </tags>
   </entry>
   <entry>
@@ -4224,75 +4284,6 @@
       </tags>
   </entry>
   <entry>
-    <title>What kind of person am I</title>
-    <url>/what-person-i-am.html</url>
-    <content><![CDATA[<div class="note primary"><p>“What kind of person am I” expressed in English.</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<h2 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h2><p>This is the first time for me to write an article in my blog site.There may be some errors in this article.One way or another,I will try my best to write it.</p>
-<p>let’s start!</p>
-<h2 id="Music"><a href="#Music" class="headerlink" title="Music"></a>Music</h2><blockquote>
-<p>TVアニメ「とある科学の超電磁砲」OP1</p>
-</blockquote>
-<iframe frameborder="no" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=33913797&auto=1&height=66"></iframe>
-
-
-<h2 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h2><p>Come to the point,I will state what kind of person I am in the article.</p>
-<div class="note success no-icon"><p><strong>I will state it in the following ways:</strong></p>
-<ul>
-<li>My Character</li>
-<li>My Hobbies</li>
-<li>My Skills</li>
-</ul>
-<p>That’s all for the time being.</p>
-</div>
-
-<h3 id="My-Character"><a href="#My-Character" class="headerlink" title="My Character"></a>My Character</h3><p>No one can deny that everyone has advantages and disadvantages.Of course I has,too.</p>
-<p>I am not a outgoing boy.Rather than say so, it’s better to say that I can’t express my points fluently which excludes the science such as cs(computer science),math and so on.</p>
-<p>I am a boy of vanity.I am a tsundere boy.I don’t want to be a boy that couldn’t approach anyone’s greatness,so I study hard to be stronger.</p>
-<h3 id="My-Hobbies"><a href="#My-Hobbies" class="headerlink" title="My Hobbies"></a>My Hobbies</h3><ul>
-<li>Listen to music<blockquote>
-<p>atique music</p>
-</blockquote>
-</li>
-<li>Play games<blockquote>
-<p>Large-scale single-player games.I have played <em><strong>Rise of the Tomb Raider</strong></em>,<em><strong>Tomb Raider</strong></em> which both are the one of the trilogy,and a game named <em><strong>Fallout 4</strong></em> on the <strong>steam platform</strong>.</p>
-</blockquote>
-</li>
-<li>Exercise<blockquote>
-<p>Exercise with my partners.</p>
-</blockquote>
-</li>
-<li>Reading Books<blockquote>
-<p>Internet novels and technology books.</p>
-</blockquote>
-</li>
-<li>Watch animation<blockquote>
-<p>Many kinds …</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="My-Skills"><a href="#My-Skills" class="headerlink" title="My Skills"></a>My Skills</h3><ul>
-<li>Coding</li>
-<li>Coding</li>
-<li>Coding</li>
-<li>and so on…</li>
-</ul>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>That’s all for the time being.<br>Over!</p>
-<p>It’s not easy for me to write the article.Next,the mission is regular practice.</p>
-]]></content>
-      <categories>
-        <category>Prose and Essay</category>
-      </categories>
-      <tags>
-        <tag>Prose and Essay</tag>
-        <tag>Express in English</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Webpack打包优化指南</title>
     <url>/webpack-optimize.html</url>
     <content><![CDATA[<div class="note default"><p>Stay hungry. Stay foolish.</p>
@@ -4385,6 +4376,75 @@
       <tags>
         <tag>Front-End Development</tag>
         <tag>Webpack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>What kind of person am I</title>
+    <url>/what-person-i-am.html</url>
+    <content><![CDATA[<div class="note primary"><p>“What kind of person am I” expressed in English.</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h2><p>This is the first time for me to write an article in my blog site.There may be some errors in this article.One way or another,I will try my best to write it.</p>
+<p>let’s start!</p>
+<h2 id="Music"><a href="#Music" class="headerlink" title="Music"></a>Music</h2><blockquote>
+<p>TVアニメ「とある科学の超電磁砲」OP1</p>
+</blockquote>
+<iframe frameborder="no" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=33913797&auto=1&height=66"></iframe>
+
+
+<h2 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h2><p>Come to the point,I will state what kind of person I am in the article.</p>
+<div class="note success no-icon"><p><strong>I will state it in the following ways:</strong></p>
+<ul>
+<li>My Character</li>
+<li>My Hobbies</li>
+<li>My Skills</li>
+</ul>
+<p>That’s all for the time being.</p>
+</div>
+
+<h3 id="My-Character"><a href="#My-Character" class="headerlink" title="My Character"></a>My Character</h3><p>No one can deny that everyone has advantages and disadvantages.Of course I has,too.</p>
+<p>I am not a outgoing boy.Rather than say so, it’s better to say that I can’t express my points fluently which excludes the science such as cs(computer science),math and so on.</p>
+<p>I am a boy of vanity.I am a tsundere boy.I don’t want to be a boy that couldn’t approach anyone’s greatness,so I study hard to be stronger.</p>
+<h3 id="My-Hobbies"><a href="#My-Hobbies" class="headerlink" title="My Hobbies"></a>My Hobbies</h3><ul>
+<li>Listen to music<blockquote>
+<p>atique music</p>
+</blockquote>
+</li>
+<li>Play games<blockquote>
+<p>Large-scale single-player games.I have played <em><strong>Rise of the Tomb Raider</strong></em>,<em><strong>Tomb Raider</strong></em> which both are the one of the trilogy,and a game named <em><strong>Fallout 4</strong></em> on the <strong>steam platform</strong>.</p>
+</blockquote>
+</li>
+<li>Exercise<blockquote>
+<p>Exercise with my partners.</p>
+</blockquote>
+</li>
+<li>Reading Books<blockquote>
+<p>Internet novels and technology books.</p>
+</blockquote>
+</li>
+<li>Watch animation<blockquote>
+<p>Many kinds …</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="My-Skills"><a href="#My-Skills" class="headerlink" title="My Skills"></a>My Skills</h3><ul>
+<li>Coding</li>
+<li>Coding</li>
+<li>Coding</li>
+<li>and so on…</li>
+</ul>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>That’s all for the time being.<br>Over!</p>
+<p>It’s not easy for me to write the article.Next,the mission is regular practice.</p>
+]]></content>
+      <categories>
+        <category>Prose and Essay</category>
+      </categories>
+      <tags>
+        <tag>Prose and Essay</tag>
+        <tag>Express in English</tag>
       </tags>
   </entry>
   <entry>
@@ -5100,66 +5160,6 @@
       </categories>
       <tags>
         <tag>Operating System</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>rCore Lab 第一期：应用程序与基本执行环境</title>
-    <url>/rCore-lab-1.html</url>
-    <content><![CDATA[<div class="note primary"><p>实现彩色打印 Hello World。</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><ul>
-<li><p>实现分支：ch1</p>
-</li>
-<li><p>完成实验指导书中的内容并在裸机上实现 hello world 输出。</p>
-</li>
-<li><p>实现彩色输出宏(只要求可以彩色输出，不要求 log 等级控制，不要求多种颜色)</p>
-</li>
-<li><p>隐形要求：可以关闭内核所有输出。从 lab2 开始要求关闭内核所有输出（如果实现了 log 等级控制，那么这一点自然就实现了）。</p>
-</li>
-<li><p>利用彩色输出宏输出 os 内存空间布局</p>
-</li>
-<li><p> 输出 .text、.data、.rodata、.bss 各段位置，输出等级为 INFO。</p>
-</li>
-</ul>
-<blockquote>
-<p>challenge: 支持多核，实现多个核的 boot。</p>
-</blockquote>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><div class="note info"><p>代码详情参考<a href="https://github.com/ScarboroughCoral/rCore-lab/tree/ch1">Github</a></p>
-</div>
-
-
-
-<p>基于<a href="https://github.com/rcore-os/rCore-Tutorial-v3">rCore-Tutorial-v3</a> 的 <code>ch1</code> 进行开发彩色打印“hello world”很简单，只需要参考<code>println!</code>宏进行实现即可，难点在于裸机打印。</p>
-<p>先晒结果：</p>
-<p><img data-src="rCore-lab-1/result.png"></p>
-<h3 id="打印彩色字体"><a href="#打印彩色字体" class="headerlink" title="打印彩色字体"></a>打印彩色字体</h3><p>彩色打印是基于<a href="https://zh.wikipedia.org/wiki/ANSI%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97">ANSI转义序列</a>。在shell中执行如下命令就可以打印彩色字体。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\x1b[31mhello world\x1b[0m&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>在前端开发中，浏览器 devTools 的输出也支持彩色打印字体、背景等，跟上述shell打印是一样的。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;\x1b[31mhello world\x1b[0m&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="在裸机上实现-hello-world-输出"><a href="#在裸机上实现-hello-world-输出" class="headerlink" title="在裸机上实现 hello world 输出"></a>在裸机上实现 hello world 输出</h3><p>首先要了解在操作系统支持下打印“hello world”和在裸机上打印的区别。知道在操作系统支持下打印“hello world”究竟发生了什么，这是如何在裸机上打印的关键点。<br>首先我们假设使用Rust向标准输出流打印“hello world”，会编写如下代码：</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后执行<code>cargo run</code>或者直接通过<code>rustc</code>进行编译执行，这样标准输出设备上就会显示“hello world”了。<code>println!</code>是一个rust标准库支持的宏，这个宏的实现实际上又调用了操作系统的系统调用，系统调用再调用硬件接口来实现打印功能。</p>
-<p>然而我们要在裸机上打印“hello world”，假设我们还需要使用上面的程序代码实现，这就有问题了，裸机并没有操作系统，所以没有系统调用供rust标准库来实现打印宏。</p>
-<p>还有一个问题，就算是裸机也有不同的硬件支持，我们编译的程序也需要知道编译结果需要在什么平台上运行，即目标平台，一般用（CPU架构，CPU厂商，操作系统，运行时）来区分，比如我们实验的平台就是<code>riscv64gc-unknown-none-elf</code>。rust标准库在裸机平台上没有实现，但在一些平台，比如<code>riscv64gc-unknown-linux-gnu</code>这种有操作系统和运行时的平台rust标准库是有实现的。</p>
-<p>综上，我们需要做的就是直接调用操作系统之下的运行环境接口（SBI，Supervisor Binary Interface）来打印而不使用标准库，并将rust程序编译为<code>riscv64gc-unknown-none-elf</code>平台上的程序，然后在对应裸机上执行。</p>
-<p>在这里，使用<code>qemu-system-riscv64</code>来模拟riscv裸机环境，其中有一些限制，你需要知道这个裸机对应的bootloader应该放在内存哪里，bootloader执行完成后跳转到的我们的程序起始位置在哪里。</p>
-<h3 id="log-控制等级、展示不同颜色"><a href="#log-控制等级、展示不同颜色" class="headerlink" title="log 控制等级、展示不同颜色"></a>log 控制等级、展示不同颜色</h3><p>因为rust有现成的crate可用，使用了log这个crate，只需要实现<code>Log</code>接口即可通过等级来打印不同颜色的日志，也可以设置最强日志等级进行拦截。</p>
-<h3 id="利用彩色输出宏输出-os-内存空间布局"><a href="#利用彩色输出宏输出-os-内存空间布局" class="headerlink" title="利用彩色输出宏输出 os 内存空间布局"></a>利用彩色输出宏输出 os 内存空间布局</h3><p>获取内存空间布局，即各个段的位置，即获取一些全局符号，<code>.stext</code>、<code>.etext</code>等的位置，在这里我们使用如下代码：</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">stext</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">etext</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">srodata</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">erodata</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">sdata</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">edata</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">sbss</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">ebss</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">boot_stack</span></span>();</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">boot_stack_top</span></span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这是根据“C”这种约定的ABI来进行获取全局符号，这样我们就获得了各个段的开始和结尾。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://rcore-os.github.io/rCore-Tutorial-Book-v3/appendix-c/index.html">https://rcore-os.github.io/rCore-Tutorial-Book-v3/appendix-c/index.html</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Operating System</tag>
-        <tag>Rust</tag>
       </tags>
   </entry>
 </search>
