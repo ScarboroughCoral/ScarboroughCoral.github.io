@@ -2036,40 +2036,6 @@
       </tags>
   </entry>
   <entry>
-    <title>找儿子——《辐射4》：游戏评测日志</title>
-    <url>/fallout4.html</url>
-    <content><![CDATA[<div class="note primary"><p>一刷，很多姿势没有解锁。</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<div class="note info"><p>英文名：Fallout 4。</p>
-<h3 id="Steam简介："><a href="#Steam简介：" class="headerlink" title="Steam简介："></a>Steam简介：</h3><p>Bethesda Game Studios, the award-winning creators of Fallout 3 and The Elder Scrolls V: Skyrim, welcome you to the world of Fallout 4 – their most ambitious game ever, and the next generation of open-world gaming.</p>
-</div>
-
-<h3 id="画面"><a href="#画面" class="headerlink" title="画面"></a>画面</h3><p>3D 建模非常的真实，如同<code>给她爱five——GTA5</code>一般。从现代化城市到一片废墟，从普通人物、动物到变种人、变种动物和人造人，各种天气，各种手持兵器、枪支和机甲，还有各种建筑，这些建模都是非常出色的。</p>
-<p><img data-src="fallout4/ScreenShot1.png" alt="ScreenShot1"></p>
-<p>^图1: 某海湾旁边</p>
-<p><img data-src="fallout4/ScreenShot2.png" alt="ScreenShot2"></p>
-<p>^图2: 某人记忆探索</p>
-<h3 id="故事"><a href="#故事" class="headerlink" title="故事"></a>故事</h3><p>辐射4的故事背景烘托的很浓厚——2200年的美国。一开始一家人其乐融融，漂亮的妻子、1岁的儿子还有一个智能机器人快乐的生活着。不过好景不长，全国辐射危机即将爆发战争，一家人鉴定契约到某地下庇护所冰冻逃脱战争。然而这个过程并不顺利，人有旦夕祸福，天有不测风云，冰冻其间妻子被枪击中，儿子被劫，被冰冻的自己只有意识却无法挽救。主线剧情也由此揭开——找儿子！不过有一点比较捞，妻子死没死不知道就直接找儿子去了。其间围绕找儿子展开了一系列剧情，其间接触了一些势力，这些势力之间或者合作或者敌对。</p>
-<p><img data-src="fallout4/ScreenShot3.png" alt="ScreenShot3"><br>^图3: 找到的儿子</p>
-<h3 id="游戏性"><a href="#游戏性" class="headerlink" title="游戏性"></a>游戏性</h3><p>整体上来看是个大型<strong>FPS</strong>游戏，其中掺杂着<strong>RPG</strong>元素、建造基地的<strong>沙盒</strong>元素、朋友亲密度<strong>模拟养成</strong>元素等。游戏地图非常大，可以在不同已到达地区之间传送。开局一人一狗，中途也可以和<strong>NPC一起刷图</strong>，你的言行举止会影响和NPC的<strong>亲密度</strong>。自己可以对自己的基地进行建造各种设施。使用各种物品有可能受辐射影响造成<strong>最大生命值</strong>的减少。人物升级可以升级技能，这决定着你是向<strong>近战、步枪、狙击、管理</strong>等方向发展。</p>
-<p><img data-src="fallout4/ScreenShot4.png" alt="ScreenShot4"><br>^图4: 基地建造</p>
-<p><img data-src="fallout4/ScreenShot0.png" alt="ScreenShot0"><br>^图5: 一人一狗</p>
-<h3 id="总评"><a href="#总评" class="headerlink" title="总评"></a>总评</h3><p>这个游戏难度还是比较大的（本人比较菜），可能是本人比较懒，所以没有体验一百种死法，后期直接开启了GOD模式。这是第一款Steam上入坑的RMB游，所以算是比较有感情吧。</p>
-]]></content>
-      <categories>
-        <category>Game Review</category>
-        <category>FPS</category>
-      </categories>
-      <tags>
-        <tag>FPS</tag>
-        <tag>Game</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>有关计算机浮点数的思考。</title>
     <url>/float-think.html</url>
     <content><![CDATA[<div class="note warning"><p>计算机的浮点数只能近似表示一些非常精确的数。</p>
@@ -2237,6 +2203,40 @@
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>找儿子——《辐射4》：游戏评测日志</title>
+    <url>/fallout4.html</url>
+    <content><![CDATA[<div class="note primary"><p>一刷，很多姿势没有解锁。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<div class="note info"><p>英文名：Fallout 4。</p>
+<h3 id="Steam简介："><a href="#Steam简介：" class="headerlink" title="Steam简介："></a>Steam简介：</h3><p>Bethesda Game Studios, the award-winning creators of Fallout 3 and The Elder Scrolls V: Skyrim, welcome you to the world of Fallout 4 – their most ambitious game ever, and the next generation of open-world gaming.</p>
+</div>
+
+<h3 id="画面"><a href="#画面" class="headerlink" title="画面"></a>画面</h3><p>3D 建模非常的真实，如同<code>给她爱five——GTA5</code>一般。从现代化城市到一片废墟，从普通人物、动物到变种人、变种动物和人造人，各种天气，各种手持兵器、枪支和机甲，还有各种建筑，这些建模都是非常出色的。</p>
+<p><img data-src="fallout4/ScreenShot1.png" alt="ScreenShot1"></p>
+<p>^图1: 某海湾旁边</p>
+<p><img data-src="fallout4/ScreenShot2.png" alt="ScreenShot2"></p>
+<p>^图2: 某人记忆探索</p>
+<h3 id="故事"><a href="#故事" class="headerlink" title="故事"></a>故事</h3><p>辐射4的故事背景烘托的很浓厚——2200年的美国。一开始一家人其乐融融，漂亮的妻子、1岁的儿子还有一个智能机器人快乐的生活着。不过好景不长，全国辐射危机即将爆发战争，一家人鉴定契约到某地下庇护所冰冻逃脱战争。然而这个过程并不顺利，人有旦夕祸福，天有不测风云，冰冻其间妻子被枪击中，儿子被劫，被冰冻的自己只有意识却无法挽救。主线剧情也由此揭开——找儿子！不过有一点比较捞，妻子死没死不知道就直接找儿子去了。其间围绕找儿子展开了一系列剧情，其间接触了一些势力，这些势力之间或者合作或者敌对。</p>
+<p><img data-src="fallout4/ScreenShot3.png" alt="ScreenShot3"><br>^图3: 找到的儿子</p>
+<h3 id="游戏性"><a href="#游戏性" class="headerlink" title="游戏性"></a>游戏性</h3><p>整体上来看是个大型<strong>FPS</strong>游戏，其中掺杂着<strong>RPG</strong>元素、建造基地的<strong>沙盒</strong>元素、朋友亲密度<strong>模拟养成</strong>元素等。游戏地图非常大，可以在不同已到达地区之间传送。开局一人一狗，中途也可以和<strong>NPC一起刷图</strong>，你的言行举止会影响和NPC的<strong>亲密度</strong>。自己可以对自己的基地进行建造各种设施。使用各种物品有可能受辐射影响造成<strong>最大生命值</strong>的减少。人物升级可以升级技能，这决定着你是向<strong>近战、步枪、狙击、管理</strong>等方向发展。</p>
+<p><img data-src="fallout4/ScreenShot4.png" alt="ScreenShot4"><br>^图4: 基地建造</p>
+<p><img data-src="fallout4/ScreenShot0.png" alt="ScreenShot0"><br>^图5: 一人一狗</p>
+<h3 id="总评"><a href="#总评" class="headerlink" title="总评"></a>总评</h3><p>这个游戏难度还是比较大的（本人比较菜），可能是本人比较懒，所以没有体验一百种死法，后期直接开启了GOD模式。这是第一款Steam上入坑的RMB游，所以算是比较有感情吧。</p>
+]]></content>
+      <categories>
+        <category>Game Review</category>
+        <category>FPS</category>
+      </categories>
+      <tags>
+        <tag>FPS</tag>
+        <tag>Game</tag>
       </tags>
   </entry>
   <entry>
@@ -3471,45 +3471,6 @@
       </tags>
   </entry>
   <entry>
-    <title>用JavaScript实现一个任务队列</title>
-    <url>/js-taskqueue.html</url>
-    <content><![CDATA[<div class="note primary"><p>用JavaScript实现一个任务队列。</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>头条一面的题，有思路，但是JavaScript Promise用的不够熟练，记录一下。</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个API，实现对应的功能。</p>
-<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>给定如下接口，请实现一个任务队列。效果是<code>task</code>方法用于注册任务，<code>start</code>函数调用后，1s后打印1，再过2s后打印2，再过3秒后打印3。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Queue()</span><br><span class="line">    .task(<span class="number">1000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">2000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .start();</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h4 id="0x1"><a href="#0x1" class="headerlink" title="0x1"></a>0x1</h4><p>首先<code>task</code>方法仅仅是注册，因此需要将注册的内容保存下来。</p>
-<p>定义一个如下对象用于保存注册的任务：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">this</span>.tasks = [&#123;</span><br><span class="line">    <span class="attr">delay</span>:<span class="number">1</span>,</span><br><span class="line">    <span class="attr">callback</span>:<span class="function">()=&gt;</span>&#123;&#125;,</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-
-<h4 id="0x2"><a href="#0x2" class="headerlink" title="0x2"></a>0x2</h4><p>然后可以链式调用<code>task</code>方法，因此其返回值就是<code>this</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">task</span>(<span class="params">delay, callback</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.tasks.push(&#123; delay, callback &#125;);</span><br><span class="line">    <span class="comment">// console.log(callback)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="0x3"><a href="#0x3" class="headerlink" title="0x3"></a>0x3</h4><p>最后是关键部分，如何把任务给连接起来并开启队列执行。</p>
-<p>执行顺序应该是这样的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">task1设置</span><br><span class="line">-&gt;1s...task1运行</span><br><span class="line">-&gt;task2在task1回调函数执行后设置</span><br><span class="line">-&gt;2s...task2运行</span><br><span class="line">-&gt;task3在task2回调函数执行后设置</span><br><span class="line">-&gt;3s...task3运行</span><br></pre></td></tr></table></figure>
-
-<p>我们创建一个<code>Promise</code>对象，添加一个定时器，在<code>setTimeout</code>回调函数中执行完注册的callback后<code>resolve</code>。这样我就可以在这个<code>Promise</code>对象的then方法中添加下一个定时器。</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>完整代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.tasks = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">task</span>(<span class="params">delay, callback</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.tasks.push(&#123; delay, callback &#125;);</span><br><span class="line">        <span class="comment">// console.log(callback)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">start</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.task.length === <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">let</span> cur = <span class="built_in">this</span>.tasks.shift();</span><br><span class="line">        <span class="keyword">let</span> func = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;starting......&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                cur.callback();</span><br><span class="line">                resolve();</span><br><span class="line">            &#125;, cur.delay);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">this</span>.tasks.length !== <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> element = <span class="built_in">this</span>.tasks.shift();</span><br><span class="line"></span><br><span class="line">            func = func.then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                        element.callback();</span><br><span class="line">                        resolve();</span><br><span class="line">                    &#125;, element.delay);</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        func.then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;ending.....&quot;</span>);</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Queue()</span><br><span class="line">    .task(<span class="number">1000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">2000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .start();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>Promise</code>对象的使用不够熟练，后续会继续深入学习，敬请期待。</p>
-]]></content>
-      <categories>
-        <category>Front-End Development</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>关于LeetCode题解</title>
     <url>/lc-solutions.html</url>
     <content><![CDATA[<div class="note primary"><p>LeetCode 小记的说明。</p>
@@ -3590,6 +3551,45 @@
       </tags>
   </entry>
   <entry>
+    <title>用JavaScript实现一个任务队列</title>
+    <url>/js-taskqueue.html</url>
+    <content><![CDATA[<div class="note primary"><p>用JavaScript实现一个任务队列。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>头条一面的题，有思路，但是JavaScript Promise用的不够熟练，记录一下。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个API，实现对应的功能。</p>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>给定如下接口，请实现一个任务队列。效果是<code>task</code>方法用于注册任务，<code>start</code>函数调用后，1s后打印1，再过2s后打印2，再过3秒后打印3。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Queue()</span><br><span class="line">    .task(<span class="number">1000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">2000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .start();</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h4 id="0x1"><a href="#0x1" class="headerlink" title="0x1"></a>0x1</h4><p>首先<code>task</code>方法仅仅是注册，因此需要将注册的内容保存下来。</p>
+<p>定义一个如下对象用于保存注册的任务：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">this</span>.tasks = [&#123;</span><br><span class="line">    <span class="attr">delay</span>:<span class="number">1</span>,</span><br><span class="line">    <span class="attr">callback</span>:<span class="function">()=&gt;</span>&#123;&#125;,</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+
+<h4 id="0x2"><a href="#0x2" class="headerlink" title="0x2"></a>0x2</h4><p>然后可以链式调用<code>task</code>方法，因此其返回值就是<code>this</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">task</span>(<span class="params">delay, callback</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.tasks.push(&#123; delay, callback &#125;);</span><br><span class="line">    <span class="comment">// console.log(callback)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="0x3"><a href="#0x3" class="headerlink" title="0x3"></a>0x3</h4><p>最后是关键部分，如何把任务给连接起来并开启队列执行。</p>
+<p>执行顺序应该是这样的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">task1设置</span><br><span class="line">-&gt;1s...task1运行</span><br><span class="line">-&gt;task2在task1回调函数执行后设置</span><br><span class="line">-&gt;2s...task2运行</span><br><span class="line">-&gt;task3在task2回调函数执行后设置</span><br><span class="line">-&gt;3s...task3运行</span><br></pre></td></tr></table></figure>
+
+<p>我们创建一个<code>Promise</code>对象，添加一个定时器，在<code>setTimeout</code>回调函数中执行完注册的callback后<code>resolve</code>。这样我就可以在这个<code>Promise</code>对象的then方法中添加下一个定时器。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>完整代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.tasks = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">task</span>(<span class="params">delay, callback</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.tasks.push(&#123; delay, callback &#125;);</span><br><span class="line">        <span class="comment">// console.log(callback)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">start</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.task.length === <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">let</span> cur = <span class="built_in">this</span>.tasks.shift();</span><br><span class="line">        <span class="keyword">let</span> func = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;starting......&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                cur.callback();</span><br><span class="line">                resolve();</span><br><span class="line">            &#125;, cur.delay);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">this</span>.tasks.length !== <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> element = <span class="built_in">this</span>.tasks.shift();</span><br><span class="line"></span><br><span class="line">            func = func.then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                        element.callback();</span><br><span class="line">                        resolve();</span><br><span class="line">                    &#125;, element.delay);</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        func.then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;ending.....&quot;</span>);</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Queue()</span><br><span class="line">    .task(<span class="number">1000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">2000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .start();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>Promise</code>对象的使用不够熟练，后续会继续深入学习，敬请期待。</p>
+]]></content>
+      <categories>
+        <category>Front-End Development</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>rCore Lab 第一期：应用程序与基本执行环境</title>
     <url>/rCore-lab-1.html</url>
     <content><![CDATA[<div class="note primary"><p>实现彩色打印 Hello World。</p>
@@ -3642,6 +3642,36 @@
 <p>这是根据“C”这种约定的ABI来进行获取全局符号，这样我们就获得了各个段的开始和结尾。</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a href="https://rcore-os.github.io/rCore-Tutorial-Book-v3/appendix-c/index.html">https://rcore-os.github.io/rCore-Tutorial-Book-v3/appendix-c/index.html</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Operating System</tag>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>rCore Lab 第二期：批处理系统</title>
+    <url>/rCore-2.html</url>
+    <content><![CDATA[<div class="note primary"><p>如何用 <code>Rust</code> 从零实现一个批处理系统。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章主要梳理一下关于 rCore 第二章批处理系统的思路。</p>
+<ol>
+<li>整体架构</li>
+<li>各个架构详细描述</li>
+<li>理解难点梳理</li>
+</ol>
+<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p>对于应用层的软件来说，可以把操作系统当做一个服务，也可以称之为 Runtime，或者是文档中提到的运行环境（Environment Execution）</p>
+<p>引用文档中的一张图片，参考这张图就很容易理解了：<br><img data-src="rCore-2/execution-environment.png"></p>
+<blockquote>
+<p>图片来源： <a href="https://rcore-os.github.io/rCore-Tutorial-Book-v3/chapter2/1rv-privilege.html">https://rcore-os.github.io/rCore-Tutorial-Book-v3/chapter2/1rv-privilege.html</a></p>
+</blockquote>
+<p>下层给上层提供运行环境，即功能和接口，上层调用接口获得能力。<br>整体来看系统分为三层：最上层的应用软件、操作系统（Supervisor）、操作系统Runtime（硬件+简单软件）。操作系统通过ABI即systemcall（系统调用）为应用软件提供能力支持，操作系统Runtime（在riscv中被称为SBI）通过SBI为</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://learningos.github.io/rust-based-os-comp2022/chapter2/">https://learningos.github.io/rust-based-os-comp2022/chapter2/</a></li>
 </ul>
 ]]></content>
       <tags>
@@ -4214,6 +4244,28 @@
       <tags>
         <tag>Computer Graphics</tag>
         <tag>DIP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何利用 Typescript 提高代码质量</title>
+    <url>/ts-algebric-data-type.html</url>
+    <content><![CDATA[<div class="note primary"><p>类型也有代数运算，类型也有逻辑。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文适合以下读者：</p>
+<ol>
+<li>不知道为什么要使用 Typescript</li>
+<li>想对 Typescript 有更深入的了解</li>
+<li>想了解 ADT（代数数据类型）</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2>]]></content>
+      <tags>
+        <tag>Typescript</tag>
+        <tag>Type System</tag>
+        <tag>ADT</tag>
       </tags>
   </entry>
   <entry>
