@@ -2036,6 +2036,40 @@
       </tags>
   </entry>
   <entry>
+    <title>找儿子——《辐射4》：游戏评测日志</title>
+    <url>/fallout4.html</url>
+    <content><![CDATA[<div class="note primary"><p>一刷，很多姿势没有解锁。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<div class="note info"><p>英文名：Fallout 4。</p>
+<h3 id="Steam简介："><a href="#Steam简介：" class="headerlink" title="Steam简介："></a>Steam简介：</h3><p>Bethesda Game Studios, the award-winning creators of Fallout 3 and The Elder Scrolls V: Skyrim, welcome you to the world of Fallout 4 – their most ambitious game ever, and the next generation of open-world gaming.</p>
+</div>
+
+<h3 id="画面"><a href="#画面" class="headerlink" title="画面"></a>画面</h3><p>3D 建模非常的真实，如同<code>给她爱five——GTA5</code>一般。从现代化城市到一片废墟，从普通人物、动物到变种人、变种动物和人造人，各种天气，各种手持兵器、枪支和机甲，还有各种建筑，这些建模都是非常出色的。</p>
+<p><img data-src="fallout4/ScreenShot1.png" alt="ScreenShot1"></p>
+<p>^图1: 某海湾旁边</p>
+<p><img data-src="fallout4/ScreenShot2.png" alt="ScreenShot2"></p>
+<p>^图2: 某人记忆探索</p>
+<h3 id="故事"><a href="#故事" class="headerlink" title="故事"></a>故事</h3><p>辐射4的故事背景烘托的很浓厚——2200年的美国。一开始一家人其乐融融，漂亮的妻子、1岁的儿子还有一个智能机器人快乐的生活着。不过好景不长，全国辐射危机即将爆发战争，一家人鉴定契约到某地下庇护所冰冻逃脱战争。然而这个过程并不顺利，人有旦夕祸福，天有不测风云，冰冻其间妻子被枪击中，儿子被劫，被冰冻的自己只有意识却无法挽救。主线剧情也由此揭开——找儿子！不过有一点比较捞，妻子死没死不知道就直接找儿子去了。其间围绕找儿子展开了一系列剧情，其间接触了一些势力，这些势力之间或者合作或者敌对。</p>
+<p><img data-src="fallout4/ScreenShot3.png" alt="ScreenShot3"><br>^图3: 找到的儿子</p>
+<h3 id="游戏性"><a href="#游戏性" class="headerlink" title="游戏性"></a>游戏性</h3><p>整体上来看是个大型<strong>FPS</strong>游戏，其中掺杂着<strong>RPG</strong>元素、建造基地的<strong>沙盒</strong>元素、朋友亲密度<strong>模拟养成</strong>元素等。游戏地图非常大，可以在不同已到达地区之间传送。开局一人一狗，中途也可以和<strong>NPC一起刷图</strong>，你的言行举止会影响和NPC的<strong>亲密度</strong>。自己可以对自己的基地进行建造各种设施。使用各种物品有可能受辐射影响造成<strong>最大生命值</strong>的减少。人物升级可以升级技能，这决定着你是向<strong>近战、步枪、狙击、管理</strong>等方向发展。</p>
+<p><img data-src="fallout4/ScreenShot4.png" alt="ScreenShot4"><br>^图4: 基地建造</p>
+<p><img data-src="fallout4/ScreenShot0.png" alt="ScreenShot0"><br>^图5: 一人一狗</p>
+<h3 id="总评"><a href="#总评" class="headerlink" title="总评"></a>总评</h3><p>这个游戏难度还是比较大的（本人比较菜），可能是本人比较懒，所以没有体验一百种死法，后期直接开启了GOD模式。这是第一款Steam上入坑的RMB游，所以算是比较有感情吧。</p>
+]]></content>
+      <categories>
+        <category>Game Review</category>
+        <category>FPS</category>
+      </categories>
+      <tags>
+        <tag>FPS</tag>
+        <tag>Game</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>有关计算机浮点数的思考。</title>
     <url>/float-think.html</url>
     <content><![CDATA[<div class="note warning"><p>计算机的浮点数只能近似表示一些非常精确的数。</p>
@@ -2203,40 +2237,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>找儿子——《辐射4》：游戏评测日志</title>
-    <url>/fallout4.html</url>
-    <content><![CDATA[<div class="note primary"><p>一刷，很多姿势没有解锁。</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<div class="note info"><p>英文名：Fallout 4。</p>
-<h3 id="Steam简介："><a href="#Steam简介：" class="headerlink" title="Steam简介："></a>Steam简介：</h3><p>Bethesda Game Studios, the award-winning creators of Fallout 3 and The Elder Scrolls V: Skyrim, welcome you to the world of Fallout 4 – their most ambitious game ever, and the next generation of open-world gaming.</p>
-</div>
-
-<h3 id="画面"><a href="#画面" class="headerlink" title="画面"></a>画面</h3><p>3D 建模非常的真实，如同<code>给她爱five——GTA5</code>一般。从现代化城市到一片废墟，从普通人物、动物到变种人、变种动物和人造人，各种天气，各种手持兵器、枪支和机甲，还有各种建筑，这些建模都是非常出色的。</p>
-<p><img data-src="fallout4/ScreenShot1.png" alt="ScreenShot1"></p>
-<p>^图1: 某海湾旁边</p>
-<p><img data-src="fallout4/ScreenShot2.png" alt="ScreenShot2"></p>
-<p>^图2: 某人记忆探索</p>
-<h3 id="故事"><a href="#故事" class="headerlink" title="故事"></a>故事</h3><p>辐射4的故事背景烘托的很浓厚——2200年的美国。一开始一家人其乐融融，漂亮的妻子、1岁的儿子还有一个智能机器人快乐的生活着。不过好景不长，全国辐射危机即将爆发战争，一家人鉴定契约到某地下庇护所冰冻逃脱战争。然而这个过程并不顺利，人有旦夕祸福，天有不测风云，冰冻其间妻子被枪击中，儿子被劫，被冰冻的自己只有意识却无法挽救。主线剧情也由此揭开——找儿子！不过有一点比较捞，妻子死没死不知道就直接找儿子去了。其间围绕找儿子展开了一系列剧情，其间接触了一些势力，这些势力之间或者合作或者敌对。</p>
-<p><img data-src="fallout4/ScreenShot3.png" alt="ScreenShot3"><br>^图3: 找到的儿子</p>
-<h3 id="游戏性"><a href="#游戏性" class="headerlink" title="游戏性"></a>游戏性</h3><p>整体上来看是个大型<strong>FPS</strong>游戏，其中掺杂着<strong>RPG</strong>元素、建造基地的<strong>沙盒</strong>元素、朋友亲密度<strong>模拟养成</strong>元素等。游戏地图非常大，可以在不同已到达地区之间传送。开局一人一狗，中途也可以和<strong>NPC一起刷图</strong>，你的言行举止会影响和NPC的<strong>亲密度</strong>。自己可以对自己的基地进行建造各种设施。使用各种物品有可能受辐射影响造成<strong>最大生命值</strong>的减少。人物升级可以升级技能，这决定着你是向<strong>近战、步枪、狙击、管理</strong>等方向发展。</p>
-<p><img data-src="fallout4/ScreenShot4.png" alt="ScreenShot4"><br>^图4: 基地建造</p>
-<p><img data-src="fallout4/ScreenShot0.png" alt="ScreenShot0"><br>^图5: 一人一狗</p>
-<h3 id="总评"><a href="#总评" class="headerlink" title="总评"></a>总评</h3><p>这个游戏难度还是比较大的（本人比较菜），可能是本人比较懒，所以没有体验一百种死法，后期直接开启了GOD模式。这是第一款Steam上入坑的RMB游，所以算是比较有感情吧。</p>
-]]></content>
-      <categories>
-        <category>Game Review</category>
-        <category>FPS</category>
-      </categories>
-      <tags>
-        <tag>FPS</tag>
-        <tag>Game</tag>
       </tags>
   </entry>
   <entry>
@@ -2587,90 +2587,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript必知33个概念系列：this、call、bind、apply</title>
-    <url>/js-concept-15-this-call-bind-apply.html</url>
-    <content><![CDATA[<div class="note primary"><p>this、call、bind、apply</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JavaScript的灵活性也导致了规则的多样性。今天来总结一下JavaScript中的<code>this</code>关键字，及其相关话题<code>bind,call,apply</code></p>
-<h2 id="JavaScript中的this"><a href="#JavaScript中的this" class="headerlink" title="JavaScript中的this"></a>JavaScript中的this</h2><p>以前学其他语言比如说Java或者CPP时，那时理解的<code>this</code>就是当前对象，当调用构造函数创建对象时，<code>this</code>会绑定到创建的对象上。关于JavaScript中的<code>this</code>并没有过多的关注。</p>
-<h3 id="JavaScript中this的5个绑定规则"><a href="#JavaScript中this的5个绑定规则" class="headerlink" title="JavaScript中this的5个绑定规则"></a>JavaScript中this的5个绑定规则</h3><blockquote>
-<p>函数在哪里调用，<code>this</code>的引用就来自于这里。</p>
-</blockquote>
-<ul>
-<li>隐式绑定</li>
-<li>显示绑定</li>
-<li>new 绑定</li>
-<li>词法绑定</li>
-<li>window 绑定</li>
-</ul>
-<p>接下来我们一一解释。</p>
-<h4 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h4><p>如下代码，大多数<code>this</code>绑定的情况都是如此，你只需要判断调用函数的对象就知道this指的谁，<strong>即“.”左侧</strong>。下面例子中<code>this</code>分别指的是<code>user</code>和<code>user.mother</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mother</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Stacey&#x27;</span>,</span><br><span class="line">    <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      alert(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">user.greet();</span><br><span class="line">user.mother.greet();</span><br></pre></td></tr></table></figure>
-
-<h4 id="显示绑定"><a href="#显示绑定" class="headerlink" title="显示绑定"></a>显示绑定</h4><p>显示绑定就用到<code>bind,call,apply</code>方法了。这三个方法来自于<code>Function.prototype</code>。所以说每个函数都会有这三个方法。其中<code>call,apply</code>来自于ES3，<code>bind</code>来自于ES5。</p>
-<h5 id="call"><a href="#call" class="headerlink" title="call"></a>call</h5><blockquote>
-<p>“call” is a method on every function that allows you to invoke the function specifying in what context the function will be invoked.</p>
-</blockquote>
-<p>如下代码，当调用<code>greet</code>函数的时候并不知道这个<code>this</code>引用的哪个对象，无法通过<code>user.greet(x,x,x)</code>来调用，因为<code>user</code>并没有这个函数对象。那么我们只能单独的调用这个函数，我们可以通过<code>call</code>的方式来指定调用当前函数的对象，第一个参数就是<code>this</code>引用的对象，剩余的参数是函数调用所需要的参数。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span> (<span class="params">l1, l2, l3</span>) </span>&#123;</span><br><span class="line">  alert(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know <span class="subst">$&#123;l1&#125;</span>, <span class="subst">$&#123;l2&#125;</span>, and <span class="subst">$&#123;l3&#125;</span>`</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line">greet.call(user, languages[<span class="number">0</span>], languages[<span class="number">1</span>], languages[<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
-
-<h5 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h5><p><code>apply</code>和<code>call</code>类似，只不过<code>apply</code>解决了<code>call</code>一个问题，就像上面那个例子，当调用的函数需要接受很多参数的时候，需要一个一个将参数传入，如果我们有10个参数就需要单独输入10个参数。而<code>apply</code>只需要将参数当做数组传入，不必一个一个传入。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// greet.call(user, languages[0], languages[1], languages[2])</span></span><br><span class="line">greet.apply(user, languages)</span><br></pre></td></tr></table></figure>
-
-<h5 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h5><p><code>bind</code>和<code>call</code>也是类似的，只不过他不会立即调用函数，而是返回一个新函数，这个新函数绑定了一系列参数，其中第一个参数就是<code>this</code>的引用对象，其余参数是函数调用时所需要的参数，当你调用新函数时，仅需要将未绑定的参数（如果已全部绑定就无需传参）传入就行了。</p>
-<p>还是上面的例子</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span> (<span class="params">l1, l2, l3</span>) </span>&#123;</span><br><span class="line">  alert(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know <span class="subst">$&#123;l1&#125;</span>, <span class="subst">$&#123;l2&#125;</span>, and <span class="subst">$&#123;l3&#125;</span>`</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newFn = greet.bind(user, languages[<span class="number">0</span>], languages[<span class="number">1</span>], languages[<span class="number">2</span>])</span><br><span class="line">newFn() <span class="comment">// alerts &quot;Hello, my name is Tyler and I know JavaScript, Ruby, and Python&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="new-绑定"><a href="#new-绑定" class="headerlink" title="new 绑定"></a>new 绑定</h4><blockquote>
-<p>当使用<code>new</code>创建对象时，<code>JavaScript Interpretor</code>就会创建一个对象，这个对象叫<code>this</code>，也就是说<code>this</code>的引用对象就是新创建的对象。</p>
-</blockquote>
-<p>如下代码</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">    Under the hood, JavaScript creates a new object called `this`</span></span><br><span class="line"><span class="comment">    which delegates to the User&#x27;s prototype on failed lookups. If a</span></span><br><span class="line"><span class="comment">    function is called with the new keyword, then it&#x27;s this new object</span></span><br><span class="line"><span class="comment">    that interpretor created that the this keyword is referencing.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.name = name</span><br><span class="line">  <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> me = <span class="keyword">new</span> User(<span class="string">&#x27;Tyler&#x27;</span>, <span class="number">27</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="词法绑定"><a href="#词法绑定" class="headerlink" title="词法绑定"></a>词法绑定</h4><p>所谓的词法绑定就是“你主观认为<code>this</code>的引用对象就是所绑定的对象”</p>
-<p>例子如下，我们使用<code>reduce</code>函数，传入一个回调函数，这个回调函数中使用的<code>this</code>会引用哪个对象？当我们使用<code>function</code>定义时会创建<code>context</code>，<code>this</code>是引用的这个<code>context</code>，就如同下面的代码，这是有问题的。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">languages</span>: [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>],</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> hello = <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know`</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> langs = <span class="built_in">this</span>.languages.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">str, lang, i</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (i === <span class="built_in">this</span>.languages.length - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> and <span class="subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> <span class="subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">    &#125;, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    alert(hello + langs)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">user.greet()<span class="comment">//Uncaught TypeError: Cannot read property &#x27;length&#x27; of undefined. </span></span><br></pre></td></tr></table></figure>
-
-<p><strong>然后，怎么解决？</strong><br>答案是使用箭头函数，箭头函数不会为<code>this</code>创建<code>context</code>，因此会引用外部的<code>context</code>，这是一个闭包。下面的代码就能正常工作了。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">languages</span>: [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>],</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> hello = <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know`</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> langs = <span class="built_in">this</span>.languages.reduce(<span class="function">(<span class="params">str, lang, i</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (i === <span class="built_in">this</span>.languages.length - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> and <span class="subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> <span class="subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">    &#125;, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    alert(hello + langs)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="window-绑定"><a href="#window-绑定" class="headerlink" title="window 绑定"></a>window 绑定</h4><p>当不满足前几种绑定时，那<code>this</code>就会绑定window（用于catch-all）。</p>
-<p>如下代码，此情况<code>this</code>的引用对象就是window，因为window对象下没有age这个属性，所以undefined。如果定义了这个属性那就会输出这个属性。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span></span><br><span class="line">&#125;</span><br><span class="line">sayAge() <span class="comment">// My age is undefined</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.age=<span class="number">27</span></span><br><span class="line">sayAge() <span class="comment">// My age is 27</span></span><br></pre></td></tr></table></figure>
-
-<p>当然，如果你不想产生这种效果，不想让<code>this</code>绑定到window对象，那么你可以使用<code>use strict</code>声明来避免，window会认为<code>this</code>是undefined，如同下面的代码：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.age = <span class="number">27</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayAge() <span class="comment">// TypeError: Cannot read property &#x27;age&#x27; of undefined</span></span><br></pre></td></tr></table></figure>
-
-
-<h4 id="判断套路"><a href="#判断套路" class="headerlink" title="判断套路"></a>判断套路</h4><ol>
-<li>检查函数要在哪里被调用</li>
-<li><code>this</code>是否在箭头函数内部，如果是，那么<code>this</code>有可能词法绑定，引用父亲作用域的<code>this</code>（产生了闭包</li>
-<li>函数是否使用了<code>new</code>创建对象，如果有，那么<code>this</code>引用这个创建的对象。</li>
-<li>函数是否使用了<code>call,apply,bind</code>，如果有，那么<code>this</code>引用显示绑定的对象。</li>
-<li>函数左侧有无“.”，如果有，那么<code>this</code>就引用这个对象。</li>
-<li>你是否使用了<code>use strict</code>，如果有，那么<code>this</code>是<code>undefined</code></li>
-<li><code>this</code>引用了<code>window</code>对象</li>
-</ol>
-<h2 id="相关话题"><a href="#相关话题" class="headerlink" title="相关话题"></a>相关话题</h2><h3 id="箭头函数的this"><a href="#箭头函数的this" class="headerlink" title="箭头函数的this"></a>箭头函数的this</h3><p>箭头函数没有在函数调用创建函数执行上下文的时候创建<code>this</code>对象。详情请看<a href="js-concept-7-scope-2.html">JavaScript 必知 33 个概念系列：执行上下文（栈帧）、作用域、闭包、this 之间的关系</a></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://tylermcginnis.com/this-keyword-call-apply-bind-javascript/">Understanding the “this” keyword, call, apply, and bind in JavaScript</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Front-End Development</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>33 JS Concept</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript必知33个概念系列：原型继承和原型链</title>
     <url>/js-concept-17-prototype-inheritance.html</url>
     <content><![CDATA[<div class="note primary"><p>prototype inheritance、prototype chain</p>
@@ -2776,6 +2692,90 @@
 <li><a href="https://medium.com/better-programming/prototypes-in-javascript-5bba2990e04b">Prototypes in JavaScript</a></li>
 <li><a href="https://www.nowcoder.com/discuss/346582?type=0&order=0&pos=15&page=0">北京头条前端面经</a></li>
 <li><a href="https://www.freecodecamp.org/news/prototype-in-js-busted-5547ec68872/">Prototype in JavaScript: it’s quirky, but here’s how it works</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Front-End Development</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>33 JS Concept</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript必知33个概念系列：this、call、bind、apply</title>
+    <url>/js-concept-15-this-call-bind-apply.html</url>
+    <content><![CDATA[<div class="note primary"><p>this、call、bind、apply</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JavaScript的灵活性也导致了规则的多样性。今天来总结一下JavaScript中的<code>this</code>关键字，及其相关话题<code>bind,call,apply</code></p>
+<h2 id="JavaScript中的this"><a href="#JavaScript中的this" class="headerlink" title="JavaScript中的this"></a>JavaScript中的this</h2><p>以前学其他语言比如说Java或者CPP时，那时理解的<code>this</code>就是当前对象，当调用构造函数创建对象时，<code>this</code>会绑定到创建的对象上。关于JavaScript中的<code>this</code>并没有过多的关注。</p>
+<h3 id="JavaScript中this的5个绑定规则"><a href="#JavaScript中this的5个绑定规则" class="headerlink" title="JavaScript中this的5个绑定规则"></a>JavaScript中this的5个绑定规则</h3><blockquote>
+<p>函数在哪里调用，<code>this</code>的引用就来自于这里。</p>
+</blockquote>
+<ul>
+<li>隐式绑定</li>
+<li>显示绑定</li>
+<li>new 绑定</li>
+<li>词法绑定</li>
+<li>window 绑定</li>
+</ul>
+<p>接下来我们一一解释。</p>
+<h4 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h4><p>如下代码，大多数<code>this</code>绑定的情况都是如此，你只需要判断调用函数的对象就知道this指的谁，<strong>即“.”左侧</strong>。下面例子中<code>this</code>分别指的是<code>user</code>和<code>user.mother</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mother</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Stacey&#x27;</span>,</span><br><span class="line">    <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      alert(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">user.greet();</span><br><span class="line">user.mother.greet();</span><br></pre></td></tr></table></figure>
+
+<h4 id="显示绑定"><a href="#显示绑定" class="headerlink" title="显示绑定"></a>显示绑定</h4><p>显示绑定就用到<code>bind,call,apply</code>方法了。这三个方法来自于<code>Function.prototype</code>。所以说每个函数都会有这三个方法。其中<code>call,apply</code>来自于ES3，<code>bind</code>来自于ES5。</p>
+<h5 id="call"><a href="#call" class="headerlink" title="call"></a>call</h5><blockquote>
+<p>“call” is a method on every function that allows you to invoke the function specifying in what context the function will be invoked.</p>
+</blockquote>
+<p>如下代码，当调用<code>greet</code>函数的时候并不知道这个<code>this</code>引用的哪个对象，无法通过<code>user.greet(x,x,x)</code>来调用，因为<code>user</code>并没有这个函数对象。那么我们只能单独的调用这个函数，我们可以通过<code>call</code>的方式来指定调用当前函数的对象，第一个参数就是<code>this</code>引用的对象，剩余的参数是函数调用所需要的参数。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span> (<span class="params">l1, l2, l3</span>) </span>&#123;</span><br><span class="line">  alert(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know <span class="subst">$&#123;l1&#125;</span>, <span class="subst">$&#123;l2&#125;</span>, and <span class="subst">$&#123;l3&#125;</span>`</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line">greet.call(user, languages[<span class="number">0</span>], languages[<span class="number">1</span>], languages[<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<h5 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h5><p><code>apply</code>和<code>call</code>类似，只不过<code>apply</code>解决了<code>call</code>一个问题，就像上面那个例子，当调用的函数需要接受很多参数的时候，需要一个一个将参数传入，如果我们有10个参数就需要单独输入10个参数。而<code>apply</code>只需要将参数当做数组传入，不必一个一个传入。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// greet.call(user, languages[0], languages[1], languages[2])</span></span><br><span class="line">greet.apply(user, languages)</span><br></pre></td></tr></table></figure>
+
+<h5 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h5><p><code>bind</code>和<code>call</code>也是类似的，只不过他不会立即调用函数，而是返回一个新函数，这个新函数绑定了一系列参数，其中第一个参数就是<code>this</code>的引用对象，其余参数是函数调用时所需要的参数，当你调用新函数时，仅需要将未绑定的参数（如果已全部绑定就无需传参）传入就行了。</p>
+<p>还是上面的例子</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span> (<span class="params">l1, l2, l3</span>) </span>&#123;</span><br><span class="line">  alert(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know <span class="subst">$&#123;l1&#125;</span>, <span class="subst">$&#123;l2&#125;</span>, and <span class="subst">$&#123;l3&#125;</span>`</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newFn = greet.bind(user, languages[<span class="number">0</span>], languages[<span class="number">1</span>], languages[<span class="number">2</span>])</span><br><span class="line">newFn() <span class="comment">// alerts &quot;Hello, my name is Tyler and I know JavaScript, Ruby, and Python&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="new-绑定"><a href="#new-绑定" class="headerlink" title="new 绑定"></a>new 绑定</h4><blockquote>
+<p>当使用<code>new</code>创建对象时，<code>JavaScript Interpretor</code>就会创建一个对象，这个对象叫<code>this</code>，也就是说<code>this</code>的引用对象就是新创建的对象。</p>
+</blockquote>
+<p>如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">    Under the hood, JavaScript creates a new object called `this`</span></span><br><span class="line"><span class="comment">    which delegates to the User&#x27;s prototype on failed lookups. If a</span></span><br><span class="line"><span class="comment">    function is called with the new keyword, then it&#x27;s this new object</span></span><br><span class="line"><span class="comment">    that interpretor created that the this keyword is referencing.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.name = name</span><br><span class="line">  <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> me = <span class="keyword">new</span> User(<span class="string">&#x27;Tyler&#x27;</span>, <span class="number">27</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="词法绑定"><a href="#词法绑定" class="headerlink" title="词法绑定"></a>词法绑定</h4><p>所谓的词法绑定就是“你主观认为<code>this</code>的引用对象就是所绑定的对象”</p>
+<p>例子如下，我们使用<code>reduce</code>函数，传入一个回调函数，这个回调函数中使用的<code>this</code>会引用哪个对象？当我们使用<code>function</code>定义时会创建<code>context</code>，<code>this</code>是引用的这个<code>context</code>，就如同下面的代码，这是有问题的。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">languages</span>: [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>],</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> hello = <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know`</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> langs = <span class="built_in">this</span>.languages.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">str, lang, i</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (i === <span class="built_in">this</span>.languages.length - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> and <span class="subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> <span class="subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">    &#125;, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    alert(hello + langs)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">user.greet()<span class="comment">//Uncaught TypeError: Cannot read property &#x27;length&#x27; of undefined. </span></span><br></pre></td></tr></table></figure>
+
+<p><strong>然后，怎么解决？</strong><br>答案是使用箭头函数，箭头函数不会为<code>this</code>创建<code>context</code>，因此会引用外部的<code>context</code>，这是一个闭包。下面的代码就能正常工作了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">languages</span>: [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>],</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> hello = <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know`</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> langs = <span class="built_in">this</span>.languages.reduce(<span class="function">(<span class="params">str, lang, i</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (i === <span class="built_in">this</span>.languages.length - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> and <span class="subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> <span class="subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">    &#125;, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    alert(hello + langs)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="window-绑定"><a href="#window-绑定" class="headerlink" title="window 绑定"></a>window 绑定</h4><p>当不满足前几种绑定时，那<code>this</code>就会绑定window（用于catch-all）。</p>
+<p>如下代码，此情况<code>this</code>的引用对象就是window，因为window对象下没有age这个属性，所以undefined。如果定义了这个属性那就会输出这个属性。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span></span><br><span class="line">&#125;</span><br><span class="line">sayAge() <span class="comment">// My age is undefined</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.age=<span class="number">27</span></span><br><span class="line">sayAge() <span class="comment">// My age is 27</span></span><br></pre></td></tr></table></figure>
+
+<p>当然，如果你不想产生这种效果，不想让<code>this</code>绑定到window对象，那么你可以使用<code>use strict</code>声明来避免，window会认为<code>this</code>是undefined，如同下面的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.age = <span class="number">27</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayAge() <span class="comment">// TypeError: Cannot read property &#x27;age&#x27; of undefined</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="判断套路"><a href="#判断套路" class="headerlink" title="判断套路"></a>判断套路</h4><ol>
+<li>检查函数要在哪里被调用</li>
+<li><code>this</code>是否在箭头函数内部，如果是，那么<code>this</code>有可能词法绑定，引用父亲作用域的<code>this</code>（产生了闭包</li>
+<li>函数是否使用了<code>new</code>创建对象，如果有，那么<code>this</code>引用这个创建的对象。</li>
+<li>函数是否使用了<code>call,apply,bind</code>，如果有，那么<code>this</code>引用显示绑定的对象。</li>
+<li>函数左侧有无“.”，如果有，那么<code>this</code>就引用这个对象。</li>
+<li>你是否使用了<code>use strict</code>，如果有，那么<code>this</code>是<code>undefined</code></li>
+<li><code>this</code>引用了<code>window</code>对象</li>
+</ol>
+<h2 id="相关话题"><a href="#相关话题" class="headerlink" title="相关话题"></a>相关话题</h2><h3 id="箭头函数的this"><a href="#箭头函数的this" class="headerlink" title="箭头函数的this"></a>箭头函数的this</h3><p>箭头函数没有在函数调用创建函数执行上下文的时候创建<code>this</code>对象。详情请看<a href="js-concept-7-scope-2.html">JavaScript 必知 33 个概念系列：执行上下文（栈帧）、作用域、闭包、this 之间的关系</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://tylermcginnis.com/this-keyword-call-apply-bind-javascript/">Understanding the “this” keyword, call, apply, and bind in JavaScript</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -2960,69 +2960,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript必知33个概念系列：闭包</title>
-    <url>/js-concept-21-closures.html</url>
-    <content><![CDATA[<div class="note primary"><p>闭包是函数及其创建时保存的状态环境。</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JavaScript中的闭包是区别于离散数学中的闭包。让我们仔细探讨一下JavaScript中的闭包吧。</p>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h3><blockquote>
-<p>A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.(MDN)</p>
-</blockquote>
-<p>也就是说，闭包是函数及其创建时保存的引用状态环境。</p>
-<h3 id="用闭包模拟私有方法"><a href="#用闭包模拟私有方法" class="headerlink" title="用闭包模拟私有方法"></a>用闭包模拟私有方法</h3><p>例如<strong>Java</strong>允许定义私有方法，这样只允许类内的其他方法使用，无法通过类的实例访问。<br>有如下代码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> privateCounter=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">changeBy</span><span class="params">(<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.privateCounter+=val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">increment</span><span class="params">()</span></span>&#123;</span><br><span class="line">        changeBy(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">decrement</span><span class="params">()</span></span>&#123;</span><br><span class="line">        changeBy(-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">value</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> privateCounter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们可以使用JavaScript来实现。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> makeCounter = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> privateCounter = <span class="number">0</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">changeBy</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    privateCounter += val;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">increment</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      changeBy(<span class="number">1</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">decrement</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      changeBy(-<span class="number">1</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">value</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> privateCounter;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> counter = makeCounter();</span><br><span class="line"><span class="built_in">console</span>.log(counter.value()); <span class="comment">// logs 0</span></span><br><span class="line">counter.increment();</span><br><span class="line">counter.increment();</span><br><span class="line"><span class="built_in">console</span>.log(counter.value()); <span class="comment">// logs 2</span></span><br><span class="line">counter.decrement();</span><br><span class="line"><span class="built_in">console</span>.log(counter.value()); <span class="comment">// logs 1</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<h3 id="闭包作用域链"><a href="#闭包作用域链" class="headerlink" title="闭包作用域链"></a>闭包作用域链</h3><p>关于作用域链可以查看以前的文章：<a href="http://blog.scarboroughcoral.topjs-concept-7-scope.html/">JavaScript必知33个概念系列：作用域</a></p>
-<p>每个闭包的作用域分为三个：</p>
-<ul>
-<li>闭包自己的作用域</li>
-<li>外部函数作用域</li>
-<li>全局作用域</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// global scope</span></span><br><span class="line"><span class="keyword">var</span> e = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">      <span class="comment">// outer functions scope</span></span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// local scope</span></span><br><span class="line">        <span class="keyword">return</span> a + b + c + d + e;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sum(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>)); <span class="comment">// log 20</span></span><br></pre></td></tr></table></figure>
-
-<p>每个函数都能访问外部函数作用域和全局作用域，即每个函数都能够访问作用域链上游作用域的全部变量。</p>
-<h3 id="闭包的典型错误问题：循环创建闭包"><a href="#闭包的典型错误问题：循环创建闭包" class="headerlink" title="闭包的典型错误问题：循环创建闭包"></a>闭包的典型错误问题：循环创建闭包</h3><p>如下代码：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;help&quot;</span>&gt;</span>Helpful notes will appear here<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>E-mail: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;email&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;name&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Age: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;age&quot;</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;help&#x27;</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">&#x27;id&#x27;</span>: <span class="string">&#x27;email&#x27;</span>, <span class="string">&#x27;help&#x27;</span>: <span class="string">&#x27;Your e-mail address&#x27;</span>&#125;,</span><br><span class="line">      &#123;<span class="string">&#x27;id&#x27;</span>: <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;help&#x27;</span>: <span class="string">&#x27;Your full name&#x27;</span>&#125;,</span><br><span class="line">      &#123;<span class="string">&#x27;id&#x27;</span>: <span class="string">&#x27;age&#x27;</span>, <span class="string">&#x27;help&#x27;</span>: <span class="string">&#x27;Your age (you must be over 16)&#x27;</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> item = helpText[i];</span><br><span class="line">    <span class="built_in">document</span>.getElementById(item.id).onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      showHelp(item.help);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
-
-<p>以上执行结果就是总是弹出最后一项内容提示，因为<code>var</code>是函数作用域的，所有创建的闭包都是引用的同一个对象item。</p>
-<p><strong>解决办法就是使用<code>let</code>或者是立即执行函数，<code>foreach</code>迭代也可以</strong></p>
-<h3 id="闭包性能问题"><a href="#闭包性能问题" class="headerlink" title="闭包性能问题"></a>闭包性能问题</h3><ul>
-<li>不必要的闭包会影响脚本效率，包括处理速度和内存消耗。</li>
-</ul>
-<p>比较下面两组代码：</p>
-<figure class="highlight javascript"><figcaption><span>text1</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyObject</span>(<span class="params">name, message</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name.toString();</span><br><span class="line">  <span class="built_in">this</span>.message = message.toString();</span><br><span class="line">  <span class="built_in">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.getMessage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.message;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><figcaption><span>text2</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyObject</span>(<span class="params">name, message</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name.toString();</span><br><span class="line">  <span class="built_in">this</span>.message = message.toString();</span><br><span class="line">&#125;</span><br><span class="line">MyObject.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">&#125;;</span><br><span class="line">MyObject.prototype.getMessage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.message;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>text1在构造函数内部创建了闭包，而且每次创建一个对象都会创建一个函数对象 。<br>text2使用原型定义函数，不同的对象只有一个函数对象副本。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>还有一些深入话题没有总结，目前水平还不够，to be continued。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">Closures</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Front-End Development</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>33 JS Concept</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript必知33个概念系列：执行上下文（栈帧）、作用域、闭包、this之间的关系</title>
     <url>/js-concept-7-scope-2.html</url>
     <content><![CDATA[<div class="note primary"><p>执行上下文（栈帧）、作用域、闭包、this之间的关系。</p>
@@ -3074,6 +3011,69 @@
 <p>箭头函数创建执行上下文时不会创建<code>this</code>变量，所以内部访问变量时会沿着作用域链向上找。</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a href="https://tylermcginnis.com/ultimate-guide-to-execution-contexts-hoisting-scopes-and-closures-in-javascript/">The Ultimate Guide to Hoisting, Scopes, and Closures in JavaScript</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Front-End Development</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>33 JS Concept</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript必知33个概念系列：闭包</title>
+    <url>/js-concept-21-closures.html</url>
+    <content><![CDATA[<div class="note primary"><p>闭包是函数及其创建时保存的状态环境。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JavaScript中的闭包是区别于离散数学中的闭包。让我们仔细探讨一下JavaScript中的闭包吧。</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h3><blockquote>
+<p>A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.(MDN)</p>
+</blockquote>
+<p>也就是说，闭包是函数及其创建时保存的引用状态环境。</p>
+<h3 id="用闭包模拟私有方法"><a href="#用闭包模拟私有方法" class="headerlink" title="用闭包模拟私有方法"></a>用闭包模拟私有方法</h3><p>例如<strong>Java</strong>允许定义私有方法，这样只允许类内的其他方法使用，无法通过类的实例访问。<br>有如下代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> privateCounter=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">changeBy</span><span class="params">(<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.privateCounter+=val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">increment</span><span class="params">()</span></span>&#123;</span><br><span class="line">        changeBy(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">decrement</span><span class="params">()</span></span>&#123;</span><br><span class="line">        changeBy(-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">value</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> privateCounter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以使用JavaScript来实现。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> makeCounter = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> privateCounter = <span class="number">0</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">changeBy</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    privateCounter += val;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">increment</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      changeBy(<span class="number">1</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">decrement</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      changeBy(-<span class="number">1</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">value</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> privateCounter;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> counter = makeCounter();</span><br><span class="line"><span class="built_in">console</span>.log(counter.value()); <span class="comment">// logs 0</span></span><br><span class="line">counter.increment();</span><br><span class="line">counter.increment();</span><br><span class="line"><span class="built_in">console</span>.log(counter.value()); <span class="comment">// logs 2</span></span><br><span class="line">counter.decrement();</span><br><span class="line"><span class="built_in">console</span>.log(counter.value()); <span class="comment">// logs 1</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="闭包作用域链"><a href="#闭包作用域链" class="headerlink" title="闭包作用域链"></a>闭包作用域链</h3><p>关于作用域链可以查看以前的文章：<a href="http://blog.scarboroughcoral.topjs-concept-7-scope.html/">JavaScript必知33个概念系列：作用域</a></p>
+<p>每个闭包的作用域分为三个：</p>
+<ul>
+<li>闭包自己的作用域</li>
+<li>外部函数作用域</li>
+<li>全局作用域</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// global scope</span></span><br><span class="line"><span class="keyword">var</span> e = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">      <span class="comment">// outer functions scope</span></span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// local scope</span></span><br><span class="line">        <span class="keyword">return</span> a + b + c + d + e;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sum(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>)); <span class="comment">// log 20</span></span><br></pre></td></tr></table></figure>
+
+<p>每个函数都能访问外部函数作用域和全局作用域，即每个函数都能够访问作用域链上游作用域的全部变量。</p>
+<h3 id="闭包的典型错误问题：循环创建闭包"><a href="#闭包的典型错误问题：循环创建闭包" class="headerlink" title="闭包的典型错误问题：循环创建闭包"></a>闭包的典型错误问题：循环创建闭包</h3><p>如下代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;help&quot;</span>&gt;</span>Helpful notes will appear here<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>E-mail: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;email&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;name&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Age: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;age&quot;</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showHelp</span>(<span class="params">help</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;help&#x27;</span>).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupHelp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> helpText = [</span><br><span class="line">      &#123;<span class="string">&#x27;id&#x27;</span>: <span class="string">&#x27;email&#x27;</span>, <span class="string">&#x27;help&#x27;</span>: <span class="string">&#x27;Your e-mail address&#x27;</span>&#125;,</span><br><span class="line">      &#123;<span class="string">&#x27;id&#x27;</span>: <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;help&#x27;</span>: <span class="string">&#x27;Your full name&#x27;</span>&#125;,</span><br><span class="line">      &#123;<span class="string">&#x27;id&#x27;</span>: <span class="string">&#x27;age&#x27;</span>, <span class="string">&#x27;help&#x27;</span>: <span class="string">&#x27;Your age (you must be over 16)&#x27;</span>&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> item = helpText[i];</span><br><span class="line">    <span class="built_in">document</span>.getElementById(item.id).onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      showHelp(item.help);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure>
+
+<p>以上执行结果就是总是弹出最后一项内容提示，因为<code>var</code>是函数作用域的，所有创建的闭包都是引用的同一个对象item。</p>
+<p><strong>解决办法就是使用<code>let</code>或者是立即执行函数，<code>foreach</code>迭代也可以</strong></p>
+<h3 id="闭包性能问题"><a href="#闭包性能问题" class="headerlink" title="闭包性能问题"></a>闭包性能问题</h3><ul>
+<li>不必要的闭包会影响脚本效率，包括处理速度和内存消耗。</li>
+</ul>
+<p>比较下面两组代码：</p>
+<figure class="highlight javascript"><figcaption><span>text1</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyObject</span>(<span class="params">name, message</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name.toString();</span><br><span class="line">  <span class="built_in">this</span>.message = message.toString();</span><br><span class="line">  <span class="built_in">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.getMessage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.message;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><figcaption><span>text2</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyObject</span>(<span class="params">name, message</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name.toString();</span><br><span class="line">  <span class="built_in">this</span>.message = message.toString();</span><br><span class="line">&#125;</span><br><span class="line">MyObject.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">&#125;;</span><br><span class="line">MyObject.prototype.getMessage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.message;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>text1在构造函数内部创建了闭包，而且每次创建一个对象都会创建一个函数对象 。<br>text2使用原型定义函数，不同的对象只有一个函数对象副本。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>还有一些深入话题没有总结，目前水平还不够，to be continued。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">Closures</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -3471,6 +3471,45 @@
       </tags>
   </entry>
   <entry>
+    <title>用JavaScript实现一个任务队列</title>
+    <url>/js-taskqueue.html</url>
+    <content><![CDATA[<div class="note primary"><p>用JavaScript实现一个任务队列。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>头条一面的题，有思路，但是JavaScript Promise用的不够熟练，记录一下。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个API，实现对应的功能。</p>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>给定如下接口，请实现一个任务队列。效果是<code>task</code>方法用于注册任务，<code>start</code>函数调用后，1s后打印1，再过2s后打印2，再过3秒后打印3。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Queue()</span><br><span class="line">    .task(<span class="number">1000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">2000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .start();</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h4 id="0x1"><a href="#0x1" class="headerlink" title="0x1"></a>0x1</h4><p>首先<code>task</code>方法仅仅是注册，因此需要将注册的内容保存下来。</p>
+<p>定义一个如下对象用于保存注册的任务：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">this</span>.tasks = [&#123;</span><br><span class="line">    <span class="attr">delay</span>:<span class="number">1</span>,</span><br><span class="line">    <span class="attr">callback</span>:<span class="function">()=&gt;</span>&#123;&#125;,</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+
+<h4 id="0x2"><a href="#0x2" class="headerlink" title="0x2"></a>0x2</h4><p>然后可以链式调用<code>task</code>方法，因此其返回值就是<code>this</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">task</span>(<span class="params">delay, callback</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.tasks.push(&#123; delay, callback &#125;);</span><br><span class="line">    <span class="comment">// console.log(callback)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="0x3"><a href="#0x3" class="headerlink" title="0x3"></a>0x3</h4><p>最后是关键部分，如何把任务给连接起来并开启队列执行。</p>
+<p>执行顺序应该是这样的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">task1设置</span><br><span class="line">-&gt;1s...task1运行</span><br><span class="line">-&gt;task2在task1回调函数执行后设置</span><br><span class="line">-&gt;2s...task2运行</span><br><span class="line">-&gt;task3在task2回调函数执行后设置</span><br><span class="line">-&gt;3s...task3运行</span><br></pre></td></tr></table></figure>
+
+<p>我们创建一个<code>Promise</code>对象，添加一个定时器，在<code>setTimeout</code>回调函数中执行完注册的callback后<code>resolve</code>。这样我就可以在这个<code>Promise</code>对象的then方法中添加下一个定时器。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>完整代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.tasks = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">task</span>(<span class="params">delay, callback</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.tasks.push(&#123; delay, callback &#125;);</span><br><span class="line">        <span class="comment">// console.log(callback)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">start</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.task.length === <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">let</span> cur = <span class="built_in">this</span>.tasks.shift();</span><br><span class="line">        <span class="keyword">let</span> func = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;starting......&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                cur.callback();</span><br><span class="line">                resolve();</span><br><span class="line">            &#125;, cur.delay);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">this</span>.tasks.length !== <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> element = <span class="built_in">this</span>.tasks.shift();</span><br><span class="line"></span><br><span class="line">            func = func.then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                        element.callback();</span><br><span class="line">                        resolve();</span><br><span class="line">                    &#125;, element.delay);</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        func.then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;ending.....&quot;</span>);</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Queue()</span><br><span class="line">    .task(<span class="number">1000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">2000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .start();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>Promise</code>对象的使用不够熟练，后续会继续深入学习，敬请期待。</p>
+]]></content>
+      <categories>
+        <category>Front-End Development</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>关于LeetCode题解</title>
     <url>/lc-solutions.html</url>
     <content><![CDATA[<div class="note primary"><p>LeetCode 小记的说明。</p>
@@ -3551,42 +3590,33 @@
       </tags>
   </entry>
   <entry>
-    <title>用JavaScript实现一个任务队列</title>
-    <url>/js-taskqueue.html</url>
-    <content><![CDATA[<div class="note primary"><p>用JavaScript实现一个任务队列。</p>
+    <title>rCore Lab 第二期：批处理系统</title>
+    <url>/rCore-2.html</url>
+    <content><![CDATA[<div class="note primary"><p>如何用 <code>Rust</code> 从零实现一个批处理系统。</p>
 </div>
 
 <span id="more"></span>
 
 <hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>头条一面的题，有思路，但是JavaScript Promise用的不够熟练，记录一下。</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个API，实现对应的功能。</p>
-<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>给定如下接口，请实现一个任务队列。效果是<code>task</code>方法用于注册任务，<code>start</code>函数调用后，1s后打印1，再过2s后打印2，再过3秒后打印3。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Queue()</span><br><span class="line">    .task(<span class="number">1000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">2000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .start();</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h4 id="0x1"><a href="#0x1" class="headerlink" title="0x1"></a>0x1</h4><p>首先<code>task</code>方法仅仅是注册，因此需要将注册的内容保存下来。</p>
-<p>定义一个如下对象用于保存注册的任务：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">this</span>.tasks = [&#123;</span><br><span class="line">    <span class="attr">delay</span>:<span class="number">1</span>,</span><br><span class="line">    <span class="attr">callback</span>:<span class="function">()=&gt;</span>&#123;&#125;,</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-
-<h4 id="0x2"><a href="#0x2" class="headerlink" title="0x2"></a>0x2</h4><p>然后可以链式调用<code>task</code>方法，因此其返回值就是<code>this</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">task</span>(<span class="params">delay, callback</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.tasks.push(&#123; delay, callback &#125;);</span><br><span class="line">    <span class="comment">// console.log(callback)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="0x3"><a href="#0x3" class="headerlink" title="0x3"></a>0x3</h4><p>最后是关键部分，如何把任务给连接起来并开启队列执行。</p>
-<p>执行顺序应该是这样的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">task1设置</span><br><span class="line">-&gt;1s...task1运行</span><br><span class="line">-&gt;task2在task1回调函数执行后设置</span><br><span class="line">-&gt;2s...task2运行</span><br><span class="line">-&gt;task3在task2回调函数执行后设置</span><br><span class="line">-&gt;3s...task3运行</span><br></pre></td></tr></table></figure>
-
-<p>我们创建一个<code>Promise</code>对象，添加一个定时器，在<code>setTimeout</code>回调函数中执行完注册的callback后<code>resolve</code>。这样我就可以在这个<code>Promise</code>对象的then方法中添加下一个定时器。</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>完整代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.tasks = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">task</span>(<span class="params">delay, callback</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.tasks.push(&#123; delay, callback &#125;);</span><br><span class="line">        <span class="comment">// console.log(callback)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">start</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.task.length === <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">let</span> cur = <span class="built_in">this</span>.tasks.shift();</span><br><span class="line">        <span class="keyword">let</span> func = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;starting......&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                cur.callback();</span><br><span class="line">                resolve();</span><br><span class="line">            &#125;, cur.delay);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">this</span>.tasks.length !== <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> element = <span class="built_in">this</span>.tasks.shift();</span><br><span class="line"></span><br><span class="line">            func = func.then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                        element.callback();</span><br><span class="line">                        resolve();</span><br><span class="line">                    &#125;, element.delay);</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        func.then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;ending.....&quot;</span>);</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Queue()</span><br><span class="line">    .task(<span class="number">1000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">2000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .task(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .start();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>Promise</code>对象的使用不够熟练，后续会继续深入学习，敬请期待。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章主要梳理一下关于 rCore 第二章批处理系统的思路。</p>
+<ol>
+<li>整体架构</li>
+<li>各个架构详细描述</li>
+<li>理解难点梳理</li>
+</ol>
+<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p>对于应用层的软件来说，可以把操作系统当做一个服务，也可以称之为 Runtime，或者是文档中提到的运行环境（Environment Execution）</p>
+<p>引用文档中的一张图片，参考这张图就很容易理解了：<br><img data-src="rCore-2/execution-environment.png"></p>
+<blockquote>
+<p>图片来源： <a href="https://rcore-os.github.io/rCore-Tutorial-Book-v3/chapter2/1rv-privilege.html">https://rcore-os.github.io/rCore-Tutorial-Book-v3/chapter2/1rv-privilege.html</a></p>
+</blockquote>
+<p>下层给上层提供运行环境，即功能和接口，上层调用接口获得能力。<br>整体来看系统分为三层：最上层的应用软件、操作系统（Supervisor）、操作系统Runtime（硬件+简单软件）。操作系统通过ABI即systemcall（系统调用）为应用软件提供能力支持，操作系统Runtime（在riscv中被称为SBI）通过SBI为</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://learningos.github.io/rust-based-os-comp2022/chapter2/">https://learningos.github.io/rust-based-os-comp2022/chapter2/</a></li>
+</ul>
 ]]></content>
-      <categories>
-        <category>Front-End Development</category>
-        <category>JavaScript</category>
-      </categories>
       <tags>
-        <tag>JavaScript</tag>
+        <tag>Operating System</tag>
+        <tag>Rust</tag>
       </tags>
   </entry>
   <entry>
@@ -3642,36 +3672,6 @@
 <p>这是根据“C”这种约定的ABI来进行获取全局符号，这样我们就获得了各个段的开始和结尾。</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a href="https://rcore-os.github.io/rCore-Tutorial-Book-v3/appendix-c/index.html">https://rcore-os.github.io/rCore-Tutorial-Book-v3/appendix-c/index.html</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Operating System</tag>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>rCore Lab 第二期：批处理系统</title>
-    <url>/rCore-2.html</url>
-    <content><![CDATA[<div class="note primary"><p>如何用 <code>Rust</code> 从零实现一个批处理系统。</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章主要梳理一下关于 rCore 第二章批处理系统的思路。</p>
-<ol>
-<li>整体架构</li>
-<li>各个架构详细描述</li>
-<li>理解难点梳理</li>
-</ol>
-<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p>对于应用层的软件来说，可以把操作系统当做一个服务，也可以称之为 Runtime，或者是文档中提到的运行环境（Environment Execution）</p>
-<p>引用文档中的一张图片，参考这张图就很容易理解了：<br><img data-src="rCore-2/execution-environment.png"></p>
-<blockquote>
-<p>图片来源： <a href="https://rcore-os.github.io/rCore-Tutorial-Book-v3/chapter2/1rv-privilege.html">https://rcore-os.github.io/rCore-Tutorial-Book-v3/chapter2/1rv-privilege.html</a></p>
-</blockquote>
-<p>下层给上层提供运行环境，即功能和接口，上层调用接口获得能力。<br>整体来看系统分为三层：最上层的应用软件、操作系统（Supervisor）、操作系统Runtime（硬件+简单软件）。操作系统通过ABI即systemcall（系统调用）为应用软件提供能力支持，操作系统Runtime（在riscv中被称为SBI）通过SBI为</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://learningos.github.io/rust-based-os-comp2022/chapter2/">https://learningos.github.io/rust-based-os-comp2022/chapter2/</a></li>
 </ul>
 ]]></content>
       <tags>
@@ -4257,11 +4257,31 @@
 <hr>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文适合以下读者：</p>
 <ol>
-<li>不知道为什么要使用 Typescript</li>
-<li>想对 Typescript 有更深入的了解</li>
-<li>想了解 ADT（代数数据类型）</li>
+<li>想了解为什么要使用 Typescript。本文会展示 Typescript 的优势</li>
+<li>对类型体操的实际应用有怀疑。本文会展示实际业务中常见类型应用</li>
+<li>想了解 ADT（代数数据类型）。类型也有概念上的加减乘除，这并不是类型体操。</li>
 </ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2>]]></content>
+<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><ul>
+<li>Typescript 的优势</li>
+<li>实际业务中常见类型操作应用<ul>
+<li>代数数据类型</li>
+<li>穷尽枚举</li>
+</ul>
+</li>
+<li>代数数据类型拓展</li>
+</ul>
+<h3 id="Typescript-的优势"><a href="#Typescript-的优势" class="headerlink" title="Typescript 的优势"></a>Typescript 的优势</h3><p>优势是相对而言的，要说优势就是说 Typescript 相对于 Javascript 的优势。那么 Typescript 相对于 Javascript 的优势是什么呢？</p>
+<p>最近作者面试一些前端开发人员，都会说 Typescript 是 JavaScript 的超集，提供了静态类型检查，但是仅限于使用 interface 和 type 定义类型，会使用一些简单的 Utility Types。这样回答往往表现的了解不够深入。</p>
+<p>有些人可能会说出 interface 和 type 的区别够深入吗、会很多类型体操（例如使用类型进行排序）这样够深入吗、了解distributive conditional types 够深入吗？这确实能体现出你理解的深度，但是这些都是 Typescript 的语法特性，而不是 Typescript 的优势，这些往往在开发一些工具基础库的时候会使用，平常业务开发几乎不会使用到。</p>
+<p>让我们先思考这样一个问题，Typescript 提供了静态类型检查，那我们可以通过静态类型检查来帮我做哪些事情呢？</p>
+<p>静态类型检查可以让我们在类型出现错误的时候就会出现编译错误，这样就可以把这部分错误过滤掉，不会出现在运行时。往往运行时再去发现修改要比编译时发现修改成本要高的多，甚至需要在测试阶段发现。</p>
+<p>既然如此，我们能不能尽可能的将代码错误或者说业务错误拦截在编译阶段呢？使用 Typescript 的一些方法可以帮我们做到这一点。</p>
+<p>在说这些方法之前，我们先来思考一下什么是类型，我们可以通过集合的角度来思考类型，把类型当作集合、把值当作集合中的元素。如果了解过类型论就知道三个概念：项（可以先理解为变量）、类型、上下文。这三个概念的关系通常可以描述为在某个上下文中某个项是某个类型。例如下面这段代码：我们可以描述为在外层的作用域上下文中 a 这个项的类型是 number，在内层的作用域上下文中 a 这个项的类型是 string。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a: <span class="built_in">number</span> = <span class="number">1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> a: <span class="built_in">string</span> = <span class="string">&#x27;a&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把类型当作集合、把值当作集合中的元素，就没办法把不属于这个集合的元素赋值给属于这个集合的变量。那么考虑一下 Typescript 中的这些类型。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// boolean 这个集合中有两个元素 true 和 false，没法把不属于这个集合的元素赋值给属于这个集合的变量</span></span><br><span class="line"><span class="keyword">const</span> a: <span class="built_in">boolean</span> = <span class="literal">true</span> </span><br><span class="line"><span class="keyword">const</span> b: <span class="built_in">boolean</span> = <span class="literal">false</span></span><br><span class="line"><span class="comment">// @ts-ignore</span></span><br><span class="line"><span class="keyword">const</span> c: <span class="built_in">boolean</span> = <span class="number">1</span> <span class="comment">// Type &#x27;1&#x27; is not assignable to type &#x27;boolean&#x27;</span></span><br></pre></td></tr></table></figure>
+]]></content>
       <tags>
         <tag>Typescript</tag>
         <tag>Type System</tag>
