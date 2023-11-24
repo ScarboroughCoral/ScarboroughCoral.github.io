@@ -2587,6 +2587,90 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript必知33个概念系列：this、call、bind、apply</title>
+    <url>/js-concept-15-this-call-bind-apply.html</url>
+    <content><![CDATA[<div class="note primary"><p>this、call、bind、apply</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JavaScript的灵活性也导致了规则的多样性。今天来总结一下JavaScript中的<code>this</code>关键字，及其相关话题<code>bind,call,apply</code></p>
+<h2 id="JavaScript中的this"><a href="#JavaScript中的this" class="headerlink" title="JavaScript中的this"></a>JavaScript中的this</h2><p>以前学其他语言比如说Java或者CPP时，那时理解的<code>this</code>就是当前对象，当调用构造函数创建对象时，<code>this</code>会绑定到创建的对象上。关于JavaScript中的<code>this</code>并没有过多的关注。</p>
+<h3 id="JavaScript中this的5个绑定规则"><a href="#JavaScript中this的5个绑定规则" class="headerlink" title="JavaScript中this的5个绑定规则"></a>JavaScript中this的5个绑定规则</h3><blockquote>
+<p>函数在哪里调用，<code>this</code>的引用就来自于这里。</p>
+</blockquote>
+<ul>
+<li>隐式绑定</li>
+<li>显示绑定</li>
+<li>new 绑定</li>
+<li>词法绑定</li>
+<li>window 绑定</li>
+</ul>
+<p>接下来我们一一解释。</p>
+<h4 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h4><p>如下代码，大多数<code>this</code>绑定的情况都是如此，你只需要判断调用函数的对象就知道this指的谁，<strong>即“.”左侧</strong>。下面例子中<code>this</code>分别指的是<code>user</code>和<code>user.mother</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mother</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Stacey&#x27;</span>,</span><br><span class="line">    <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      alert(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">user.greet();</span><br><span class="line">user.mother.greet();</span><br></pre></td></tr></table></figure>
+
+<h4 id="显示绑定"><a href="#显示绑定" class="headerlink" title="显示绑定"></a>显示绑定</h4><p>显示绑定就用到<code>bind,call,apply</code>方法了。这三个方法来自于<code>Function.prototype</code>。所以说每个函数都会有这三个方法。其中<code>call,apply</code>来自于ES3，<code>bind</code>来自于ES5。</p>
+<h5 id="call"><a href="#call" class="headerlink" title="call"></a>call</h5><blockquote>
+<p>“call” is a method on every function that allows you to invoke the function specifying in what context the function will be invoked.</p>
+</blockquote>
+<p>如下代码，当调用<code>greet</code>函数的时候并不知道这个<code>this</code>引用的哪个对象，无法通过<code>user.greet(x,x,x)</code>来调用，因为<code>user</code>并没有这个函数对象。那么我们只能单独的调用这个函数，我们可以通过<code>call</code>的方式来指定调用当前函数的对象，第一个参数就是<code>this</code>引用的对象，剩余的参数是函数调用所需要的参数。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span> (<span class="params">l1, l2, l3</span>) </span>&#123;</span><br><span class="line">  alert(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know <span class="subst">$&#123;l1&#125;</span>, <span class="subst">$&#123;l2&#125;</span>, and <span class="subst">$&#123;l3&#125;</span>`</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line">greet.call(user, languages[<span class="number">0</span>], languages[<span class="number">1</span>], languages[<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<h5 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h5><p><code>apply</code>和<code>call</code>类似，只不过<code>apply</code>解决了<code>call</code>一个问题，就像上面那个例子，当调用的函数需要接受很多参数的时候，需要一个一个将参数传入，如果我们有10个参数就需要单独输入10个参数。而<code>apply</code>只需要将参数当做数组传入，不必一个一个传入。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// greet.call(user, languages[0], languages[1], languages[2])</span></span><br><span class="line">greet.apply(user, languages)</span><br></pre></td></tr></table></figure>
+
+<h5 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h5><p><code>bind</code>和<code>call</code>也是类似的，只不过他不会立即调用函数，而是返回一个新函数，这个新函数绑定了一系列参数，其中第一个参数就是<code>this</code>的引用对象，其余参数是函数调用时所需要的参数，当你调用新函数时，仅需要将未绑定的参数（如果已全部绑定就无需传参）传入就行了。</p>
+<p>还是上面的例子</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span> (<span class="params">l1, l2, l3</span>) </span>&#123;</span><br><span class="line">  alert(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know <span class="subst">$&#123;l1&#125;</span>, <span class="subst">$&#123;l2&#125;</span>, and <span class="subst">$&#123;l3&#125;</span>`</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newFn = greet.bind(user, languages[<span class="number">0</span>], languages[<span class="number">1</span>], languages[<span class="number">2</span>])</span><br><span class="line">newFn() <span class="comment">// alerts &quot;Hello, my name is Tyler and I know JavaScript, Ruby, and Python&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="new-绑定"><a href="#new-绑定" class="headerlink" title="new 绑定"></a>new 绑定</h4><blockquote>
+<p>当使用<code>new</code>创建对象时，<code>JavaScript Interpretor</code>就会创建一个对象，这个对象叫<code>this</code>，也就是说<code>this</code>的引用对象就是新创建的对象。</p>
+</blockquote>
+<p>如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">    Under the hood, JavaScript creates a new object called `this`</span></span><br><span class="line"><span class="comment">    which delegates to the User&#x27;s prototype on failed lookups. If a</span></span><br><span class="line"><span class="comment">    function is called with the new keyword, then it&#x27;s this new object</span></span><br><span class="line"><span class="comment">    that interpretor created that the this keyword is referencing.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.name = name</span><br><span class="line">  <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> me = <span class="keyword">new</span> User(<span class="string">&#x27;Tyler&#x27;</span>, <span class="number">27</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="词法绑定"><a href="#词法绑定" class="headerlink" title="词法绑定"></a>词法绑定</h4><p>所谓的词法绑定就是“你主观认为<code>this</code>的引用对象就是所绑定的对象”</p>
+<p>例子如下，我们使用<code>reduce</code>函数，传入一个回调函数，这个回调函数中使用的<code>this</code>会引用哪个对象？当我们使用<code>function</code>定义时会创建<code>context</code>，<code>this</code>是引用的这个<code>context</code>，就如同下面的代码，这是有问题的。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">languages</span>: [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>],</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> hello = <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know`</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> langs = <span class="built_in">this</span>.languages.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">str, lang, i</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (i === <span class="built_in">this</span>.languages.length - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> and <span class="subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> <span class="subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">    &#125;, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    alert(hello + langs)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">user.greet()<span class="comment">//Uncaught TypeError: Cannot read property &#x27;length&#x27; of undefined. </span></span><br></pre></td></tr></table></figure>
+
+<p><strong>然后，怎么解决？</strong><br>答案是使用箭头函数，箭头函数不会为<code>this</code>创建<code>context</code>，因此会引用外部的<code>context</code>，这是一个闭包。下面的代码就能正常工作了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">languages</span>: [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>],</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> hello = <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know`</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> langs = <span class="built_in">this</span>.languages.reduce(<span class="function">(<span class="params">str, lang, i</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (i === <span class="built_in">this</span>.languages.length - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> and <span class="subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> <span class="subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">    &#125;, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    alert(hello + langs)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="window-绑定"><a href="#window-绑定" class="headerlink" title="window 绑定"></a>window 绑定</h4><p>当不满足前几种绑定时，那<code>this</code>就会绑定window（用于catch-all）。</p>
+<p>如下代码，此情况<code>this</code>的引用对象就是window，因为window对象下没有age这个属性，所以undefined。如果定义了这个属性那就会输出这个属性。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span></span><br><span class="line">&#125;</span><br><span class="line">sayAge() <span class="comment">// My age is undefined</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.age=<span class="number">27</span></span><br><span class="line">sayAge() <span class="comment">// My age is 27</span></span><br></pre></td></tr></table></figure>
+
+<p>当然，如果你不想产生这种效果，不想让<code>this</code>绑定到window对象，那么你可以使用<code>use strict</code>声明来避免，window会认为<code>this</code>是undefined，如同下面的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.age = <span class="number">27</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayAge() <span class="comment">// TypeError: Cannot read property &#x27;age&#x27; of undefined</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="判断套路"><a href="#判断套路" class="headerlink" title="判断套路"></a>判断套路</h4><ol>
+<li>检查函数要在哪里被调用</li>
+<li><code>this</code>是否在箭头函数内部，如果是，那么<code>this</code>有可能词法绑定，引用父亲作用域的<code>this</code>（产生了闭包</li>
+<li>函数是否使用了<code>new</code>创建对象，如果有，那么<code>this</code>引用这个创建的对象。</li>
+<li>函数是否使用了<code>call,apply,bind</code>，如果有，那么<code>this</code>引用显示绑定的对象。</li>
+<li>函数左侧有无“.”，如果有，那么<code>this</code>就引用这个对象。</li>
+<li>你是否使用了<code>use strict</code>，如果有，那么<code>this</code>是<code>undefined</code></li>
+<li><code>this</code>引用了<code>window</code>对象</li>
+</ol>
+<h2 id="相关话题"><a href="#相关话题" class="headerlink" title="相关话题"></a>相关话题</h2><h3 id="箭头函数的this"><a href="#箭头函数的this" class="headerlink" title="箭头函数的this"></a>箭头函数的this</h3><p>箭头函数没有在函数调用创建函数执行上下文的时候创建<code>this</code>对象。详情请看<a href="js-concept-7-scope-2.html">JavaScript 必知 33 个概念系列：执行上下文（栈帧）、作用域、闭包、this 之间的关系</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://tylermcginnis.com/this-keyword-call-apply-bind-javascript/">Understanding the “this” keyword, call, apply, and bind in JavaScript</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Front-End Development</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>33 JS Concept</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript必知33个概念系列：原型继承和原型链</title>
     <url>/js-concept-17-prototype-inheritance.html</url>
     <content><![CDATA[<div class="note primary"><p>prototype inheritance、prototype chain</p>
@@ -2692,90 +2776,6 @@
 <li><a href="https://medium.com/better-programming/prototypes-in-javascript-5bba2990e04b">Prototypes in JavaScript</a></li>
 <li><a href="https://www.nowcoder.com/discuss/346582?type=0&order=0&pos=15&page=0">北京头条前端面经</a></li>
 <li><a href="https://www.freecodecamp.org/news/prototype-in-js-busted-5547ec68872/">Prototype in JavaScript: it’s quirky, but here’s how it works</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Front-End Development</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>33 JS Concept</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript必知33个概念系列：this、call、bind、apply</title>
-    <url>/js-concept-15-this-call-bind-apply.html</url>
-    <content><![CDATA[<div class="note primary"><p>this、call、bind、apply</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JavaScript的灵活性也导致了规则的多样性。今天来总结一下JavaScript中的<code>this</code>关键字，及其相关话题<code>bind,call,apply</code></p>
-<h2 id="JavaScript中的this"><a href="#JavaScript中的this" class="headerlink" title="JavaScript中的this"></a>JavaScript中的this</h2><p>以前学其他语言比如说Java或者CPP时，那时理解的<code>this</code>就是当前对象，当调用构造函数创建对象时，<code>this</code>会绑定到创建的对象上。关于JavaScript中的<code>this</code>并没有过多的关注。</p>
-<h3 id="JavaScript中this的5个绑定规则"><a href="#JavaScript中this的5个绑定规则" class="headerlink" title="JavaScript中this的5个绑定规则"></a>JavaScript中this的5个绑定规则</h3><blockquote>
-<p>函数在哪里调用，<code>this</code>的引用就来自于这里。</p>
-</blockquote>
-<ul>
-<li>隐式绑定</li>
-<li>显示绑定</li>
-<li>new 绑定</li>
-<li>词法绑定</li>
-<li>window 绑定</li>
-</ul>
-<p>接下来我们一一解释。</p>
-<h4 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h4><p>如下代码，大多数<code>this</code>绑定的情况都是如此，你只需要判断调用函数的对象就知道this指的谁，<strong>即“.”左侧</strong>。下面例子中<code>this</code>分别指的是<code>user</code>和<code>user.mother</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    alert(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mother</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Stacey&#x27;</span>,</span><br><span class="line">    <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      alert(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">user.greet();</span><br><span class="line">user.mother.greet();</span><br></pre></td></tr></table></figure>
-
-<h4 id="显示绑定"><a href="#显示绑定" class="headerlink" title="显示绑定"></a>显示绑定</h4><p>显示绑定就用到<code>bind,call,apply</code>方法了。这三个方法来自于<code>Function.prototype</code>。所以说每个函数都会有这三个方法。其中<code>call,apply</code>来自于ES3，<code>bind</code>来自于ES5。</p>
-<h5 id="call"><a href="#call" class="headerlink" title="call"></a>call</h5><blockquote>
-<p>“call” is a method on every function that allows you to invoke the function specifying in what context the function will be invoked.</p>
-</blockquote>
-<p>如下代码，当调用<code>greet</code>函数的时候并不知道这个<code>this</code>引用的哪个对象，无法通过<code>user.greet(x,x,x)</code>来调用，因为<code>user</code>并没有这个函数对象。那么我们只能单独的调用这个函数，我们可以通过<code>call</code>的方式来指定调用当前函数的对象，第一个参数就是<code>this</code>引用的对象，剩余的参数是函数调用所需要的参数。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span> (<span class="params">l1, l2, l3</span>) </span>&#123;</span><br><span class="line">  alert(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know <span class="subst">$&#123;l1&#125;</span>, <span class="subst">$&#123;l2&#125;</span>, and <span class="subst">$&#123;l3&#125;</span>`</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line">greet.call(user, languages[<span class="number">0</span>], languages[<span class="number">1</span>], languages[<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
-
-<h5 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h5><p><code>apply</code>和<code>call</code>类似，只不过<code>apply</code>解决了<code>call</code>一个问题，就像上面那个例子，当调用的函数需要接受很多参数的时候，需要一个一个将参数传入，如果我们有10个参数就需要单独输入10个参数。而<code>apply</code>只需要将参数当做数组传入，不必一个一个传入。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// greet.call(user, languages[0], languages[1], languages[2])</span></span><br><span class="line">greet.apply(user, languages)</span><br></pre></td></tr></table></figure>
-
-<h5 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h5><p><code>bind</code>和<code>call</code>也是类似的，只不过他不会立即调用函数，而是返回一个新函数，这个新函数绑定了一系列参数，其中第一个参数就是<code>this</code>的引用对象，其余参数是函数调用时所需要的参数，当你调用新函数时，仅需要将未绑定的参数（如果已全部绑定就无需传参）传入就行了。</p>
-<p>还是上面的例子</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span> (<span class="params">l1, l2, l3</span>) </span>&#123;</span><br><span class="line">  alert(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know <span class="subst">$&#123;l1&#125;</span>, <span class="subst">$&#123;l2&#125;</span>, and <span class="subst">$&#123;l3&#125;</span>`</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> languages = [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newFn = greet.bind(user, languages[<span class="number">0</span>], languages[<span class="number">1</span>], languages[<span class="number">2</span>])</span><br><span class="line">newFn() <span class="comment">// alerts &quot;Hello, my name is Tyler and I know JavaScript, Ruby, and Python&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="new-绑定"><a href="#new-绑定" class="headerlink" title="new 绑定"></a>new 绑定</h4><blockquote>
-<p>当使用<code>new</code>创建对象时，<code>JavaScript Interpretor</code>就会创建一个对象，这个对象叫<code>this</code>，也就是说<code>this</code>的引用对象就是新创建的对象。</p>
-</blockquote>
-<p>如下代码</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">    Under the hood, JavaScript creates a new object called `this`</span></span><br><span class="line"><span class="comment">    which delegates to the User&#x27;s prototype on failed lookups. If a</span></span><br><span class="line"><span class="comment">    function is called with the new keyword, then it&#x27;s this new object</span></span><br><span class="line"><span class="comment">    that interpretor created that the this keyword is referencing.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.name = name</span><br><span class="line">  <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> me = <span class="keyword">new</span> User(<span class="string">&#x27;Tyler&#x27;</span>, <span class="number">27</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="词法绑定"><a href="#词法绑定" class="headerlink" title="词法绑定"></a>词法绑定</h4><p>所谓的词法绑定就是“你主观认为<code>this</code>的引用对象就是所绑定的对象”</p>
-<p>例子如下，我们使用<code>reduce</code>函数，传入一个回调函数，这个回调函数中使用的<code>this</code>会引用哪个对象？当我们使用<code>function</code>定义时会创建<code>context</code>，<code>this</code>是引用的这个<code>context</code>，就如同下面的代码，这是有问题的。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">languages</span>: [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>],</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> hello = <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know`</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> langs = <span class="built_in">this</span>.languages.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">str, lang, i</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (i === <span class="built_in">this</span>.languages.length - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> and <span class="subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> <span class="subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">    &#125;, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    alert(hello + langs)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">user.greet()<span class="comment">//Uncaught TypeError: Cannot read property &#x27;length&#x27; of undefined. </span></span><br></pre></td></tr></table></figure>
-
-<p><strong>然后，怎么解决？</strong><br>答案是使用箭头函数，箭头函数不会为<code>this</code>创建<code>context</code>，因此会引用外部的<code>context</code>，这是一个闭包。下面的代码就能正常工作了。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">languages</span>: [<span class="string">&#x27;JavaScript&#x27;</span>, <span class="string">&#x27;Ruby&#x27;</span>, <span class="string">&#x27;Python&#x27;</span>],</span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> hello = <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> and I know`</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> langs = <span class="built_in">this</span>.languages.reduce(<span class="function">(<span class="params">str, lang, i</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (i === <span class="built_in">this</span>.languages.length - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> and <span class="subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;str&#125;</span> <span class="subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">    &#125;, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    alert(hello + langs)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="window-绑定"><a href="#window-绑定" class="headerlink" title="window 绑定"></a>window 绑定</h4><p>当不满足前几种绑定时，那<code>this</code>就会绑定window（用于catch-all）。</p>
-<p>如下代码，此情况<code>this</code>的引用对象就是window，因为window对象下没有age这个属性，所以undefined。如果定义了这个属性那就会输出这个属性。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tyler&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span></span><br><span class="line">&#125;</span><br><span class="line">sayAge() <span class="comment">// My age is undefined</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.age=<span class="number">27</span></span><br><span class="line">sayAge() <span class="comment">// My age is 27</span></span><br></pre></td></tr></table></figure>
-
-<p>当然，如果你不想产生这种效果，不想让<code>this</code>绑定到window对象，那么你可以使用<code>use strict</code>声明来避免，window会认为<code>this</code>是undefined，如同下面的代码：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.age = <span class="number">27</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayAge() <span class="comment">// TypeError: Cannot read property &#x27;age&#x27; of undefined</span></span><br></pre></td></tr></table></figure>
-
-
-<h4 id="判断套路"><a href="#判断套路" class="headerlink" title="判断套路"></a>判断套路</h4><ol>
-<li>检查函数要在哪里被调用</li>
-<li><code>this</code>是否在箭头函数内部，如果是，那么<code>this</code>有可能词法绑定，引用父亲作用域的<code>this</code>（产生了闭包</li>
-<li>函数是否使用了<code>new</code>创建对象，如果有，那么<code>this</code>引用这个创建的对象。</li>
-<li>函数是否使用了<code>call,apply,bind</code>，如果有，那么<code>this</code>引用显示绑定的对象。</li>
-<li>函数左侧有无“.”，如果有，那么<code>this</code>就引用这个对象。</li>
-<li>你是否使用了<code>use strict</code>，如果有，那么<code>this</code>是<code>undefined</code></li>
-<li><code>this</code>引用了<code>window</code>对象</li>
-</ol>
-<h2 id="相关话题"><a href="#相关话题" class="headerlink" title="相关话题"></a>相关话题</h2><h3 id="箭头函数的this"><a href="#箭头函数的this" class="headerlink" title="箭头函数的this"></a>箭头函数的this</h3><p>箭头函数没有在函数调用创建函数执行上下文的时候创建<code>this</code>对象。详情请看<a href="js-concept-7-scope-2.html">JavaScript 必知 33 个概念系列：执行上下文（栈帧）、作用域、闭包、this 之间的关系</a></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://tylermcginnis.com/this-keyword-call-apply-bind-javascript/">Understanding the “this” keyword, call, apply, and bind in JavaScript</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -2960,69 +2960,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript必知33个概念系列：执行上下文（栈帧）、作用域、闭包、this之间的关系</title>
-    <url>/js-concept-7-scope-2.html</url>
-    <content><![CDATA[<div class="note primary"><p>执行上下文（栈帧）、作用域、闭包、this之间的关系。</p>
-</div>
-
-<span id="more"></span>
-
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇文章<a href="js-concept-7-scope.html">《JavaScript必知33个概念系列：作用域》</a>总结的作用域问题，但是有一些关系还是没有整理清楚，本篇文章单独说明执行上下文（栈帧）、作用域、闭包、this之间的关系。</p>
-<h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2><p>执行上下文大体可以分为两种：</p>
-<ul>
-<li>全局执行上下文</li>
-<li>函数执行上下文</li>
-</ul>
-<p>每个执行上下文有两个状态：</p>
-<ul>
-<li>创建状态</li>
-<li>执行状态</li>
-</ul>
-<h3 id="全局执行上下文"><a href="#全局执行上下文" class="headerlink" title="全局执行上下文"></a>全局执行上下文</h3><h4 id="创建状态"><a href="#创建状态" class="headerlink" title="创建状态"></a>创建状态</h4><ul>
-<li>创建一个global（window）对象</li>
-<li>创建this变量，默认指向window</li>
-<li>为全局执行上下文的变量分配内存</li>
-<li>为全局执行上下文内的变量赋值为<code>undefined</code></li>
-<li>为全局执行上下文的函数分配内存，并将内容存入内存。</li>
-</ul>
-<h4 id="执行状态"><a href="#执行状态" class="headerlink" title="执行状态"></a>执行状态</h4><ul>
-<li>逐行执行</li>
-</ul>
-<h3 id="函数执行上下文"><a href="#函数执行上下文" class="headerlink" title="函数执行上下文"></a>函数执行上下文</h3><h4 id="创建状态-1"><a href="#创建状态-1" class="headerlink" title="创建状态"></a>创建状态</h4><ul>
-<li>创建一个argarguments（参数列表）对象</li>
-<li>创建this变量，默认指向window</li>
-<li>为当前函数执行上下文内的变量分配内存</li>
-<li>为当前函数执行上下文内的变量赋值为<code>undefined</code></li>
-<li>为当前函数执行上下文的函数分配内存，并将内容存入内存。</li>
-</ul>
-<h4 id="执行状态-1"><a href="#执行状态-1" class="headerlink" title="执行状态"></a>执行状态</h4><ul>
-<li>逐行执行</li>
-</ul>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><blockquote>
-<p>MDN 中定义作用域就是当前的执行上下文。</p>
-</blockquote>
-<p>如果在当前函数执行上下文下访问一个变量val，发现当前函数执行上下文内没有，那就向上层执行上下文内找。这条链就称为作用域链。</p>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>一个常见的例子</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAdder</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">inner</span> (<span class="params">y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add5 = makeAdder(<span class="number">5</span>);</span><br><span class="line">count += add5(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-
-<p>利用执行上下文来理解，当调用<code>makeAdder(5)</code>之后该函数的执行上下文（包括参数<code>x</code>）已经弹出了，但是函数<code>add5</code>调用时可以访问<code>x</code>，这是因为<code>makeAdder(5)</code>返回后创建了闭包，其中保存了<code>makeAdder</code>的执行上下文环境，当调用<code>add5</code>时，会在闭包环境下创建自己的执行上下文，那么变量就可以沿着作用域链访问了（就可以访问<code>x</code>）。</p>
-<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p><code>this</code>存在于当前执行上下文中，其引用会因绑定方式而决定，请看<a href="http://localhost:4000js-concept-15-this-call-bind-apply.html">JavaScript 必知 33 个概念系列：this、call、bind、apply</a>。</p>
-<p>箭头函数创建执行上下文时不会创建<code>this</code>变量，所以内部访问变量时会沿着作用域链向上找。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://tylermcginnis.com/ultimate-guide-to-execution-contexts-hoisting-scopes-and-closures-in-javascript/">The Ultimate Guide to Hoisting, Scopes, and Closures in JavaScript</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Front-End Development</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>33 JS Concept</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript必知33个概念系列：闭包</title>
     <url>/js-concept-21-closures.html</url>
     <content><![CDATA[<div class="note primary"><p>闭包是函数及其创建时保存的状态环境。</p>
@@ -3074,6 +3011,69 @@
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>还有一些深入话题没有总结，目前水平还不够，to be continued。</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">Closures</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Front-End Development</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>33 JS Concept</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript必知33个概念系列：执行上下文（栈帧）、作用域、闭包、this之间的关系</title>
+    <url>/js-concept-7-scope-2.html</url>
+    <content><![CDATA[<div class="note primary"><p>执行上下文（栈帧）、作用域、闭包、this之间的关系。</p>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇文章<a href="js-concept-7-scope.html">《JavaScript必知33个概念系列：作用域》</a>总结的作用域问题，但是有一些关系还是没有整理清楚，本篇文章单独说明执行上下文（栈帧）、作用域、闭包、this之间的关系。</p>
+<h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2><p>执行上下文大体可以分为两种：</p>
+<ul>
+<li>全局执行上下文</li>
+<li>函数执行上下文</li>
+</ul>
+<p>每个执行上下文有两个状态：</p>
+<ul>
+<li>创建状态</li>
+<li>执行状态</li>
+</ul>
+<h3 id="全局执行上下文"><a href="#全局执行上下文" class="headerlink" title="全局执行上下文"></a>全局执行上下文</h3><h4 id="创建状态"><a href="#创建状态" class="headerlink" title="创建状态"></a>创建状态</h4><ul>
+<li>创建一个global（window）对象</li>
+<li>创建this变量，默认指向window</li>
+<li>为全局执行上下文的变量分配内存</li>
+<li>为全局执行上下文内的变量赋值为<code>undefined</code></li>
+<li>为全局执行上下文的函数分配内存，并将内容存入内存。</li>
+</ul>
+<h4 id="执行状态"><a href="#执行状态" class="headerlink" title="执行状态"></a>执行状态</h4><ul>
+<li>逐行执行</li>
+</ul>
+<h3 id="函数执行上下文"><a href="#函数执行上下文" class="headerlink" title="函数执行上下文"></a>函数执行上下文</h3><h4 id="创建状态-1"><a href="#创建状态-1" class="headerlink" title="创建状态"></a>创建状态</h4><ul>
+<li>创建一个argarguments（参数列表）对象</li>
+<li>创建this变量，默认指向window</li>
+<li>为当前函数执行上下文内的变量分配内存</li>
+<li>为当前函数执行上下文内的变量赋值为<code>undefined</code></li>
+<li>为当前函数执行上下文的函数分配内存，并将内容存入内存。</li>
+</ul>
+<h4 id="执行状态-1"><a href="#执行状态-1" class="headerlink" title="执行状态"></a>执行状态</h4><ul>
+<li>逐行执行</li>
+</ul>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><blockquote>
+<p>MDN 中定义作用域就是当前的执行上下文。</p>
+</blockquote>
+<p>如果在当前函数执行上下文下访问一个变量val，发现当前函数执行上下文内没有，那就向上层执行上下文内找。这条链就称为作用域链。</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>一个常见的例子</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAdder</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">inner</span> (<span class="params">y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add5 = makeAdder(<span class="number">5</span>);</span><br><span class="line">count += add5(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>利用执行上下文来理解，当调用<code>makeAdder(5)</code>之后该函数的执行上下文（包括参数<code>x</code>）已经弹出了，但是函数<code>add5</code>调用时可以访问<code>x</code>，这是因为<code>makeAdder(5)</code>返回后创建了闭包，其中保存了<code>makeAdder</code>的执行上下文环境，当调用<code>add5</code>时，会在闭包环境下创建自己的执行上下文，那么变量就可以沿着作用域链访问了（就可以访问<code>x</code>）。</p>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p><code>this</code>存在于当前执行上下文中，其引用会因绑定方式而决定，请看<a href="http://localhost:4000js-concept-15-this-call-bind-apply.html">JavaScript 必知 33 个概念系列：this、call、bind、apply</a>。</p>
+<p>箭头函数创建执行上下文时不会创建<code>this</code>变量，所以内部访问变量时会沿着作用域链向上找。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://tylermcginnis.com/ultimate-guide-to-execution-contexts-hoisting-scopes-and-closures-in-javascript/">The Ultimate Guide to Hoisting, Scopes, and Closures in JavaScript</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -4247,7 +4247,7 @@
       </tags>
   </entry>
   <entry>
-    <title>如何利用 Typescript 提高代码质量</title>
+    <title>如何利用 Typescript 提高代码质量（一）</title>
     <url>/ts-algebric-data-type.html</url>
     <content><![CDATA[<div class="note primary"><p>类型也有代数运算，类型也有逻辑。</p>
 </div>
@@ -4262,7 +4262,11 @@
 <li>想了解 ADT（代数数据类型）。类型也有概念上的加减乘除，这并不是类型体操。</li>
 </ol>
 <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><ul>
-<li>Typescript 的优势</li>
+<li>Typescript 的优势（本文）<ul>
+<li>通过集合理解类型</li>
+<li>自定义类型的集合运算</li>
+</ul>
+</li>
 <li>实际业务中常见类型操作应用<ul>
 <li>代数数据类型</li>
 <li>穷尽枚举</li>
@@ -4276,11 +4280,27 @@
 <p>让我们先思考这样一个问题，Typescript 提供了静态类型检查，那我们可以通过静态类型检查来帮我做哪些事情呢？</p>
 <p>静态类型检查可以让我们在类型出现错误的时候就会出现编译错误，这样就可以把这部分错误过滤掉，不会出现在运行时。往往运行时再去发现修改要比编译时发现修改成本要高的多，甚至需要在测试阶段发现。</p>
 <p>既然如此，我们能不能尽可能的将代码错误或者说业务错误拦截在编译阶段呢？使用 Typescript 的一些方法可以帮我们做到这一点。</p>
-<p>在说这些方法之前，我们先来思考一下什么是类型，我们可以通过集合的角度来思考类型，把类型当作集合、把值当作集合中的元素。如果了解过类型论就知道三个概念：项（可以先理解为变量）、类型、上下文。这三个概念的关系通常可以描述为在某个上下文中某个项是某个类型。例如下面这段代码：我们可以描述为在外层的作用域上下文中 a 这个项的类型是 number，在内层的作用域上下文中 a 这个项的类型是 string。</p>
+<h4 id="通过集合理解类型"><a href="#通过集合理解类型" class="headerlink" title="通过集合理解类型"></a>通过集合理解类型</h4><p>在说这些方法之前，我们先来思考一下什么是类型，我们可以通过集合的角度来思考类型，把类型当作集合、把值当作集合中的元素。如果了解过类型论就知道三个概念：项（可以先理解为变量）、类型、上下文。这三个概念的关系通常可以描述为在某个上下文中某个项是某个类型。例如下面这段代码：</p>
 <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a: <span class="built_in">number</span> = <span class="number">1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> a: <span class="built_in">string</span> = <span class="string">&#x27;a&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>我们可以描述为在外层的作用域上下文中 a 这个项的类型是 number，在内层的作用域上下文中 a 这个项的类型是 string。</p>
 <p>把类型当作集合、把值当作集合中的元素，就没办法把不属于这个集合的元素赋值给属于这个集合的变量。那么考虑一下 Typescript 中的这些类型。</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// boolean 这个集合中有两个元素 true 和 false，没法把不属于这个集合的元素赋值给属于这个集合的变量</span></span><br><span class="line"><span class="keyword">const</span> a: <span class="built_in">boolean</span> = <span class="literal">true</span> </span><br><span class="line"><span class="keyword">const</span> b: <span class="built_in">boolean</span> = <span class="literal">false</span></span><br><span class="line"><span class="comment">// @ts-ignore</span></span><br><span class="line"><span class="keyword">const</span> c: <span class="built_in">boolean</span> = <span class="number">1</span> <span class="comment">// Type &#x27;1&#x27; is not assignable to type &#x27;boolean&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// boolean 这个集合中有两个元素 true 和 false，没法把不属于这个集合的元素赋值给属于这个集合的变量</span></span><br><span class="line"><span class="keyword">const</span> a: <span class="built_in">boolean</span> = <span class="literal">true</span> </span><br><span class="line"><span class="keyword">const</span> b: <span class="built_in">boolean</span> = <span class="literal">false</span></span><br><span class="line"><span class="comment">// @ts-expect-error</span></span><br><span class="line"><span class="keyword">const</span> c: <span class="built_in">boolean</span> = <span class="number">1</span> <span class="comment">// Type &#x27;1&#x27; is not assignable to type &#x27;boolean&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>1 这个元素不属于 boolean 这个集合，所以没法把 1 赋值给 boolean 类型的变量。</p>
+<p>再看看另一些类型（集合）。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// number 集合里包含所有数值元素，NaN也属于数值元素。</span></span><br><span class="line"><span class="keyword">const</span> num: <span class="built_in">number</span> = <span class="number">1</span>; </span><br><span class="line"> <span class="comment">// string 集合里包含所有字符串元素。</span></span><br><span class="line"><span class="keyword">const</span> str: <span class="built_in">string</span> = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"> <span class="comment">// number[] 集合里包含所有“number数组的实例”。</span></span><br><span class="line"><span class="keyword">const</span> numArr: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"> <span class="comment">// unknown 集合里包含所有元素，unknown 集合是全集，也就是所有集合的父集。</span></span><br><span class="line"><span class="keyword">const</span> unknown: unknown = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// never 是空集，没有任何元素，所以没法把任何元素赋值给 never 类型的变量。</span></span><br><span class="line"><span class="comment">// @ts-expect-error</span></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">never</span>: <span class="built_in">never</span> = <span class="number">1</span></span><br><span class="line"> <span class="comment">// undefined 集合里只包含 undefined 元素。</span></span><br><span class="line"><span class="keyword">const</span> undefinedValue: <span class="literal">undefined</span> = <span class="literal">undefined</span></span><br><span class="line"> <span class="comment">// void 集合有点特殊，大部分情况下代表 undefined，后续作者后再写一篇文章来讨论。</span></span><br><span class="line"><span class="keyword">const</span> voidValue: <span class="built_in">void</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">const</span> voidReturnedFunction: <span class="function">() =&gt;</span> <span class="built_in">void</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果上述类型不确认的话，可以打开 <a href="https://www.typescriptlang.org/play#code/PTAEDsFcFsCMFMBOpBjaYCBVAziYUGVDUKoASNBIc0AdTQHgVBhRUAJfQGH+A5AQxsH05QPR1A4uVMsCAGAKAGMB7cAGcALhBgAucXCSgAvKACMAblDdQIUKMQBLcAHNUmXIUDq2oDJvQExyXPoNFaRiKdr2GFAcjrvl6zVBmIANoAukbY+ASAOAT+CIhEgCN+gCFugHnagNHygLgEPALCYv4AgohO0rEh8qCBigA0oABM1QDMwT4aYJDgANbg-ADu4GEmBJRUbZ09feiA9GaAFoooVIyAjDoThOiJgGxOKFl2YiNdvVI7Y2Uq3H7wAG6yE4BeXrOAhTYEgN9ygKryQ3iAp3K3gKs2gFFGz5SA0rEkQCbfhBzrJAN4+gGj1RKADeVAPOJPE0AAEREIALTwAAeAAd4LwRBjCvxELYcqCLkVwGCSS1QG0ACbwABmeng9LCgCvlXB08CMllU9k2bL2BnM1n0gBqdAANpB4PteWKBWVRfy2b4wGd+Dp2egCIBOh0Ank6AKOtSfYtTqpbL5aALeyFKrxT5hWI7QAleAiSCIAUAMTa+J0gikAAoAJTyAB8tu19tA4ajoAA3twAL5AA">Typescript Playground</a> 来尝试一下。</p>
+<p>现在来思考这样一个问题，如果一个元素属于某个集合A，那么这个元素也属于这个集合A的父集。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a: unknown = <span class="number">1</span></span><br><span class="line"><span class="keyword">const</span> b: unknown = <span class="string">&#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>因为 unknown 是全集，所以所有元素都可以赋值给 unknown 类型的变量。</p>
+<p>我们既然把类型当作集合，那么我们就可以使用集合的运算来描述类型的运算。我们知道常见的集合运算有并集、交集、差集等等。我们可以通过这些集合运算来描述类型的运算。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 并集运算可以通过联合类型操作符 “|”来实现。</span></span><br><span class="line"><span class="comment">// number | string 集合包含所有 number 和 string 集合的元素</span></span><br><span class="line"><span class="keyword">type</span> StringOrNumberUnion = <span class="built_in">string</span> | <span class="built_in">number</span></span><br><span class="line"><span class="keyword">const</span> num: StringOrNumberUnion = <span class="number">1</span></span><br><span class="line"><span class="keyword">const</span> a: StringOrNumberUnion = <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 交集运算可以通过交叉类型操作符 “&amp;”来实现。 </span></span><br><span class="line"><span class="comment">// number &amp; string 集合的交集是空集，也就是never，所以没法赋值给 number &amp; string 类型的变量。</span></span><br><span class="line"><span class="comment">// @ts-expect-error</span></span><br><span class="line"><span class="keyword">const</span> numAndString: <span class="built_in">number</span> &amp; <span class="built_in">string</span> = <span class="number">1</span></span><br><span class="line"><span class="comment">// unknown &amp; number 集合包含所有 number 集合的元素（集合同一律，全集与任意集合A的交集就是集合A）。</span></span><br><span class="line"><span class="keyword">const</span> n: unknown &amp; <span class="built_in">number</span> = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 差集运算可以通过排除类型操作符 Exclude Utility Type 来实现。</span></span><br><span class="line"><span class="comment">// Exclude&lt;number, string&gt; 集合是number - string 这个差集，也就是 number。</span></span><br><span class="line"><span class="keyword">const</span> excludeStringFromNumber: Exclude&lt;<span class="built_in">number</span>, <span class="built_in">string</span>&gt; = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// Exclude&lt;number|string|boolean, string&gt; 集合就是 number|string|boolean - string 这个差集，也就是 number|boolean。</span></span><br><span class="line"><span class="comment">// @ts-expect-error</span></span><br><span class="line"><span class="keyword">const</span> excludeStringFromNSB: Exclude&lt;<span class="built_in">number</span>|<span class="built_in">string</span>|<span class="built_in">boolean</span>, <span class="built_in">string</span>&gt; = <span class="string">&#x27;string&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以使用 <a href="https://www.typescriptlang.org/play#code/PTAEjc9QxtMBfjHTvR75UKdygsBMOPxgVAMBAqhvH0NHqhZk0B15QMm9RAcAgB9BcAkFNzQPO1AG50CAGAKBFADsBXAWwCMApgCdQFUAGcALkICWHAOahImQKDKgahVAAkaBIc069BIwDEqE6XMXLAIW6BhRUAEvi0kBPAA4DQAZRMKA8kIBye4QCqHDIA9hygALzGsgqiuvzCLADGYVLxAFxuHvLefglCQaHhUQCMyamSoACGme4xOb7+BcFhkaAA5FXtLGxggCVyMAgoqH2Ak8p4RKRkAGS0jEygvfH6oNPRpkqY5gOA9GaAXl6QgDD-gPpygIw6OxwCAG7ChxqIgIU2gKs2gNKxgDwKgJt+y8Kr67F45kAG8qAecTWOwAAKScQAWgEAA9nElJLChEIQkJyhw0tweABBDgAEzqpkyOJWayk9TaZXYXA4AGsOCEAO7hNZkn7KdTab4iCw2QAQ-8pADAqgAA5QDR+odABaKkEAcHKAb7lAPCGylx20g5xVgEh-1gpLGVDiZOmMlls3nUgDcPSWgDvdQZINCAJONACZpExIoAAonCkgAbLgElwBSQyb0yBygAAqThc9GYS09Pr9AgAPByhAAaP7yAB8mwuTVA0MzoEAm-GAKjlbSdzrydRVQPCE-7iQoAGJonh5fSZeO+-0ppoZymmHOlS3sbuJvv5CiDhQUPghELegRVDgD7I55RV1PT7JzhdLlcFotlitnHa8veL5ccMFgSEw+GI5HCNEY3Vpes9gRN+StkLt1wACEuy9L9J30Hd6kvA9V0zYcOhneR2nNIA">Typescript Playground</a> 打开上述代码。</p>
+<h4 id="自定义类型的集合运算"><a href="#自定义类型的集合运算" class="headerlink" title="自定义类型的集合运算"></a>自定义类型的集合运算</h4><p>我们来看一下自定义对象类型的集合运算，我们通过交集来举例，看下面这个例子：</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// UserWithName 集合的元素特征是拥有 name，其他特征不确定</span></span><br><span class="line"><span class="keyword">type</span> UserWithName = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// UserWithEmail 集合的元素特征是拥有 email，其他特征不确定</span></span><br><span class="line"><span class="keyword">type</span> UserWithEmail = &#123;</span><br><span class="line">  <span class="attr">email</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// UserWithNameAndEmail 集合的元素特征是拥有 name 和 email，其他特征不确定</span></span><br><span class="line"><span class="keyword">type</span> UserWithNameAndEmail = UserWithName &amp; UserWithEmail</span><br><span class="line"><span class="keyword">const</span> user: UserWithNameAndEmail = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Sam&#x27;</span>,</span><br><span class="line">  <span class="attr">email</span>: <span class="string">&#x27;sam@a.com&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以用下图描述：<br><img data-src="ts-algebric-data-type/%E7%B1%BB%E5%9E%8B%E4%B8%96%E7%95%8C.drawio.png"></p>
+<p>这个类型世界很大很大，我们在这个集合中寻找我们使用的子集。UserWithNameAndEmail 这个集合很大很大，因为除了name和email之外还有其他不确定的特征，这个集合就是一个无穷集合。</p>
+<p>后面的文章我们会讨论如何衡量集合（类型）大小，以及代数数据类型是个什么东西。</p>
+<p>点赞收藏不迷路，这是我持续创作的最大动力，我们下期见。</p>
 ]]></content>
       <tags>
         <tag>Typescript</tag>
